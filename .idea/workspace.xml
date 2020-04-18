@@ -1,14 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="" />
+    <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/61734b87-f8b5-4c36-bf40-4bb40c1e9de9.presentation_projet_java_partie_IA.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/8634bd18-8075-47ce-8e5c-575b884faae7.java_projet_2020.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Case.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Line.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Win.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/Clavier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/Fenetre.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/FenetrePleinEcran.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/Panneau.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/Souris.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/Bruitage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/BruitageATester.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/Musique$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/Musique.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/MusiqueATester$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/MusiqueATester$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/MusiqueATester.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/Converter$PrintWriterProgressListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/Converter$ProgressListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/Converter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/RiffFile$RiffChunkHeader.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/RiffFile.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFile$WaveFileSample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFile$WaveFormat_Chunk.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFile$WaveFormat_ChunkData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFile.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFileObuffer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/jlc$jlcArgs.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/jlc.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/BitReserve.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Bitstream.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/BitstreamErrors.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/BitstreamException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Control.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Crc16.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Decoder$Params.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Decoder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/DecoderErrors.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/DecoderException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Equalizer$EQFunction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Equalizer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/FrameDecoder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Header.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/InputStreamSource.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerError.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerErrors.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerHook.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder$Subband.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder$SubbandLayer1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder$SubbandLayer1IntensityStereo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder$SubbandLayer1Stereo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIDecoder$SubbandLayer2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIDecoder$SubbandLayer2IntensityStereo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIDecoder$SubbandLayer2Stereo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIDecoder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$III_side_info_t.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$SBI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$Sftable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$gr_info_s.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$temporaire.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$temporaire2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Manager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Obuffer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/OutputChannels.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/SampleBuffer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Source.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/SynthesisFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/au2lin.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/huffcodetab.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/l3reorder.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/lin2au.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/sfd.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/AudioDevice.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/AudioDeviceBase.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/AudioDeviceFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/FactoryRegistry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/JavaSoundAudioDevice.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/JavaSoundAudioDeviceFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/NullAudioDevice.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/Player.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/PlayerApplet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/AdvancedPlayer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/PlaybackEvent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/PlaybackListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/jlap$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/jlap$InfoListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/jlap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/jlp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Animation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/BoiteEnglobante.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Carre.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Cercle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Couleur.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Dessin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Ligne.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Ovale.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Point.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Rectangle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Texte.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Texture.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Triangle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/puissance4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Case.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Win.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/Clavier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/Fenetre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/FenetrePleinEcran.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/Panneau.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/Souris.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/Bruitage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/BruitageATester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/Musique.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/MusiqueATester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/converter/Converter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/converter/RiffFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/converter/WaveFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/converter/WaveFileObuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/converter/jlc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/BitReserve.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Bitstream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/BitstreamErrors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/BitstreamException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Control.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Crc16.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Decoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/DecoderErrors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/DecoderException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Equalizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/FrameDecoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Header.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/InputStreamSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/JavaLayerError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/JavaLayerErrors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/JavaLayerException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/JavaLayerHook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/JavaLayerUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/LayerIDecoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/LayerIIDecoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/LayerIIIDecoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Obuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/OutputChannels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/SampleBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/Source.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/SynthesisFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/au2lin.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/huffcodetab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/l3reorder.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/lin2au.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/decoder/sfd.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/AudioDevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/AudioDeviceBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/AudioDeviceFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/FactoryRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/JavaSoundAudioDevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/JavaSoundAudioDeviceFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/NullAudioDevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/PlayerApplet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/advanced/AdvancedPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/advanced/PlaybackEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/advanced/PlaybackListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/advanced/jlap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/audio/player/jlp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Animation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/BoiteEnglobante.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Carre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Cercle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Couleur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Dessin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Ligne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Ovale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Texte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Texture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mg2d/geometrie/Triangle.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1aXILppkIQ00JZFjttYkExtJ8k9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -82,12 +283,23 @@
       <option name="presentableId" value="Default" />
       <updated>1586875458585</updated>
       <workItem from="1587138563326" duration="357000" />
-      <workItem from="1587140438936" duration="14488000" />
+      <workItem from="1587140438936" duration="14826000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1586885619949">
