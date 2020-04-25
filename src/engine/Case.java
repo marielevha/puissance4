@@ -3,10 +3,17 @@ package engine;
 public class Case {
     private int content;
 
+    /**
+     *
+     */
     public Case() {
         this.content = 0;
     }
 
+    /**
+     *
+     * @param content
+     */
     public Case(int content) {
         if (content == 0 || content == 1 || content == 2){
             this.content = content;
@@ -17,14 +24,26 @@ public class Case {
         }
     }
 
+    /**
+     *
+     * @param aCase
+     */
     public Case(Case aCase) {
         this.content = aCase.content;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getContent() {
         return this.content;
     }
 
+    /**
+     *
+     * @param content
+     */
     public void setContent(int content) {
         if (content == 0 || content == 1 || content == 2){
             this.content = content;
@@ -34,6 +53,10 @@ public class Case {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return String.valueOf(this.getContent());

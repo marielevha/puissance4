@@ -14,6 +14,11 @@ import java.util.Random;
 public class Graphic {
     private static int player = 1, tour = 1;
     private static boolean win = false;
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         String s = "6x7-211222112211201112210121212000000000000000".replace('1','0').replace('2','0');
         Plateau plateau = new Plateau(s);
@@ -26,45 +31,25 @@ public class Graphic {
         initPlateau(fenetre, plateau);
         fenetre.rafraichir();
         while (!win){
+            //System.err.println("win : " + win);
             if (souris.getClicGauche()){
-                if (player == 1 && tour == 1){
-                    int place = souris.getPosition().getX();
+                int place = souris.getPosition().getX();
+                if (player == 1){
                     if (!addPoint(plateau, player, place)){
-                        tour = 2;
                         player = 2;
                     }
                 }
-                //initPlateau(fenetre, plateau);
-                /*else {
-                    IAMariel mariel = new IAMariel();
-                    int place = ((mariel.levelThreeMove(plateau) + 1) * 100);
-                    //int place = (new Random().nextInt(7) + 1) * 100;
+                else {
+                    IAMariel mariel = new IAMariel(4);
+                    place = mariel.bestMove(plateau.toStringIA()) + 1;
                     System.err.println(place);
-                    if (!addPoint(plateau, player, place)){
+                    if (!addPoint(plateau, player, (place * 100))){
                         player = 1;
                     }
-                }*/
-            }
-            else {
-                try {
-                    Thread.sleep(510);
-                    if (player == 2 && tour == 2){
-                        IAMariel mariel = new IAMariel();
-                        int place = ((mariel.levelThreeMove(plateau) + 1) * 100);
-                        //int place = (new Random().nextInt(7) + 1) * 100;
-                        //System.err.println(place);
-                        if (!addPoint(plateau, player, place)){
-                            tour = 1;
-                            player = 1;
-                        }
-                        //initPlateau(fenetre, plateau);
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
+                initPlateau(fenetre, plateau);
+                System.out.println(plateau.toString());
             }
-            initPlateau(fenetre, plateau);
-            //System.out.println(plateau.toString());
             fenetre.rafraichir();
         }
         winner();
@@ -152,6 +137,11 @@ public class Graphic {
         winner();
     }*/
 
+    /**
+     *
+     * @param fenetre
+     * @param plateau
+     */
     public static void initPlateau(Fenetre fenetre, Plateau plateau){
         int space = 45, add = 100;
         int spaceY = -space;
@@ -176,6 +166,13 @@ public class Graphic {
         }
     }
 
+    /**
+     *
+     * @param plateau
+     * @param player
+     * @param place
+     * @return
+     */
     public static boolean addPoint(Plateau plateau, int player, int place){
         if (place > -701 && place <= 100){
             win = plateau.addPoint(0, player);
@@ -207,6 +204,9 @@ public class Graphic {
         return win;
     }
 
+    /**
+     *
+     */
     public static void winner(){
         player = (player % 2 == 1 ? 1 : 2);
         Fenetre fenetre = new Fenetre("Puissance 4 Winner Player : " + player, 300, 100);
