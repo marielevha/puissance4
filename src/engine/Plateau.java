@@ -109,9 +109,15 @@ public class Plateau {
      * @return
      */
     public boolean fullColumn(int col){
+        if (lines[0].getX(col).getContent() != 0){
+            return true;
+        }
+        else {
+            return false;
+        }
         //System.err.println(" first : " + tabLigne[0].toString().charAt(col));
         //System.err.println(" second : " + tabLigne[0].getX(col).getContent());
-        return lines[0].getX(col).getContent() != 0;
+        //return lines[0].getX(col).getContent() != 0;
     }
 
     /**
@@ -304,11 +310,11 @@ public class Plateau {
      */
     @Override
     public String toString() {
-        String str = "", l;
-
+        String str = "|---------------|" + "\n";
         for (int i = 0; i < row; i++){
-            str = str + this.lines[i].toString() + "\n";
+            str = str + "| " + this.lines[i].toString() + "|" + "\n";
         }
+        str += "|---------------|";
         return str;//.replace('0','0');
     }
 
@@ -353,5 +359,4 @@ public class Plateau {
         data[1] = column;
         return data;
     }
-
 }

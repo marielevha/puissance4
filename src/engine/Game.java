@@ -1,6 +1,7 @@
 package engine;
 
 import ia.IAMariel;
+import ia.MinMax;
 
 import java.util.Random;
 
@@ -21,11 +22,11 @@ public class Game {
         //Case();
         String string = "6x7-211022112211201112210121212000200001210121";
         string = "6x7-" +
-                "1121222" +
-                "1101000" +
-                "1201000" +
-                "2001000" +
                 "0002000" +
+                "0001000" +
+                "0000000" +
+                "0000000" +
+                "0000000" +
                 "0000000";
         Plateau plateau = new Plateau(string);
         //Plateau plateau = new Plateau(string.replace('0','2'));
@@ -33,6 +34,10 @@ public class Game {
 
         System.out.print('\n');
         String test = "211222112211201112220121212000200000000000";
+
+        MinMax minMax = new MinMax(string);
+        System.err.println(minMax.minMax());
+        //minMax.buildMatrix();
         //System.out.print(plateau.fullColumn(1));
 
         //plateau.addPoint(1,1);
@@ -47,11 +52,11 @@ public class Game {
         //System.out.println(plateau.fullColumn(1));
 
 
-        IAMariel mariel = new IAMariel(4);
+        /*IAMariel mariel = new IAMariel(4);
         mariel.buildMatrix(6, 7);
         mariel.readMatrix();
         String max = mariel.max(plateau);
-        System.out.println(max);
+        System.out.println(max);*/
         //System.out.println(mariel.bestMove(plateau));
         //int result = mariel.levelThreeMove(plateau);
         //System.out.println(result);

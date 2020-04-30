@@ -12,8 +12,19 @@ public class IAMariel {
     private static int [][] matrix;
 
     private static Plateau plateau;
-    private final int level;
+    private  int level;
 
+
+    public IAMariel() {
+        String string = "6x7-" +
+                "0000100" +
+                "0000000" +
+                "0000000" +
+                "0000000" +
+                "0000000" +
+                "0000000";
+        plateau = new Plateau(string);
+    }
 
     public IAMariel(int level) {
         this.level = level;
@@ -117,6 +128,9 @@ public class IAMariel {
 
 
     public int levelFourMove(){
+        if (plateau.getXY(3, 5).getContent() == 0) {
+            return 3;
+        }
         evaluate(plateau);
         if (POSITION_WIN != -1){
             return POSITION_WIN;
@@ -339,4 +353,24 @@ public class IAMariel {
         //return maximum;
         return "max : " + max + " || x-y : " + x + "-" +y;
     }//end method max
+
+    public int[][] buildMatrix(){
+        //line = data[0]; column = data[1];
+        matrix = new int[line][column];
+        for (int i = 0; i < line; i++){
+            for (int j = 0; j < column; j++){
+                matrix[i][j] = plateau.getXY(j, i).getContent();
+            }
+        }
+
+        //Read
+        for (int i = 0; i < line; i++){
+            for (int j = 0; j < column; j++){
+                System.err.print(matrix[i][j]);
+            }
+            System.err.println();
+        }
+        System.err.println("\n");
+        return matrix;
+    }
 }
