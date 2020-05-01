@@ -23,7 +23,8 @@ public class IAMariel {
                 "0000000" +
                 "0000000" +
                 "0000000";
-        plateau = new Plateau(string);
+        plateau = new Plateau(string, 1);
+        ///System.out.print(plateau.toString());
     }
 
     public IAMariel(int level) {
@@ -32,7 +33,7 @@ public class IAMariel {
     }
 
     public int bestMove(String string){
-        plateau = new Plateau(string);
+        plateau = new Plateau(string, 0);
         switch (level) {
             case 1 : {
                 return levelOneMove();
@@ -357,20 +358,20 @@ public class IAMariel {
     public int[][] buildMatrix(){
         //line = data[0]; column = data[1];
         matrix = new int[line][column];
-        for (int i = 0; i < line; i++){
+        for (int i = line - 1; i >= 0; i--){
             for (int j = 0; j < column; j++){
                 matrix[i][j] = plateau.getXY(j, i).getContent();
             }
         }
 
         //Read
-        for (int i = 0; i < line; i++){
+        /*for (int i = 0; i < line; i++){
             for (int j = 0; j < column; j++){
                 System.err.print(matrix[i][j]);
             }
             System.err.println();
         }
-        System.err.println("\n");
+        System.err.println("\n");*/
         return matrix;
     }
 }

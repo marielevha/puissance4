@@ -21,7 +21,7 @@ public class Graphic {
      */
     public static void main(String[] args) {
         String s = "6x7-211222112211201112210121212000000000000000".replace('1','0').replace('2','0');
-        Plateau plateau = new Plateau(s);
+        Plateau plateau = new Plateau(s, 0);
         //System.out.print(plateau.toString());
         Fenetre fenetre = new Fenetre("Puissance 4", (plateau.getLineColumn()[1] * 100), (plateau.getLineColumn()[0]) * 100);
         Souris souris = fenetre.getSouris();

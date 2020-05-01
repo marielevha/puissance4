@@ -28,7 +28,7 @@ public class Game {
                 "0000000" +
                 "0000000" +
                 "0000000";
-        Plateau plateau = new Plateau(string);
+        Plateau plateau = new Plateau(string, 0);
         //Plateau plateau = new Plateau(string.replace('0','2'));
         System.out.print(plateau.toString());
 

@@ -11,28 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/alphaBeta.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/heuristique1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/heuristique2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/ia.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/infos.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/jeu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/minMax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/puissance4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ia/Evaluate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ia/MinMax.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/Jeton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/PlateauCopy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/TypePlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/MinMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/PlateauCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/PlateauCopy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +134,7 @@
       <workItem from="1587822183846" duration="7059000" />
       <workItem from="1587928550964" duration="10778000" />
       <workItem from="1587993155021" duration="523000" />
-      <workItem from="1588109368794" duration="43099000" />
+      <workItem from="1588109368794" duration="50119000" />
     </task>
     <servers />
   </component>
@@ -168,10 +157,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser" timestamp="1588273326994">
+    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser" timestamp="1588296157827">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588273326994" />
+    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588296157827" />
     <state x="480" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588268329464">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -180,22 +169,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586885619949" />
-    <state width="1322" height="200" key="GridCell.Tab.0.bottom" timestamp="1588283557783">
+    <state width="1322" height="200" key="GridCell.Tab.0.bottom" timestamp="1588296370063">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="200" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588283557783" />
-    <state width="1322" height="200" key="GridCell.Tab.0.center" timestamp="1588283557783">
+    <state width="1322" height="200" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588296370063" />
+    <state width="1322" height="200" key="GridCell.Tab.0.center" timestamp="1588296370062">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="200" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588283557783" />
-    <state width="1322" height="200" key="GridCell.Tab.0.left" timestamp="1588283557782">
+    <state width="1322" height="200" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588296370062" />
+    <state width="1322" height="200" key="GridCell.Tab.0.left" timestamp="1588296370061">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="200" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588283557782" />
-    <state width="1322" height="200" key="GridCell.Tab.0.right" timestamp="1588283557783">
+    <state width="1322" height="200" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588296370061" />
+    <state width="1322" height="200" key="GridCell.Tab.0.right" timestamp="1588296370062">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="200" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588283557783" />
+    <state width="1322" height="200" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588296370062" />
     <state width="1322" height="212" key="GridCell.Tab.1.bottom" timestamp="1588272736593">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -274,27 +263,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>403</line>
+          <line>418</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>415</line>
+          <line>430</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>414</line>
+          <line>429</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>412</line>
+          <line>427</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>386</line>
+          <line>401</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>

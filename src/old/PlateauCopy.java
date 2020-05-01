@@ -5,7 +5,7 @@ import engine.Plateau;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class PlateauCopy {
+public class PlateauCopy extends Plateau {
     public final static int VIDE = 0;
     public final static int JOUEUR1 = 1;
     public final static int JOUEUR2 = 2;
@@ -14,8 +14,21 @@ public class PlateauCopy {
     private int nbrColonne;
     private int[][] p4;
     private int nbrNoeuds;
+    private static Plateau plateau;
 
-    public PlateauCopy(int nbrLigne,int nbrColonne) {
+    public int[][] getP4() {
+        return p4;
+    }
+
+    public PlateauCopy(String string) {
+        super(string, 0);
+        this.nbrLigne = this.getLineColumn()[0];
+        this.nbrColonne = this.getLineColumn()[1];
+        this.p4 = new int[nbrLigne][nbrColonne];
+        this.nbrNoeuds = 0;
+    }
+
+    public PlateauCopy(int nbrLigne, int nbrColonne) {
         this.nbrColonne = nbrColonne;
         this.nbrLigne = nbrLigne;
         this.p4 = new int[nbrLigne][nbrColonne];
@@ -46,7 +59,11 @@ public class PlateauCopy {
             System.err.println();
         }
     }
+
+
+
     public void afficher(){
+        //this.toString();
         for (int colonne=0;colonne<nbrColonne;colonne++){
             System.out.print("-");
         }
@@ -72,6 +89,7 @@ public class PlateauCopy {
         for(int ligne=0; ligne<nbrLigne ;ligne++){
             if(p4[ligne][colonne]==VIDE){
                 p4[ligne][colonne] = joueur;
+                System.out.println(ligne + "-" + colonne);
                 return ligne;
             }
         }

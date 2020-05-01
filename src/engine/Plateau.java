@@ -51,7 +51,7 @@ public class Plateau {
      *
      * @param string
      */
-    public Plateau(String string) {
+    public Plateau(String string, int direction) {
         //int line, column;
         /*this.tabLigne = new Ligne[column];
         for (int i = 0; i < column; i++){
@@ -69,28 +69,33 @@ public class Plateau {
         System.out.println("column : " + column);*/
 
         this.lines = new Line[row];
-        int cmp = 0;
-        /*for (int i = 0; i < split0[1].length(); i += column){
-            this.tabLigne[cmp] = new Ligne(column);
-            this.tabLigne[cmp].setLigne(split0[1].substring(i, i + column));
-            System.out.println(this.tabLigne[cmp].toString());
-            cmp++;
-        }*/
-
-        cmp = 0;
         System.err.println("################");
+        int cmp = 0;
+        if (direction == 0){
+            for (int i = split0[1].length(); i > 0; i -= column){
+                //System.err.println(split0[1].substring(i - column, i));
+                //System.err.println(i + " " + (i - column));
+                this.lines[cmp] = new Line(column);
+                this.lines[cmp].setLine(split0[1].substring(i - column, i));
+                //System.err.println(this.tabLigne[cmp].toString());
+                cmp++;
+            }
+        }
+        else {
+            for (int i = 0; i < split0[1].length(); i += column){
+                this.lines[cmp] = new Line(column);
+                this.lines[cmp].setLine(split0[1].substring(i, i + column));
+                //System.out.println(this.lines[cmp].toString());
+                cmp++;
+            }
+        }
+
+
+
 
         //String data = "65165189516151351891512189";
         //System.err.println(split0[1].substring(data.length() - 7, 7));
 
-        for (int i = split0[1].length(); i > 0; i -= column){
-            //System.err.println(split0[1].substring(i - column, i));
-            //System.err.println(i + " " + (i - column));
-            this.lines[cmp] = new Line(column);
-            this.lines[cmp].setLine(split0[1].substring(i - column, i));
-            //System.err.println(this.tabLigne[cmp].toString());
-            cmp++;
-        }
     }
 
     /**

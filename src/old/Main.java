@@ -20,15 +20,41 @@ public class Main {
         joueur2 = new Player(2);
         //ecouteur = new Ecouteur(joueur1,joueur2);
         plateau = new PlateauCopy(nbrLignes,nbrColonnes);
+        System.out.println(plateau.toString() + "ToString");
 
         IAMariel mariel = new IAMariel();
         int[][] matrix = mariel.buildMatrix();
 
+        for (int i = 0; i < 6; i++){
+            for (int j = 0; j < 7; j++){
+                if (matrix[i][j] != 0){
+                    System.err.println(i + "-" + j);
+                }
+                System.err.print(matrix[i][j]);
+            }
+            System.err.println();
+        }
+        System.err.println("\n");
+
         plateau.initCopy(matrix);
+
+        matrix = plateau.getP4();
+        for (int i = 0; i < 6; i++){
+            for (int j = 0; j < 7; j++){
+                if (matrix[i][j] != 0){
+                    System.out.println(i + "-" + j);
+                }
+                System.out.print(matrix[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println("\n");
+
         //plateau.display();
 
-        //plateau.jouerCoup(3, joueur1.getNumber());
-        plateau.display();
+        plateau.jouerCoup(3, joueur1.getNumber());
+        plateau.jouerCoup(4, joueur2.getNumber());
+        //plateau.display();
         //jouerIA();
         plateau.afficher();
 

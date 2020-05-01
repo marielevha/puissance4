@@ -10,7 +10,7 @@ public class MinMax {
 
 
     public MinMax(String string) {
-        plateau = new Plateau(string);
+        plateau = new Plateau(string, 0);
         line = plateau.getLineColumn()[0];
         column = plateau.getLineColumn()[1];
     }
