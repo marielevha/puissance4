@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
     <expand />
@@ -12,16 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ia/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/MinMax.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/PlateauCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/PlateauCopy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +124,7 @@
       <workItem from="1587822183846" duration="7059000" />
       <workItem from="1587928550964" duration="10778000" />
       <workItem from="1587993155021" duration="523000" />
-      <workItem from="1588109368794" duration="50119000" />
+      <workItem from="1588109368794" duration="51287000" />
     </task>
     <servers />
   </component>
@@ -169,22 +159,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586885619949" />
-    <state width="1322" height="200" key="GridCell.Tab.0.bottom" timestamp="1588296370063">
+    <state width="1322" height="200" key="GridCell.Tab.0.bottom" timestamp="1588297501689">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="200" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588296370063" />
-    <state width="1322" height="200" key="GridCell.Tab.0.center" timestamp="1588296370062">
+    <state width="1322" height="200" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588297501689" />
+    <state width="1322" height="200" key="GridCell.Tab.0.center" timestamp="1588297501689">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="200" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588296370062" />
-    <state width="1322" height="200" key="GridCell.Tab.0.left" timestamp="1588296370061">
+    <state width="1322" height="200" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588297501689" />
+    <state width="1322" height="200" key="GridCell.Tab.0.left" timestamp="1588297501688">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="200" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588296370061" />
-    <state width="1322" height="200" key="GridCell.Tab.0.right" timestamp="1588296370062">
+    <state width="1322" height="200" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588297501688" />
+    <state width="1322" height="200" key="GridCell.Tab.0.right" timestamp="1588297501689">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="200" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588296370062" />
+    <state width="1322" height="200" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588297501689" />
     <state width="1322" height="212" key="GridCell.Tab.1.bottom" timestamp="1588272736593">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -263,27 +253,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>418</line>
+          <line>421</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>430</line>
+          <line>433</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>429</line>
+          <line>432</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>427</line>
+          <line>430</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/old/PlateauCopy.java</url>
-          <line>401</line>
+          <line>404</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
