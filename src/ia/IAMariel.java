@@ -38,14 +38,19 @@ public class IAMariel extends Player{
         this.level = level;
         if (level == 5) {
             this.type = Type.MIN_MAX;
-            plateauCopy = new PlateauCopy(6,7);
+            plateauCopy = new PlateauCopy(line,column);
         }
         else if (level == 6) {
             this.type = Type.ALPHA_BETA;
-            plateauCopy = new PlateauCopy(6,7);
+            plateauCopy = new PlateauCopy(line,column);
         }
     }
 
+    /***
+     * Meilleur Coupe
+     * @param string
+     * @return
+     */
     public int bestMove(String string){
         plateau = new Plateau(string, 0);
         switch (level) {
@@ -74,10 +79,11 @@ public class IAMariel extends Player{
     }
 
     /**
-     *
-     * @return
+     * Niveau 1, l'IA joue la position la colonne 3 si elle est vide
+     * Sinon l'IA joue aléatoirement si la colonne est disponible
+     * @return column
      */
-    public  int levelOneMove(){
+    public  int levelOneMove() {
         for (;;) {
             if (plateau.getXY(3, 5).getContent() == 0){
                 return 3;
@@ -92,8 +98,9 @@ public class IAMariel extends Player{
     }
 
     /**
-     *
-     * @return
+     * Niveau 2, l'IA joue la position gagnante
+     * Sinon l'IA joue aléatoirement si la colonne est disponible
+     * @return column
      */
     public int levelTwoMove(){
         if (winMove(plateau) != -1){
@@ -105,8 +112,11 @@ public class IAMariel extends Player{
     }
 
     /**
-     *
-     * @return
+     * Niveau 3, l'IA joue la position gagnante
+     * Sinon l'IA joue la position blockannte si possible
+     * Sinon l'IA joue pour aligner 3 pions si possible
+     * Sinon l'IA joue aléatoirement si la colonne est disponible
+     * @return column
      */
     public int levelThreeMove(){
         if (winMove(plateau) != -1){
@@ -123,7 +133,12 @@ public class IAMariel extends Player{
         }
     }
 
-
+    /**
+     * Niveau 4, l'IA joue la position gagnante
+     * Sinon l'IA joue la position blockannte si possible
+     * Sinon l'IA joue la position ayant la plus grande valeur d'évaluation disponible
+     * @return column
+     */
     public int levelFourMove(){
         if (plateau.getXY(3, 5).getContent() == 0) {
             return 3;
@@ -142,8 +157,11 @@ public class IAMariel extends Player{
 
     /**
      * Algorithm MinMax
+     * Niveau 5, l'IA joue la position gagnante
+     * Sinon l'IA joue la position blockannte si possible
+     * Sinon l'IA joue selon l'evelution de l'algorithme MinMax
      * @param plateau
-     * @return
+     * @return column
      */
     public int levelFiveMove(Plateau plateau){
         if (winMove(plateau) != -1){
@@ -157,6 +175,12 @@ public class IAMariel extends Player{
                 return 3;
             }
             else {
+                try {
+                    Thread.currentThread();
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 return plateauCopy.jouerMinMax(player);
             }
         }
@@ -164,8 +188,11 @@ public class IAMariel extends Player{
 
     /**
      * Algorithm AlphaBeta
+     * Niveau 5, l'IA joue la position gagnante
+     * Sinon l'IA joue la position blockannte si possible
+     * Sinon l'IA joue selon l'evelution de l'algorithme AlphaBeta
      * @param plateau
-     * @returnà
+     * @return column
      */
     public int levelSixMove(Plateau plateau){
         if (winMove(plateau) != -1){
@@ -179,7 +206,13 @@ public class IAMariel extends Player{
                 return 3;
             }
             else {
-                player.setType(TypePlayer.AlphaBeta);
+                try {
+                    Thread.currentThread();
+                    Thread.sleep(10);
+                    //player.setType(TypePlayer.AlphaBeta);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 return plateauCopy.jouerAB(player);
             }
         }

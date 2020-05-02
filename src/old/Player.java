@@ -5,15 +5,14 @@ public class Player {
     public int number;
     public int level;
 
-
-    public Player(int numero) {
-        this.number = numero;
-        if (numero == 2){
+    public Player(int number) {
+        this.number = number;
+        //If IA level <= 6
+        if (number == 2) {
             setLevel(6);
-            setType(TypePlayer.MinMax);
         }
     }
-    public int getNumber(){
+    public int getNumber() {
         return number;
     }
     public TypePlayer getType(){

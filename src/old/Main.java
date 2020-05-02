@@ -103,7 +103,7 @@ public class Main {
         }
         try {
             Thread.currentThread();
-            Thread.sleep(10);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
