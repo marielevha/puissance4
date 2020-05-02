@@ -12,13 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/old/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/PlateauCopy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/old/PlateauCopy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/old/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/old/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/PlateauCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/PlateauCopy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +111,7 @@
       <workItem from="1587138563326" duration="357000" />
       <workItem from="1587140438936" duration="14826000" />
       <workItem from="1588300214442" duration="1469000" />
-      <workItem from="1588364033548" duration="31534000" />
+      <workItem from="1588364033548" duration="36085000" />
     </task>
     <servers />
   </component>
@@ -143,6 +139,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="466" y="257" width="433" height="222" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1588438904217" />
+    <state x="76" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588444883197">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="76" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1588444883197" />
     <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1586885619949">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

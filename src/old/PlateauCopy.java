@@ -5,13 +5,13 @@ import engine.Plateau;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class PlateauCopy extends Plateau {
+public class PlateauCopy {
     public final static int VIDE = 0;
     public final static int JOUEUR1 = 1;
     public final static int JOUEUR2 = 2;
-    private int derniereColonne;
-    private int nbrLigne;
-    private int nbrColonne;
+    private int lastColumn;
+    private int line;
+    private int column;
     private int[][] p4;
     private int nbrNoeuds;
     private static Plateau plateau;
@@ -21,39 +21,48 @@ public class PlateauCopy extends Plateau {
     }
 
     public PlateauCopy(String string) {
-        super(string, 0);
-        this.nbrLigne = this.getLineColumn()[0];
-        this.nbrColonne = this.getLineColumn()[1];
-        this.p4 = new int[nbrLigne][nbrColonne];
-        this.nbrNoeuds = 0;
+        /*super(string, 0);
+        this.line = this.getLineColumn()[0];
+        this.column = this.getLineColumn()[1];
+        this.p4 = new int[line][column];
+        this.nbrNoeuds = 0;*/
     }
 
-    public PlateauCopy(int nbrLigne, int nbrColonne) {
-        this.nbrColonne = nbrColonne;
-        this.nbrLigne = nbrLigne;
-        this.p4 = new int[nbrLigne][nbrColonne];
+    /**
+     * Constructor
+     * @param line
+     * @param column
+     */
+    public PlateauCopy(int line, int column) {
+        this.column = column;
+        this.line = line;
+        this.p4 = new int[line][column];
         this.nbrNoeuds = 0;
         this.init();
         //initCopy();
     }
     public void initCopy(int [][] matrix) {
-        for(int j=0 ; j<nbrLigne;j++){
-            for (int i=0;i<nbrColonne;i++){
+        for(int j = 0; j< line; j++){
+            for (int i = 0; i< column; i++){
                 this.p4[j][i] = matrix[j][i];
             }
         }
     }
+
+    /**
+     * Init : initialise la matrice correspondante au plateau du jeu
+     */
     private void init() {
-        for(int j=0 ; j<nbrLigne;j++){
-            for (int i=0;i<nbrColonne;i++){
+        for(int j = 0; j< line; j++){
+            for (int i = 0; i< column; i++){
                 this.p4[j][i] = VIDE;
             }
         }
     }
-    public void display(){
+    public void display1(){
         //Read
-        for (int i = 0; i < nbrLigne; i++){
-            for (int j = 0; j < nbrColonne; j++){
+        for (int i = 0; i < line; i++){
+            for (int j = 0; j < column; j++){
                 System.err.print(p4[i][j]);
             }
             System.err.println();
@@ -61,15 +70,17 @@ public class PlateauCopy extends Plateau {
     }
 
 
-
-    public void afficher(){
+    /**
+     * Display : affiche le plateau
+     */
+    public void display(){
         //this.toString();
-        for (int colonne=0;colonne<nbrColonne;colonne++){
+        for (int colonne = 0; colonne< column; colonne++){
             System.out.print("-");
         }
         System.out.println();
-        for(int ligne=nbrLigne-1 ; ligne>-1;ligne--){
-            for (int colonne=0;colonne<nbrColonne;colonne++){
+        for(int ligne = line -1; ligne>-1; ligne--){
+            for (int colonne = 0; colonne< column; colonne++){
                 if(p4[ligne][colonne]==0){
                     System.out.print(" ");
                 }else{
@@ -79,25 +90,38 @@ public class PlateauCopy extends Plateau {
             }
             System.out.println();
         }
-        for (int colonne=0;colonne<nbrColonne;colonne++){
+        for (int colonne = 0; colonne< column; colonne++){
             System.out.print("-");
         }
         System.out.println();
     }
-    public int jouerCoup(int colonne,int joueur){
 
-        for(int ligne=0; ligne<nbrLigne ;ligne++){
-            if(p4[ligne][colonne]==VIDE){
-                p4[ligne][colonne] = joueur;
-                System.out.println(ligne + "-" + colonne);
+    /**
+     * Add Point : ajoute un pion au plateau
+     * @param column
+     * @param player
+     * @return
+     */
+    public int addPoint(int column, int player){
+
+        for(int ligne = 0; ligne< line; ligne++){
+            if(p4[ligne][column]==VIDE){
+                p4[ligne][column] = player;
+                System.out.println(ligne + "-" + column);
                 return ligne;
             }
         }
         return -1;
     }
+
+    /**
+     *
+     * @param colonne
+     * @return
+     */
     public boolean placeDispo(int colonne){
         boolean dispo = false;
-        for(int ligne=0; ligne<nbrLigne ;ligne++){
+        for(int ligne = 0; ligne< line; ligne++){
             if(p4[ligne][colonne]==VIDE){
                 dispo = true;
             }
@@ -107,15 +131,15 @@ public class PlateauCopy extends Plateau {
     public int cherche(int joueur,int nombre){
         int compteur = 0;
         //horizontales
-        for (int ligne = 0; ligne < nbrLigne; ligne++) {
+        for (int ligne = 0; ligne < line; ligne++) {
             compteur += chercheAlignes(0, ligne, 1, 0,joueur,nombre);
         }
         //Diagonales
-        for (int col = 0; col < nbrColonne ;col++) {
+        for (int col = 0; col < column; col++) {
             compteur += chercheAlignes(col, 0, 0, 1,joueur,nombre);
         }
         // Diagonales (cherche depuis la ligne du bas)
-        for (int col = 0; col < nbrColonne; col++) {
+        for (int col = 0; col < column; col++) {
 
             // Premi�re diagonale ( / )
             compteur += chercheAlignes(col, 0, 1, 1,joueur,nombre);
@@ -125,13 +149,13 @@ public class PlateauCopy extends Plateau {
         }
 
         // Diagonales (cherche depuis les colonnes gauches et droites)
-        for (int ligne = 0; ligne < nbrLigne; ligne++) {
+        for (int ligne = 0; ligne < line; ligne++) {
             // Premi�re diagonale ( / )
             compteur += chercheAlignes(0, ligne, 1, 1,joueur,nombre);
 
 
             // Deuxi�me diagonale ( \ )
-            compteur += chercheAlignes(nbrColonne - 1, ligne, -1, 1,joueur,nombre);
+            compteur += chercheAlignes(column - 1, ligne, -1, 1,joueur,nombre);
 
         }
         return compteur;
@@ -145,7 +169,7 @@ public class PlateauCopy extends Plateau {
         int curRow = oLigne;
         int precedent=-1;
 
-        while ((curCol >= 0) && (curCol < nbrColonne) && (curRow >= 0) && (curRow < nbrLigne)) {
+        while ((curCol >= 0) && (curCol < column) && (curRow >= 0) && (curRow < line)) {
             if (p4[curRow][curCol] != joueur) {
 
                 if ((compteurJeton == nombre)&&(precedent==VIDE||p4[curRow][curCol]==VIDE)){
@@ -172,7 +196,7 @@ public class PlateauCopy extends Plateau {
     public int cherche4() {
         int vainqueur =-1;
         // V�rifie les horizontales ( - )
-        for (int ligne = 0; ligne < nbrLigne; ligne++) {
+        for (int ligne = 0; ligne < line; ligne++) {
             vainqueur = cherche4alignes(0, ligne, 1, 0);
             if (vainqueur!=-1) {
                 return vainqueur ;
@@ -180,7 +204,7 @@ public class PlateauCopy extends Plateau {
         }
 
         // V�rifie les verticales ( � )
-        for (int col = 0; col < nbrColonne ;col++) {
+        for (int col = 0; col < column; col++) {
             vainqueur = cherche4alignes(col, 0, 0, 1);
             if (vainqueur!=-1) {
                 return vainqueur ;
@@ -188,7 +212,7 @@ public class PlateauCopy extends Plateau {
         }
 
         // Diagonales (cherche depuis la ligne du bas)
-        for (int col = 0; col < nbrColonne; col++) {
+        for (int col = 0; col < column; col++) {
 
             // Premi�re diagonale ( / )
             vainqueur = cherche4alignes(col, 0, 1, 1);
@@ -203,7 +227,7 @@ public class PlateauCopy extends Plateau {
         }
 
         // Diagonales (cherche depuis les colonnes gauches et droites)
-        for (int ligne = 0; ligne < nbrLigne; ligne++) {
+        for (int ligne = 0; ligne < line; ligne++) {
             // Premi�re diagonale ( / )
             vainqueur = cherche4alignes(0, ligne, 1, 1);
 
@@ -211,7 +235,7 @@ public class PlateauCopy extends Plateau {
                 return vainqueur ;
             }
             // Deuxi�me diagonale ( \ )
-            vainqueur = cherche4alignes(nbrColonne - 1, ligne, -1, 1);
+            vainqueur = cherche4alignes(column - 1, ligne, -1, 1);
             if (vainqueur!=-1) {
                 return vainqueur ;
             }
@@ -227,7 +251,7 @@ public class PlateauCopy extends Plateau {
         int curCol = oCol;
         int curRow = oLigne;
 
-        while ((curCol >= 0) && (curCol < nbrColonne) && (curRow >= 0) && (curRow < nbrLigne)) {
+        while ((curCol >= 0) && (curCol < column) && (curRow >= 0) && (curRow < line)) {
             if (p4[curRow][curCol] != couleur) {
                 // Si la couleur change, on r�initialise le compteur
                 couleur = p4[curRow][curCol];
@@ -251,8 +275,8 @@ public class PlateauCopy extends Plateau {
         return -1;
     }
     public boolean isTermine(){
-        for(int j=0 ; j<nbrLigne;j++){
-            for (int i=0;i<nbrColonne;i++){
+        for(int j = 0; j< line; j++){
+            for (int i = 0; i< column; i++){
                 if(this.p4[j][i] ==VIDE){
                     return false;
                 }
@@ -262,25 +286,30 @@ public class PlateauCopy extends Plateau {
     }
 
     public int getColonne() {
-        return nbrColonne;
+        return column;
     }
 
     public void rejouer() {
         this.init();
     }
-    public int getNbrJeton(){
-        int compteur = 0;
-        for(int j=0 ; j<nbrLigne;j++){
-            for (int i=0;i<nbrColonne;i++){
-                if(this.p4[j][i]!=VIDE){
-                    compteur++;
+
+    /**
+     * Total points : compte le nombre de pions du plateau
+     * @return count
+     */
+    public int totalPoints(){
+        int count = 0;
+        for(int i = 0; i < line; i++){
+            for (int j = 0; j < column; j++){
+                if(this.p4[i][j]!= VIDE){
+                    count++;
                 }
             }
         }
-        return compteur;
+        return count;
     }
-    public synchronized int jouerAB(Player player/*, PanelAffichage panelAffichage*/){
-        if(getNbrJeton()>1){
+    public synchronized int AlphaBetaMove(Player player){
+        if(totalPoints()>1){
 
             this.nbrNoeuds = 0;
             int alpha =  -10000000;
@@ -289,15 +318,15 @@ public class PlateauCopy extends Plateau {
             int profondeur=player.getLevel();
             boolean continuer = true;
             ArrayList<Integer> list = new ArrayList<Integer>();
-            for(int i= 0; i<nbrColonne;i++){
+            for(int i = 0; i< column; i++){
                 list.add(i);
             }
             Collections.shuffle(list);
             ///ArrayList<PanelMiniPlateau> miniPlateaux = new ArrayList<PanelMiniPlateau>();
-            for(int i=0;i<nbrColonne && continuer;i++){
+            for(int i = 0; i< column && continuer; i++){
                 int colonneATester = (int) list.get(i);
                 if(placeDispo(colonneATester)){
-                    this.jouerCoup(colonneATester,player.getNumber());
+                    this.addPoint(colonneATester,player.getNumber());
                     int evaluation = this.minAB(profondeur-1,player.getNumber(),player,alpha,beta);
 
 
@@ -306,7 +335,7 @@ public class PlateauCopy extends Plateau {
                         alpha = evaluation;
                         colonne =colonneATester;
                         System.out.println(player+" peut joue pos"+colonneATester+" profondeur : "+profondeur+" eval = "+evaluation);
-                        this.afficher();
+                        this.display();
                         ///miniPlateaux.add(new PanelMiniPlateau(p4,colonneATester,evaluation));
                     }else{
                         System.out.println(player+" peut joue pos"+colonneATester+" profondeur : "+profondeur+" ELAGAGE reaslisee");
@@ -314,50 +343,48 @@ public class PlateauCopy extends Plateau {
                     }
 
 
-                    this.annulerCoup(colonneATester);
+                    this.cancelMove(colonneATester);
                     if(alpha>=beta){
                         continuer = false;
                     }
                 }
             }
             ///panelAffichage.ajoutPanel(miniPlateaux);
-            this.jouerCoup(colonne, player.getNumber());
+            this.addPoint(colonne, player.getNumber());
             System.out.println(colonne);
-            this.derniereColonne = colonne;
+            this.lastColumn = colonne;
             System.out.println("Nombre de noeud parcourus : "+nbrNoeuds);
             System.out.println();
-            return this.derniereColonne;
+            return this.lastColumn;
         }else{
-            this.jouerCoup(nbrColonne/2, player.getNumber());
-            this.derniereColonne = nbrColonne/2;
+            this.addPoint(column /2, player.getNumber());
+            this.lastColumn = column /2;
             this.nbrNoeuds=0;
-            return this.derniereColonne;
+            return this.lastColumn;
         }
     }
-
-
-    private int maxAB(int profondeur,int joueur,Player joueurEnCours,int alpha,int beta) {
+    private int maxAB(int profondeur,int player,Player currentPlayer,int alpha,int beta) {
 
         this.nbrNoeuds++;
-        if(joueur==1){
-            joueur = 2;
+        if(player == 1){
+            player = 2;
         }else{
-            joueur = 1;
+            player = 1;
         }
         if(profondeur==0 || this.isTermine()||this.cherche4()!=-1){
-            int eval = this.eval2(joueurEnCours,profondeur);
+            int eval = this.evaluation(currentPlayer,profondeur);
             return eval;
         }
-        for(int i=0;i<nbrColonne;i++){
+        for(int i = 0; i< column; i++){
             if(placeDispo(i)){
-                this.jouerCoup(i,joueur);
-                int evaluation = this.minAB(profondeur-1, joueur,joueurEnCours, alpha, beta);
-                //System.out.println(joueur+" peut joue pos"+i+" profondeur : "+profondeur+" eval = "+evaluation);
+                this.addPoint(i,player);
+                int evaluation = this.minAB(profondeur-1, player,currentPlayer, alpha, beta);
+                //System.out.println(player+" peut joue pos"+i+" profondeur : "+profondeur+" eval = "+evaluation);
 
                 if(evaluation>alpha){
                     alpha = evaluation;
                 }
-                this.annulerCoup(i);
+                this.cancelMove(i);
                 if(alpha>=beta){
                     //System.out.println("Elagage Max profondeur "+profondeur);
                     return beta;
@@ -366,28 +393,28 @@ public class PlateauCopy extends Plateau {
         }
         return alpha;
     }
-    private int minAB(int profondeur, int joueur,Player joueurEnCours,int alpha,int beta) {
+    private int minAB(int profondeur, int player,Player currentPlayer,int alpha,int beta) {
 
         this.nbrNoeuds++;
-        if(joueur==1){
-            joueur = 2;
+        if(player==1){
+            player = 2;
         }else{
-            joueur = 1;
+            player = 1;
         }
         if(profondeur==0 || this.isTermine()||this.cherche4()!=-1){
-            int eval = this.eval2(joueurEnCours,profondeur);
+            int eval = this.evaluation(currentPlayer,profondeur);
             return eval;
         }
-        for(int i=0;i<nbrColonne ;i++){
+        for(int i = 0; i< column; i++){
             if(placeDispo(i)){
-                this.jouerCoup(i,joueur);
-                int evaluation = this.maxAB(profondeur-1, joueur,joueurEnCours, alpha, beta);
-                //System.out.println(joueur+" peut joue pos"+i+" profondeur : "+profondeur+" eval = "+evaluation);
+                this.addPoint(i,player);
+                int evaluation = this.maxAB(profondeur-1, player,currentPlayer, alpha, beta);
+                //System.out.println(player+" peut joue pos"+i+" profondeur : "+profondeur+" eval = "+evaluation);
 
                 if(evaluation<beta){
                     beta = evaluation;
                 }
-                this.annulerCoup(i);
+                this.cancelMove(i);
                 if(beta<=alpha){
                     //System.out.println("Elagage Min profondeur "+profondeur);
                     return alpha;
@@ -398,114 +425,134 @@ public class PlateauCopy extends Plateau {
         return beta;
     }
 
-    public synchronized int jouerMinMax(Player joueur/*, PanelAffichage panelAffichage*/){
-        if(getNbrJeton()>1){
+    /**
+     * Algorithm MinMax : retourne la colonne à jouer
+     * @param player
+     * @return column
+     */
+    public synchronized int MinMaxMove(Player player){
+        if(totalPoints()>1){
             this.nbrNoeuds = 0;
             int max = -10000000;
-            ArrayList<Integer> choix = new ArrayList<Integer>();
-            int colonne=-1;
-            int profondeur=joueur.getLevel();
+            ArrayList<Integer> choices = new ArrayList<Integer>();
+            int col = -1;
+            int profondeur = player.getLevel();
 
             ///ArrayList<PanelMiniPlateau> miniPlateaux = new ArrayList<PanelMiniPlateau>();
-            for(int i=0;i<nbrColonne ;i++){
-                if(placeDispo(i)){
-                    this.jouerCoup(i,joueur.getNumber());
-                    int evaluation = this.min(profondeur-1,joueur.getNumber(),joueur);
+            for(int i = 0; i< column; i++){
+                if(placeDispo(i)) {
+                    this.addPoint(i, player.getNumber());
+                    int evaluation = this.min((profondeur - 1), player.getNumber(), player);
 
-                    System.out.println("Joueur "+joueur+" a joue "+i+" eval = "+evaluation);
+                    //System.out.println("Joueur " + player + " a joue " + i + " eval = " + evaluation);
                     ///miniPlateaux.add(new PanelMiniPlateau(p4,i,evaluation));
 
-
-                    if(evaluation>max){
+                    if(evaluation > max){
                         max = evaluation;
-                        choix.clear();
-                        choix.add(i);
+                        choices.clear();
+                        choices.add(i);
                         //System.err.println("Evaluation > max :" + max);
                     }
-                    else if(evaluation==max){
-                        choix.add(i);
+                    else if(evaluation == max){
+                        choices.add(i);
                         //System.err.println("Evaluation == max :" + max);
                     }
                     else {
                         //System.err.println("Evaluation < max :" + max);
                     }
-                    //System.err.println(choix.get(0));
-                    this.annulerCoup(i);
+                    //System.err.println(choices.get(0));
+                    this.cancelMove(i);
                 }
             }
-            ///panelAffichage.ajoutPanel(miniPlateaux);
-            Collections.shuffle(choix);
-            System.out.println(choix);
-            colonne = choix.get(0);
-            this.jouerCoup(colonne, joueur.getNumber());
-            this.derniereColonne = colonne;
-            //System.err.println(this.derniereColonne +" Nombre de noeud parcourus : "+nbrNoeuds);
+            Collections.shuffle(choices);
+            System.out.println(choices);
+            col = choices.get(0);
+            this.addPoint(col, player.getNumber());
+            this.lastColumn = col;
+            //System.err.println(this.lastColumn +" Nombre de noeud parcourus : "+nbrNoeuds);
             System.out.println();
-            return this.derniereColonne;
+            return this.lastColumn;
         }
         else {
-            this.jouerCoup(nbrColonne/2, joueur.getNumber());
-            this.derniereColonne = nbrColonne/2;
+            this.addPoint(column /2, player.getNumber());
+            this.lastColumn = column /2;
             this.nbrNoeuds=0;
-            return this.derniereColonne;
+            return this.lastColumn;
         }
     }
 
-    private int max(int profondeur,int joueur,Player joueurEnCours) {
+    /**
+     * Partie Max de MinMax
+     * @param profondeur
+     * @param player
+     * @param currentPlayer
+     * @return max
+     */
+    private int max(int profondeur, int player, Player currentPlayer){
         this.nbrNoeuds++;
-        if(joueur==1){
-            joueur = 2;
+        /*if(player == 1){
+            player = 2;
         }else{
-            joueur = 1;
-        }
-        if(profondeur==0 || this.isTermine()||this.cherche4()!=-1){
-            int eval = this.eval2(joueurEnCours,profondeur);
+            player = 1;
+        }*/
+        player = (player == 1) ? 2 : 1;
+        if(profondeur == 0 || this.isTermine() || this.cherche4() != -1){
+            int eval = this.evaluation(currentPlayer, profondeur);
             return eval;
         }
         int max = -10000000;
-        for(int i=0;i<nbrColonne ;i++){
+        for(int i = 0; i < column; i++){
             if(placeDispo(i)){
-                this.jouerCoup(i,joueur);
-                int evaluation = this.min(profondeur-1,joueur,joueurEnCours);
-                //System.out.println("Joueur "+joueur+" a joue "+i+" eval = "+evaluation);
+                this.addPoint(i, player);
+                int evaluation = this.min((profondeur - 1), player, currentPlayer);
+                //System.out.println("Joueur "+player+" a joue "+i+" eval = "+evaluation);
 
-                if(evaluation>max){
+                if(evaluation > max){
                     max = evaluation;
                 }
-                this.annulerCoup(i);
+                this.cancelMove(i);
             }
-
         }
         return max;
     }
-    private int min(int profondeur, int joueur,Player joueurEnCours) {
+
+    /**
+     * Partie Min de MinMax
+     * @param profondeur
+     * @param player
+     * @param currentPlayer
+     * @return min
+     */
+    private int min(int profondeur, int player, Player currentPlayer) {
         this.nbrNoeuds++;
-        if(joueur==1){
-            joueur = 2;
+        /*if(player == 1){
+            player = 2;
         }else{
-            joueur = 1;
-        }
-        if(profondeur==0 || this.isTermine()||this.cherche4()!=-1){
-            int eval = this.eval2(joueurEnCours,profondeur);
+            player = 1;
+        }*/
+        player = (player == 1) ? 2 : 1;
+        if(profondeur ==0 || this.isTermine() || this.cherche4() != -1){
+            int eval = this.evaluation(currentPlayer,profondeur);
             return eval;
         }
         int min = 10000000;
-        for(int i=0;i<nbrColonne ;i++){
+        for(int i = 0; i < column; i++){
             if(placeDispo(i)){
-                this.jouerCoup(i,joueur);
-                int evaluation = this.max(profondeur-1,joueur,joueurEnCours);
-                //System.out.println("Joueur "+joueur+" a joue "+i+" eval = "+evaluation);
+                this.addPoint(i, player);
+                int evaluation = this.max((profondeur - 1), player, currentPlayer);
+                //System.out.println("Joueur "+player+" a joue "+i+" eval = "+evaluation);
 
-                if(evaluation<min){
+                if(evaluation < min){
                     min = evaluation;
                 }
-                this.annulerCoup(i);
+                this.cancelMove(i);
             }
 
         }
         return min;
     }
-    private int eval(Player joueur,int profondeur) {
+
+    private int eval(Player joueur, int profondeur) {
         int vainqueur = this.cherche4();
         //System.out.println("Evalutaion joueur "+joueur);
         //this.afficher();
@@ -517,43 +564,58 @@ public class PlateauCopy extends Plateau {
             return (-1000+(joueur.getLevel()-profondeur));
         }
     }
-    private int eval2(Player joueur,int profondeur) {
-        int vainqueur = this.cherche4();
 
-        //System.out.println("Evalutaion joueur "+joueur);
+    /**
+     * Evaluation : ///
+     * @param player
+     * @param profondeur
+     * @return Integer evaluation
+     */
+    private int evaluation(Player player, int profondeur) {
+        int winner = this.cherche4();
+
+        //System.out.println("Evalutaion player "+player);
         //this.afficher();
 
-        if(vainqueur==joueur.getNumber()){
+        if(winner == player.getNumber()){
             //System.out.println("Vainqueur");
-            return 100000-(joueur.getLevel()-profondeur);
-        }else if (vainqueur== -1){
+            return (100000 - (player.getLevel() - profondeur));
+        }else if (winner== -1){
             //System.out.println("Nul");
-            int adversaire;
-            if(joueur.getNumber() == 1){
-                adversaire = 0;
+            int playerAdverse = (player.getNumber() == 1) ? 2 : 1;
+            if(player.getNumber() == 1){
+                playerAdverse = 0;
             }else{
-                adversaire =1;
+                playerAdverse = 1;
             }
-            int eval = cherche(joueur.getNumber(),3)*100-cherche(adversaire,3)*100+cherche(joueur.getNumber(),2)*50-cherche(adversaire,2)*50;
-            //System.out.println("Evaluation : "+eval);
-            return eval;
+            int evaluation = (cherche(player.getNumber(), 3) * 100)
+                           - (cherche(playerAdverse,3) * 100)
+                           + (cherche(player.getNumber(),2) * 50)
+                           - (cherche(playerAdverse,2) * 50);
+            //System.out.println("Evaluation : "+evaluation);
+            return evaluation;
 
         }else{
             //System.out.println("Perdant");
-            return -100000+(joueur.getLevel()-profondeur);
+            return (-100000 + (player.getLevel() - profondeur));
         }
 
     }
-    private void annulerCoup(int i) {
-        int ligne =nbrLigne-1;
-        while(p4[ligne][i]==VIDE){
+
+    /**
+     * Annuler Coup : Vide la case indiquée
+     * @param column
+     */
+    private void cancelMove(int column) {
+        int ligne = line -1;
+        while(p4[ligne][column] == VIDE){
             ligne--;
         }
-        this.p4[ligne][i] = VIDE;
+        this.p4[ligne][column] = VIDE;
 
     }
-    public int getDerniereColonne(){
-        return derniereColonne;
+    public int getLastColumn(){
+        return lastColumn;
     }
     public int getNbrNoeuds(){
         return nbrNoeuds;

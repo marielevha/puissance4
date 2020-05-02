@@ -3,7 +3,6 @@ package ia;
 import engine.Plateau;
 import old.PlateauCopy;
 import old.Player;
-import old.TypePlayer;
 
 import java.util.Random;
 
@@ -37,11 +36,11 @@ public class IAMariel extends Player{
         super(2);
         this.level = level;
         if (level == 5) {
-            this.type = Type.MIN_MAX;
+            //this.type = Type.MIN_MAX;
             plateauCopy = new PlateauCopy(line,column);
         }
         else if (level == 6) {
-            this.type = Type.ALPHA_BETA;
+            //this.type = Type.ALPHA_BETA;
             plateauCopy = new PlateauCopy(line,column);
         }
     }
@@ -181,7 +180,7 @@ public class IAMariel extends Player{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return plateauCopy.jouerMinMax(player);
+                return plateauCopy.MinMaxMove(player);
             }
         }
     }
@@ -213,7 +212,7 @@ public class IAMariel extends Player{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return plateauCopy.jouerAB(player);
+                return plateauCopy.AlphaBetaMove(player);
             }
         }
     }
@@ -440,7 +439,7 @@ public class IAMariel extends Player{
     }
     public void addPoint(int column, int player){
         if (level > 4){
-            plateauCopy.jouerCoup(column, player);
+            plateauCopy.addPoint(column, player);
         }
     }
 }

@@ -58,10 +58,10 @@ public class Main {
         //plateau.display();
 
         //plateau.jouerCoup(3, joueur1.getNumber());
-        plateau.jouerCoup(3, joueur1.getNumber());
+        plateau.addPoint(3, joueur1.getNumber());
         //plateau.display();
         jouerIA();
-        plateau.jouerCoup(3, joueur1.getNumber());
+        plateau.addPoint(3, joueur1.getNumber());
         jouerIA();
         //plateau.jouerCoup(4, joueur1.getNumber());
         //jouerIA();
@@ -97,9 +97,9 @@ public class Main {
         IATermine = false;
         if(joueur2.getType()==TypePlayer.MinMax){
             //plateau.jouerMinMax(joueur2);
-            choice.add(plateau.jouerMinMax(joueur2));
+            choice.add(plateau.MinMaxMove(joueur2));
         }else{
-            plateau.jouerAB(joueur2);
+            plateau.AlphaBetaMove(joueur2);
         }
         try {
             Thread.currentThread();
