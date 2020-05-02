@@ -308,6 +308,7 @@ public class PlateauCopy {
         }
         return count;
     }
+
     public synchronized int AlphaBetaMove(Player player){
         if(totalPoints()>1){
 
