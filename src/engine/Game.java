@@ -1,6 +1,7 @@
 package engine;
 
 import ia.IAMariel;
+import ia.MinMax;
 
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class Game {
         }*/
         /*String string = "6x7-211022112211201112210121212000200001210121";
         string = "6x7-211222112211211112210121212000000000000000";
-        Plateau plateau = new Plateau(string);
+        Plateau plateau = new Plateau(string);w
         IAMariel mariel = new IAMariel();
         for (int i = 0; i <= 10; i++){
             System.out.println(mariel.levelOneMove(plateau));
@@ -20,29 +21,48 @@ public class Game {
         System.out.println(mariel.levelOneMove(plateau));*/
         //Case();
         String string = "6x7-211022112211201112210121212000200001210121";
-        string = "6x7-211222112211211112210121112000000000000000";
-        Plateau plateau = new Plateau(string);
+        string = "6x7-" +
+                "0002000" +
+                "0001000" +
+                "0000000" +
+                "0000000" +
+                "0000000" +
+                "0000000";
+        Plateau plateau = new Plateau(string, 0);
         //Plateau plateau = new Plateau(string.replace('0','2'));
-        //System.out.print(plateau.toString());
+        System.out.print(plateau.toString());
 
         System.out.print('\n');
-        String test = "211222112211201112210121212000200000000000";
+        String test = "211222112211201112220121212000200000000000";
+
+        MinMax minMax = new MinMax(string);
+        System.err.println(minMax.minMax());
+        //minMax.buildMatrix();
         //System.out.print(plateau.fullColumn(1));
 
         //plateau.addPoint(1,1);
         //plateau.addPoint(1,2);
         //plateau.getXY(2, 1).setContent(0);
-        System.out.println(plateau.toString());
+        //System.out.println(plateau.toString());
+        //System.err.println(plateau.toStringIA().replace(" ",""));
+        //String stringIA = plateau.toStringIA();
+        //System.err.println(stringIA);
+        //Plateau plateau1 = new Plateau(stringIA);
+        //System.err.println(plateau1.toString());
         //System.out.println(plateau.fullColumn(1));
 
 
-        IAMariel mariel = new IAMariel();
+        /*IAMariel mariel = new IAMariel(4);
+        mariel.buildMatrix(6, 7);
+        mariel.readMatrix();
+        String max = mariel.max(plateau);
+        System.out.println(max);*/
         //System.out.println(mariel.bestMove(plateau));
         //int result = mariel.levelThreeMove(plateau);
         //System.out.println(result);
         //System.err.println(plateau.addPoint(result, 2));
         //System.err.println(plateau.toString());
-        mariel.evaluate(plateau);
+        //System.out.println(mariel.levelThreeMove(plateau));
         //System.err.println(plateau.checkHorizontal(plateau.getLineAdd()));*/
 
         //plateau.getXY(0, 1).setContent(0);

@@ -9,15 +9,28 @@ public class Plateau {
     private boolean end = true;
     private static int lineAdd;
 
+    /**
+     *
+     * @return
+     */
     public int getLineAdd() {
         return lineAdd;
     }
 
+    /**
+     *
+     */
     public Plateau() {
         this.lines = new Line[1];
         this.lines[0] = new Line();
         //System.out.println(this.tabLigne[1].toString());
     }
+
+    /**
+     *
+     * @param line
+     * @param column
+     */
     public Plateau(int line, int column) {
         this.lines = new Line[line];
         for (int i = 0; i < line; i++){
@@ -25,10 +38,20 @@ public class Plateau {
         }
         //System.out.println(this.tabLigne[0].toString());
     }
+
+    /**
+     *
+     * @param plateau
+     */
     public Plateau(Plateau plateau) {
         this.lines = plateau.lines;
     }
-    public Plateau(String string) {
+
+    /**
+     *
+     * @param string
+     */
+    public Plateau(String string, int direction) {
         //int line, column;
         /*this.tabLigne = new Ligne[column];
         for (int i = 0; i < column; i++){
@@ -46,37 +69,68 @@ public class Plateau {
         System.out.println("column : " + column);*/
 
         this.lines = new Line[row];
-        int cmp = 0;
-        /*for (int i = 0; i < split0[1].length(); i += column){
-            this.tabLigne[cmp] = new Ligne(column);
-            this.tabLigne[cmp].setLigne(split0[1].substring(i, i + column));
-            System.out.println(this.tabLigne[cmp].toString());
-            cmp++;
-        }*/
-
-        cmp = 0;
         System.err.println("################");
+        int cmp = 0;
+        if (direction == 0){
+            for (int i = split0[1].length(); i > 0; i -= column){
+                //System.err.println(split0[1].substring(i - column, i));
+                //System.err.println(i + " " + (i - column));
+                this.lines[cmp] = new Line(column);
+                this.lines[cmp].setLine(split0[1].substring(i - column, i));
+                //System.err.println(this.tabLigne[cmp].toString());
+                cmp++;
+            }
+        }
+        else {
+            for (int i = 0; i < split0[1].length(); i += column){
+                this.lines[cmp] = new Line(column);
+                this.lines[cmp].setLine(split0[1].substring(i, i + column));
+                //System.out.println(this.lines[cmp].toString());
+                cmp++;
+            }
+        }
+
+
+
 
         //String data = "65165189516151351891512189";
         //System.err.println(split0[1].substring(data.length() - 7, 7));
 
-        for (int i = split0[1].length(); i > 0; i -= column){
-            //System.err.println(split0[1].substring(i - column, i));
-            //System.err.println(i + " " + (i - column));
-            this.lines[cmp] = new Line(column);
-            this.lines[cmp].setLine(split0[1].substring(i - column, i));
-            //System.err.println(this.tabLigne[cmp].toString());
-            cmp++;
-        }
     }
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public Case getXY(int x, int y){
         return this.lines[y].getX(x);
     }
+
+    /**
+     *
+     * @param col
+     * @return
+     */
     public boolean fullColumn(int col){
+        if (lines[0].getX(col).getContent() != 0){
+            return true;
+        }
+        else {
+            return false;
+        }
         //System.err.println(" first : " + tabLigne[0].toString().charAt(col));
         //System.err.println(" second : " + tabLigne[0].getX(col).getContent());
-        return lines[0].getX(col).getContent() != 0;
+        //return lines[0].getX(col).getContent() != 0;
     }
+
+    /**
+     *
+     * @param numColumn
+     * @param numPlayer
+     * @return
+     */
     public boolean addPoint(int numColumn, int numPlayer){
         boolean verify = false;
         for (int i =  this.lines.length - 1; i >= 0; i--){
@@ -130,6 +184,12 @@ public class Plateau {
         return false;
     }
 
+    /**
+     *
+     * @param line
+     * @param MAX_ALIGN
+     * @return
+     */
     public boolean checkHorizontal(int line, int MAX_ALIGN){
         /*String str = this.tabLigne[line].toString();
         Ligne ligne = new Ligne(str.length());
@@ -137,6 +197,13 @@ public class Plateau {
         //System.out.println(this.lines[line].toString());
         return this.lines[line].win(MAX_ALIGN);
     }
+
+    /**
+     *
+     * @param column
+     * @param MAX_ALIGN
+     * @return
+     */
     public boolean checkVertical(int column, int MAX_ALIGN){
         String str = "";
         for (int i = 0; i < row; i++){
@@ -149,6 +216,14 @@ public class Plateau {
         //System.err.print(line.toString());
         return line.win(MAX_ALIGN);
     }
+
+    /**
+     *
+     * @param lgn
+     * @param col
+     * @param MAX_ALIGN
+     * @return
+     */
     public boolean checkDiagonal(int lgn, int col, int MAX_ALIGN){
         if (lgn >= 0 && lgn < lines.length && col >= 0 && col < lines[0].getSize()) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -179,6 +254,14 @@ public class Plateau {
         }
         return false;
     }
+
+    /**
+     *
+     * @param lgn
+     * @param col
+     * @param MAX_ALIGN
+     * @return
+     */
     public boolean checkReverseDiagonal(int lgn, int col, int MAX_ALIGN){
         if (lgn >= 0 && lgn < lines.length && col >= 0 && col < lines[0].getSize()) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -209,6 +292,10 @@ public class Plateau {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean noCheck(){
         for (int k = 0; k < row; k++){
             for (int l = 0; l < column; l++){
@@ -222,22 +309,30 @@ public class Plateau {
         return end;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
-        String str = "", l;
-
+        String str = "|---------------|" + "\n";
         for (int i = 0; i < row; i++){
-            str = str + this.lines[i].toString() + "\n";
+            str = str + "| " + this.lines[i].toString() + "|" + "\n";
         }
+        str += "|---------------|";
         return str;//.replace('0','0');
     }
 
+    /**
+     *
+     * @return
+     */
     public String toStringIA() {
         String str = row + "x" + column + "-";
         for (int i = row; i > 0; i--){
             str = str + this.lines[i - 1].toString();
         }
-        return str;
+        return str.replace(" ","");
     }
 
     public void win(){
@@ -259,11 +354,14 @@ public class Plateau {
         }*/
     }
 
+    /**
+     *
+     * @return
+     */
     public int [] getLineColumn() {
         data = new int[2];
         data[0] = row;
         data[1] = column;
         return data;
     }
-
 }

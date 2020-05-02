@@ -4,11 +4,18 @@ public class Line {
     private Case [] cases;
     private static boolean state_string = true;
 
+    /**
+     *
+     */
     public Line() {
         this.cases = new Case[1];
         this.cases[0] = new Case();
     }
 
+    /**
+     *
+     * @param size
+     */
     public Line(int size) {
         this.cases = new Case[size];
         for (int i = 0; i < size; i++){
@@ -20,13 +27,28 @@ public class Line {
         //this.tabCases = tabCases;
     }
 
+    /**
+     *
+     * @param ligne
+     */
     public Line(Line ligne){
         this.cases = ligne.cases;
     }
 
+    /**
+     *
+     * @param i
+     * @return
+     */
     public Case getX(int i){
         return cases[i];
     }
+
+    /**
+     *
+     * @param i
+     * @param value
+     */
     public void setX(int i, int value){
         if (value == 0 || value == 1 || value == 2){
             cases[i].setContent(value);
@@ -36,6 +58,11 @@ public class Line {
             System.exit(0);
         }
     }
+
+    /**
+     *
+     * @param string
+     */
     public void setLine(String string){
         //System.err.println(this.tabCases.length);
         //System.err.println(string.length());
@@ -71,9 +98,20 @@ public class Line {
             System.err.println("Error ValInit : " + string);
         }*/
     }
+
+    /**
+     *
+     * @return
+     */
     public int getSize(){
         return this.cases.length;
     }
+
+    /**
+     *
+     * @param align
+     * @return
+     */
     public boolean win(int align){
         switch (align) {
             case 3 : {
@@ -112,6 +150,10 @@ public class Line {
         //return false;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         String str = "";
