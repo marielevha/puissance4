@@ -9,11 +9,15 @@ import java.util.Scanner;
 public class Game {
     private static int player, tour = 1, column;
     private static boolean win = false;
+    private static Plateau plateau;
     private static IAMariel mariel;
     private static Player player1, player2;
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        init();
+        plateau = new Plateau(6, 7);
+        System.out.print(plateau.toString() + "\n");
+        System.out.print(plateau.toStringIA() + "\n");
+        //init();
     }
 
     /**
@@ -27,9 +31,9 @@ public class Game {
                 "0000000" +
                 "0000000" +
                 "0000000";
-        Plateau plateau = new Plateau(string, 0);
-        //Plateau plateau = new Plateau(string.replace('0','2'));
-        //System.out.print(plateau.toString());
+        plateau = new Plateau(string, 0);
+        //plateau = new Plateau(6, 7);
+        System.out.print(plateau.toString() + "\n");
 
         /**
          * Initialisation du joueur réel avec le numéro 1
@@ -55,7 +59,7 @@ public class Game {
                     if (column >= 1 && column <= 7) {
                         // Si plateau n'est pas plein, jouer le coup
                         if (!plateau.noCheck()) {
-                            win = plateau.addPoint(column, player);
+                            win = plateau.addPoint((column - 1), player);
                             if (!win) {
                                 player = player2.getNumber();
                             }
@@ -83,7 +87,7 @@ public class Game {
                     if (column >= 1 && column <= 7) {
                         // Si plateau n'est pas pleine, jouer le coup
                         if (!plateau.noCheck()) {
-                            win = plateau.addPoint(column, player);
+                            win = plateau.addPoint((column - 1), player);
                             if (!win) {
                                 player = player1.getNumber();
                             }
@@ -132,7 +136,8 @@ public class Game {
         System.out.println("Select 2 Leave : ");
         int choice = Integer.parseInt(scanner.nextLine());
         if (choice == 1) {
-            System.err.println("choice : " + choice);
+            win = false;
+            plateau.empty();
             init();
         }
         System.exit(0);

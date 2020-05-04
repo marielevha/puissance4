@@ -5,7 +5,7 @@ public class Line {
     private static boolean state_string = true;
 
     /**
-     *
+     * Constructor : construit une ligne d'une case vide
      */
     public Line() {
         this.cases = new Case[1];
@@ -13,7 +13,8 @@ public class Line {
     }
 
     /**
-     *
+     * Constructor : construit une ligne vide selon une taille définie
+     * Ligne initialisée avec des cases vides
      * @param size
      */
     public Line(int size) {
@@ -21,14 +22,10 @@ public class Line {
         for (int i = 0; i < size; i++){
             this.cases[i] = new Case();
         }
-        /*for (Case aCase : tabCases){
-            System.err.println(tabCases[0].getContent());
-        }*/
-        //this.tabCases = tabCases;
     }
 
     /**
-     *
+     * Constructor Copy : clonne un objet ligne
      * @param ligne
      */
     public Line(Line ligne){
@@ -36,21 +33,21 @@ public class Line {
     }
 
     /**
-     *
-     * @param i
-     * @return
+     * GetX : retourne une case d'une position donnée
+     * @param i : position
+     * @return Case
      */
     public Case getX(int i){
         return cases[i];
     }
 
     /**
-     *
-     * @param i
-     * @param value
+     * SetX : modifie le contenu d'une case sur une position donnée
+     * @param i : position
+     * @param value : valeur
      */
-    public void setX(int i, int value){
-        if (value == 0 || value == 1 || value == 2){
+    public void setX(int i, int value) {
+        if (value == 0 || value == 1 || value == 2) {
             cases[i].setContent(value);
         }
         else {
@@ -60,23 +57,23 @@ public class Line {
     }
 
     /**
-     *
+     * SetLine : modifie le contenu d'une line à partir d'une chaine
      * @param string
      */
-    public void setLine(String string){
+    public void setLine(String string) {
         //System.err.println(this.tabCases.length);
         //System.err.println(string.length());
-        if (string.length() == this.cases.length){
-            for (int i = 0; i < string.length(); i++){
+        if (string.length() == this.cases.length) {
+            for (int i = 0; i < string.length(); i++) {
                 //System.out.println(string.charAt(i));
-                if (string.charAt(i) != '0' && string.charAt(i) != '1' && string.charAt(i) != '2'){
+                if (string.charAt(i) != '0' && string.charAt(i) != '1' && string.charAt(i) != '2') {
                     state_string = false;
                     System.err.println("Success false!");
                 }
             }
 
-            if (state_string){
-                for (int i = 0; i < this.cases.length; i++){
+            if (state_string) {
+                for (int i = 0; i < this.cases.length; i++) {
                     //this.tabCases[i].setContent(string.charAt(i));
                     //System.out.println();
                     this.cases[i].setContent(Character.getNumericValue(string.charAt(i)));
@@ -100,19 +97,19 @@ public class Line {
     }
 
     /**
-     *
-     * @return
+     * GetSize : retourne la taille de la ligne
+     * @return size
      */
     public int getSize(){
         return this.cases.length;
     }
 
     /**
-     *
-     * @param align
-     * @return
+     * Win : vérifie s'il y a un alignement de case de meme valeur
+     * @param align : limite d'alignement
+     * @return true s'il y a alignement
      */
-    public boolean win(int align){
+    public boolean win(int align) {
         switch (align) {
             case 3 : {
                 for (int i = (cases.length - 1); i >= 2; i--){
@@ -151,8 +148,8 @@ public class Line {
     }
 
     /**
-     *
-     * @return
+     * ToString : retourne une description formmatée de l'objet
+     * @return string
      */
     @Override
     public String toString() {

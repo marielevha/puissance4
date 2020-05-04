@@ -10,37 +10,38 @@ public class Plateau {
     private static int lineAdd;
 
     /**
-     *
-     * @return
+     * GetLineAdd : retourne la ligne ou le pion est ajouté
+     * @return lineAdd
      */
     public int getLineAdd() {
         return lineAdd;
     }
 
     /**
-     *
+     * Constructor : construit un plateau d'une case vide
      */
     public Plateau() {
         this.lines = new Line[1];
         this.lines[0] = new Line();
-        //System.out.println(this.tabLigne[1].toString());
     }
 
     /**
-     *
+     * Constructor : construit un plateau vide selon une des dimensions définies
+     * Plateau initialisé avec des cases vides
      * @param line
      * @param column
      */
     public Plateau(int line, int column) {
-        this.lines = new Line[line];
+        Plateau.row = line;
+        Plateau.column = column;
+        lines = new Line[line];
         for (int i = 0; i < line; i++){
-            this.lines[i] = new Line(column);
+            lines[i] = new Line(column);
         }
-        //System.out.println(this.tabLigne[0].toString());
     }
 
     /**
-     *
+     * Constructor Copy : clonne un objet plateau
      * @param plateau
      */
     public Plateau(Plateau plateau) {
@@ -48,8 +49,9 @@ public class Plateau {
     }
 
     /**
-     *
-     * @param string
+     * Constructor : construit un plateau à partir d'un string
+     * @param direction : détermine le sens de construction du plateau
+     * @param string : format "6x7-211222112211201112210121212000200000000000"
      */
     public Plateau(String string, int direction) {
         //int line, column;
@@ -99,19 +101,19 @@ public class Plateau {
     }
 
     /**
-     *
+     * GetXY : retourne la case se trouvant aux coordonnées X-Y
      * @param x
      * @param y
-     * @return
+     * @return Case
      */
     public Case getXY(int x, int y){
         return this.lines[y].getX(x);
     }
 
     /**
-     *
+     * FullColumn : vérifie diponibilité de la colonne
      * @param col
-     * @return
+     * @return true si colonne pleine, sinon false
      */
     public boolean fullColumn(int col){
         if (lines[0].getX(col).getContent() != 0){
@@ -126,10 +128,10 @@ public class Plateau {
     }
 
     /**
-     *
+     * AddPoint : ajoute un pion du joueur(numéro) dans la colonne indiquée
      * @param numColumn
      * @param numPlayer
-     * @return
+     * @return bool
      */
     public boolean addPoint(int numColumn, int numPlayer){
         boolean verify = false;
@@ -168,13 +170,11 @@ public class Plateau {
                             else {
                                 return noCheck();
                             }
-
                             /*checkHorizontal(i);
                             checkVertical(numColumn);
                             checkDiagonal(numColumn);*/
                             //checkReverseDiagonal(numColumn);
                         }
-
                         //checkVertical(numColumn);
                     }
                 }
@@ -185,10 +185,10 @@ public class Plateau {
     }
 
     /**
-     *
+     * CheckHorizontal :
      * @param line
      * @param MAX_ALIGN
-     * @return
+     * @return bool
      */
     public boolean checkHorizontal(int line, int MAX_ALIGN){
         /*String str = this.tabLigne[line].toString();
@@ -199,10 +199,10 @@ public class Plateau {
     }
 
     /**
-     *
+     * CheckVertical :
      * @param column
      * @param MAX_ALIGN
-     * @return
+     * @return bool
      */
     public boolean checkVertical(int column, int MAX_ALIGN){
         String str = "";
@@ -218,11 +218,11 @@ public class Plateau {
     }
 
     /**
-     *
+     *  CheckDiagonal :
      * @param lgn
      * @param col
      * @param MAX_ALIGN
-     * @return
+     * @return bool
      */
     public boolean checkDiagonal(int lgn, int col, int MAX_ALIGN){
         if (lgn >= 0 && lgn < lines.length && col >= 0 && col < lines[0].getSize()) {
@@ -256,11 +256,11 @@ public class Plateau {
     }
 
     /**
-     *
+     *   CheckReverseDiagonal :
      * @param lgn
      * @param col
      * @param MAX_ALIGN
-     * @return
+     * @return bool
      */
     public boolean checkReverseDiagonal(int lgn, int col, int MAX_ALIGN){
         if (lgn >= 0 && lgn < lines.length && col >= 0 && col < lines[0].getSize()) {
@@ -293,25 +293,35 @@ public class Plateau {
     }
 
     /**
-     *
+     *  NoCheck : vérifie si le plateau est plein
      * @return
      */
     public boolean noCheck(){
-        for (int k = 0; k < row; k++) {
-            for (int l = 0; l < column; l++) {
-                //System.out.print(this.tabLigne[k].getX(l).getContent());
-                if (this.lines[k].getX(l).getContent() == 0) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                //System.out.print(this.tabLigne[i].getX(j).getContent());
+                if (lines[i].getX(j).getContent() == 0) {
                     end = false;
                 }
             }
         }
-        //System.out.print(end);
         return end;
     }
 
     /**
-     *
-     * @return
+     * Empty : vider plateau
+     */
+    public void empty() {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                lines[i].getX(j).setContent(0);
+            }
+        }
+    }
+
+    /**
+     * ToString : retourne une description formatée de l'objet
+     * @return string
      */
     @Override
     public String toString() {
@@ -324,18 +334,19 @@ public class Plateau {
     }
 
     /**
-     *
-     * @return
+     * ToStringIA : retourne une description formatée de l'objet
+     * Format : 6x7-211222112211201112210121212000200000000000
+     * @return string
      */
     public String toStringIA() {
         String str = row + "x" + column + "-";
-        for (int i = row; i > 0; i--){
+        for (int i = row; i > 0; i--) {
             str = str + this.lines[i - 1].toString();
         }
         return str.replace(" ","");
     }
 
-    public void win(){
+    public void win() {
         getLineColumn();
         Win win = new Win();
         win.BuildMatrix(this.lines, data);
@@ -355,13 +366,29 @@ public class Plateau {
     }
 
     /**
-     *
-     * @return
+     * GetLineColumn : retourne le nombre de lignes et de colonnes
+     * @return [] int
      */
     public int [] getLineColumn() {
         data = new int[2];
         data[0] = row;
         data[1] = column;
         return data;
+    }
+
+    /**
+     * GetLine : retourne nombre de lignes
+     * @return row : Integer
+     */
+    public static int geLine() {
+        return row;
+    }
+
+    /**
+     * GetColumn : retourne nombre de colonnes
+     * @return column : Integer
+     */
+    public static int getColumn() {
+        return column;
     }
 }
