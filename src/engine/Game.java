@@ -14,10 +14,10 @@ public class Game {
     private static Player player1, player2;
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        plateau = new Plateau(6, 7);
-        System.out.print(plateau.toString() + "\n");
-        System.out.print(plateau.toStringIA() + "\n");
-        //init();
+        //plateau = new Plateau(6, 7);
+        //System.out.print(plateau.toString() + "\n");
+        //System.out.print(plateau.toStringIA() + "\n");
+        init();
     }
 
     /**
@@ -59,11 +59,13 @@ public class Game {
                     if (column >= 1 && column <= 7) {
                         // Si plateau n'est pas plein, jouer le coup
                         if (!plateau.noCheck()) {
-                            win = plateau.addPoint((column - 1), player);
-                            if (!win) {
-                                player = player2.getNumber();
+                            if (!plateau.fullColumn(column)) {
+                                win = plateau.addPoint((column - 1), player);
+                                if (!win) {
+                                    player = player2.getNumber();
+                                }
+                                System.out.println(plateau.toString());
                             }
-                            System.out.println(plateau.toString());
                         }
                         // Sinon partie terminée : match null
                         else {
@@ -87,11 +89,13 @@ public class Game {
                     if (column >= 1 && column <= 7) {
                         // Si plateau n'est pas pleine, jouer le coup
                         if (!plateau.noCheck()) {
-                            win = plateau.addPoint((column - 1), player);
-                            if (!win) {
-                                player = player1.getNumber();
+                            if (!plateau.fullColumn(column)) {
+                                win = plateau.addPoint((column - 1), player);
+                                if (!win) {
+                                    player = player1.getNumber();
+                                }
+                                System.out.println(plateau.toString());
                             }
-                            System.out.println(plateau.toString());
                         }
                         // Sinon partie terminée : match null
                         else {
@@ -132,8 +136,8 @@ public class Game {
      * Reload : méthode permettant de relancer la partie
      */
     public static void reload() {
-        System.out.println("Select 1 New Part : ");
-        System.out.println("Select 2 Leave : ");
+        System.out.println("Select 1 : New Part : ");
+        System.out.println("Select 2 : Leave : ");
         int choice = Integer.parseInt(scanner.nextLine());
         if (choice == 1) {
             win = false;
