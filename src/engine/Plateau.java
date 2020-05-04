@@ -69,7 +69,7 @@ public class Plateau {
         System.out.println("column : " + column);*/
 
         this.lines = new Line[row];
-        System.err.println("################");
+        //System.err.println("################");
         int cmp = 0;
         if (direction == 0){
             for (int i = split0[1].length(); i > 0; i -= column){
@@ -297,10 +297,10 @@ public class Plateau {
      * @return
      */
     public boolean noCheck(){
-        for (int k = 0; k < row; k++){
-            for (int l = 0; l < column; l++){
+        for (int k = 0; k < row; k++) {
+            for (int l = 0; l < column; l++) {
                 //System.out.print(this.tabLigne[k].getX(l).getContent());
-                if (this.lines[k].getX(l).getContent() == 0){
+                if (this.lines[k].getX(l).getContent() == 0) {
                     end = false;
                 }
             }

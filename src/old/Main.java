@@ -67,7 +67,7 @@ public class Main {
         //jouerIA();
         //plateau.jouerCoup(1, joueur1.getNumber());
         //jouerIA();
-        plateau.afficher();
+        plateau.display();
 
         //plateau.display(); System.err.println("\n");
         /*plateau.jouerCoup(3, joueur2.getNumber());

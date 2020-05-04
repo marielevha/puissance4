@@ -1,157 +1,140 @@
 package engine;
 
 import ia.IAMariel;
-import ia.MinMax;
+import old.Player;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
-    private static Random random = new Random();
+    private static int player, tour = 1, column;
+    private static boolean win = false;
+    private static IAMariel mariel;
+    private static Player player1, player2;
+    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        /*for (int i = 0; i <= 10; i++){
-            System.out.println(random.nextInt((7 - 1) + 1) + 1);
-        }*/
-        /*String string = "6x7-211022112211201112210121212000200001210121";
-        string = "6x7-211222112211211112210121212000000000000000";
-        Plateau plateau = new Plateau(string);w
-        IAMariel mariel = new IAMariel();
-        for (int i = 0; i <= 10; i++){
-            System.out.println(mariel.levelOneMove(plateau));
-        }
-        System.out.println(mariel.levelOneMove(plateau));*/
-        //Case();
-        String string = "6x7-211022112211201112210121212000200001210121";
-        string = "6x7-" +
-                "0002000" +
-                "0001000" +
+        init();
+    }
+
+    /**
+     * Init : initialisation de la partie
+     */
+    public static void init() {
+        String string = "6x7-" +
+                "0000000" +
+                "0000000" +
                 "0000000" +
                 "0000000" +
                 "0000000" +
                 "0000000";
         Plateau plateau = new Plateau(string, 0);
         //Plateau plateau = new Plateau(string.replace('0','2'));
-        System.out.print(plateau.toString());
+        //System.out.print(plateau.toString());
 
-        System.out.print('\n');
-        String test = "211222112211201112220121212000200000000000";
+        /**
+         * Initialisation du joueur réel avec le numéro 1
+         * @number : 1
+         */
+        player1 = new Player(1);
+        player2 = new Player(2);
+        /**
+         * Initialisation de l'IA avec le numéro 2 et le niveau 5
+         * @level : 5
+         * @number : 2
+         */
+        //mariel = new IAMariel(5, 2);
 
-        MinMax minMax = new MinMax(string);
-        System.err.println(minMax.minMax());
-        //minMax.buildMatrix();
-        //System.out.print(plateau.fullColumn(1));
-
-        //plateau.addPoint(1,1);
-        //plateau.addPoint(1,2);
-        //plateau.getXY(2, 1).setContent(0);
-        //System.out.println(plateau.toString());
-        //System.err.println(plateau.toStringIA().replace(" ",""));
-        //String stringIA = plateau.toStringIA();
-        //System.err.println(stringIA);
-        //Plateau plateau1 = new Plateau(stringIA);
-        //System.err.println(plateau1.toString());
-        //System.out.println(plateau.fullColumn(1));
-
-
-        /*IAMariel mariel = new IAMariel(4);
-        mariel.buildMatrix(6, 7);
-        mariel.readMatrix();
-        String max = mariel.max(plateau);
-        System.out.println(max);*/
-        //System.out.println(mariel.bestMove(plateau));
-        //int result = mariel.levelThreeMove(plateau);
-        //System.out.println(result);
-        //System.err.println(plateau.addPoint(result, 2));
-        //System.err.println(plateau.toString());
-        //System.out.println(mariel.levelThreeMove(plateau));
-        //System.err.println(plateau.checkHorizontal(plateau.getLineAdd()));*/
-
-        //plateau.getXY(0, 1).setContent(0);
-        //System.err.println(plateau.toString());
-
-        /*
-        System.err.println(plateau.toString());
-
-        //System.err.print(plateau.checkVertical(5));
-
-        System.out.print(plateau.checkVertical(3));
-        //plateau.win();
-        //plateau.checkDiagonal(3, 4);
-        //plateau.checkReverseDiagonal(4,5);
-        /*plateau.checkReverseDiagonal(2,6);
-        plateau.checkReverseDiagonal(2,5);
-        plateau.checkReverseDiagonal(2,4);
-        plateau.checkReverseDiagonal(2,3);
-        plateau.checkReverseDiagonal(2,2);
-        plateau.checkReverseDiagonal(2,1);
-        plateau.checkReverseDiagonal(2,0);*/
-        //plateau.noCheck();
-
-        //System.err.println(plateau.getXY(2,1));
-        //System.err.println(plateau.getXY(2,1));
-        //System.err.println(plateau.getXY(3,1));
-        /*int row = 6;
-        int column = 6;
-
-        int [][] map = new int [row][column];
-        Random random = new Random();
-
-        //load maps '.'
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < column; j++){
-                map[i][j] = random.nextInt(10);
+        player = player1.getNumber();
+        while (!win) {
+            if (player == player1.getNumber()) {
+                System.out.println("player " + player + "'s turn !");
+                System.out.println("Choice column 1 to 7 : ");
+                String line = scanner.nextLine();
+                try {
+                    column  = Integer.parseInt(line);
+                    if (column >= 1 && column <= 7) {
+                        // Si plateau n'est pas plein, jouer le coup
+                        if (!plateau.noCheck()) {
+                            win = plateau.addPoint(column, player);
+                            if (!win) {
+                                player = player2.getNumber();
+                            }
+                            System.out.println(plateau.toString());
+                        }
+                        // Sinon partie terminée : match null
+                        else {
+                            end(false);
+                        }
+                    }
+                    else {
+                        System.err.println("Illegal entry new column !");
+                    }
+                } catch (Exception e) {
+                    System.err.println("Illegal entry new column !");
+                    System.err.println(e.getMessage());
+                }
+            }
+            else {
+                System.out.println("player " + player + "'s turn !");
+                System.out.println("Choice column 1 to 7 : ");
+                String line = scanner.nextLine();
+                try {
+                    column  = Integer.parseInt(line);
+                    if (column >= 1 && column <= 7) {
+                        // Si plateau n'est pas pleine, jouer le coup
+                        if (!plateau.noCheck()) {
+                            win = plateau.addPoint(column, player);
+                            if (!win) {
+                                player = player1.getNumber();
+                            }
+                            System.out.println(plateau.toString());
+                        }
+                        // Sinon partie terminée : match null
+                        else {
+                            end(false);
+                        }
+                    }
+                    else {
+                        System.err.println("Illegal entry new column !");
+                    }
+                } catch (Exception e) {
+                    System.err.println("Illegal entry new column !");
+                    System.err.println(e.getMessage());
+                }
             }
         }
+        end(true);
+    }
 
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < column; j++){
-                System.out.print(map[i][j] + " - ");
-            }
-            System.out.println();
+    /**
+     * End : méthode de fin de partie
+     * Si type = true il y a un gagnant
+     * Sinon match null
+     * @param type
+     */
+    public static void end(boolean type) {
+        System.out.println("GAME OVER !!!");
+        if (type) {
+            player = (player % 2 == 1 ? 1 : 2);
+            System.out.println("Player " + player + " win");
         }
-
-        getXY(2,3, map);*/
-        //Line();
-    }
-    private static int getRandomNumberInRange(int min, int max) {
-        /*if (min >= max) {
-            throw new IllegalArgumentException("max must be greater than min");
+        else {
+            System.out.println("No match winner null !!!");
         }
-        Random r = new Random();*/
-        return random.nextInt((max - min) + 1) + min;
+        reload();
     }
-    public static int getXY(int x, int y, int [][] map){
-        /*for (int i = 0; i < x; i++){
-            for (int j = 0; j < y; j++){
-                //System.err.print(map[x - 1][y - 1] + " - ");
-            }
-            System.err.println();
-            System.err.print(map[x - 1][y - 1] + " - ");
-        }*/
-        System.err.print(map[x][y]);
-        return 0;
-    }
-    public static void Case(){
-        Case aCase = new Case();
-        System.out.println(aCase.getContent());
 
-        Case aCase1 = new Case(2);
-        System.out.println(aCase1.getContent());
-
-        Case aCase2 = new Case(aCase1);
-        System.out.println(aCase2.getContent());
-
-        System.err.println(aCase.toString());
-        System.err.println(aCase1.toString());
-        System.err.println(aCase2.toString());
-    }
-    public static void Line(){
-        String s = "222212";
-        Line ligne = new Line(s.length());
-        ligne.setLine(s);
-        //ligne.win();
-        //System.out.print(ligne.toString());
-        System.out.print(ligne.win(4));
-        //System.err.println(ligne.getX(0));
-        //System.err.println(ligne.toString());
+    /**
+     * Reload : méthode permettant de relancer la partie
+     */
+    public static void reload() {
+        System.out.println("Select 1 New Part : ");
+        System.out.println("Select 2 Leave : ");
+        int choice = Integer.parseInt(scanner.nextLine());
+        if (choice == 1) {
+            System.err.println("choice : " + choice);
+            init();
+        }
+        System.exit(0);
     }
 }

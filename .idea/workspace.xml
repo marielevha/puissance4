@@ -11,7 +11,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/META-INF/puissance4.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/old/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/PlateauCopy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/old/PlateauCopy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/old/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/old/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/old/PlateauCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/PlateauCopy.java" afterDir="false" />
@@ -41,16 +53,18 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\EvhaMariel\Desktop\ssdlv\puissance4\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Graphic">
+  <component name="RunManager" selected="Application.Game">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="engine.Game" />
       <module name="puissance4" />
@@ -92,9 +106,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Game" />
         <item itemvalue="Application.Graphic" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Game" />
       </list>
     </recent_temporary>
   </component>
@@ -111,7 +125,7 @@
       <workItem from="1587138563326" duration="357000" />
       <workItem from="1587140438936" duration="14826000" />
       <workItem from="1588300214442" duration="1469000" />
-      <workItem from="1588364033548" duration="36085000" />
+      <workItem from="1588364033548" duration="56511000" />
     </task>
     <servers />
   </component>
@@ -147,38 +161,42 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586885619949" />
-    <state width="1322" height="555" key="GridCell.Tab.0.bottom" timestamp="1588427825337">
+    <state width="1322" height="554" key="GridCell.Tab.0.bottom" timestamp="1588573913652">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588427825337" />
-    <state width="1322" height="555" key="GridCell.Tab.0.center" timestamp="1588427825337">
+    <state width="1322" height="554" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588573913652" />
+    <state width="1322" height="554" key="GridCell.Tab.0.center" timestamp="1588573913652">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588427825337" />
-    <state width="1322" height="555" key="GridCell.Tab.0.left" timestamp="1588427825337">
+    <state width="1322" height="554" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588573913652" />
+    <state width="1322" height="554" key="GridCell.Tab.0.left" timestamp="1588573913652">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588427825337" />
-    <state width="1322" height="555" key="GridCell.Tab.0.right" timestamp="1588427825337">
+    <state width="1322" height="554" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588573913652" />
+    <state width="1322" height="554" key="GridCell.Tab.0.right" timestamp="1588573913652">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588427825337" />
-    <state width="1306" height="205" key="GridCell.Tab.1.bottom" timestamp="1588371580597">
+    <state width="1322" height="554" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588573913652" />
+    <state width="1322" height="211" key="GridCell.Tab.1.bottom" timestamp="1588565295516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588371580597" />
-    <state width="1306" height="205" key="GridCell.Tab.1.center" timestamp="1588371580596">
+    <state width="1322" height="211" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588565295516" />
+    <state width="1322" height="211" key="GridCell.Tab.1.center" timestamp="1588565295516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1588371580596" />
-    <state width="1306" height="205" key="GridCell.Tab.1.left" timestamp="1588371580596">
+    <state width="1322" height="211" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1588565295516" />
+    <state width="1322" height="211" key="GridCell.Tab.1.left" timestamp="1588565295516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1588371580596" />
-    <state width="1306" height="205" key="GridCell.Tab.1.right" timestamp="1588371580597">
+    <state width="1322" height="211" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1588565295516" />
+    <state width="1322" height="211" key="GridCell.Tab.1.right" timestamp="1588565295516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1306" height="205" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1588371580597" />
+    <state width="1322" height="211" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1588565295516" />
+    <state x="184" y="0" key="SettingsEditor" timestamp="1588563156743">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1588563156743" />
     <state x="247" y="120" width="890" height="597" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588371524222">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

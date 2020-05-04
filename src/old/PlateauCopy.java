@@ -274,6 +274,8 @@ public class PlateauCopy {
         // Aucun alignement n'a �t� trouv�
         return -1;
     }
+
+
     public boolean isTermine(){
         for(int j = 0; j< line; j++){
             for (int i = 0; i< column; i++){

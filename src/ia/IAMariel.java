@@ -32,8 +32,8 @@ public class IAMariel extends Player{
         plateau = new Plateau(string, 1);
     }
 
-    public IAMariel(int level) {
-        super(2);
+    public IAMariel(int level, int player) {
+        super(player);
         this.level = level;
         if (level == 5) {
             //this.type = Type.MIN_MAX;
