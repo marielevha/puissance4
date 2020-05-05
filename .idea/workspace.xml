@@ -12,11 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Line.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +113,7 @@
       <workItem from="1587140438936" duration="14826000" />
       <workItem from="1588300214442" duration="1469000" />
       <workItem from="1588364033548" duration="66138000" />
-      <workItem from="1588625180113" duration="1975000" />
+      <workItem from="1588625180113" duration="8365000" />
     </task>
     <servers />
   </component>
@@ -157,22 +153,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586885619949" />
-    <state width="1322" height="555" key="GridCell.Tab.0.bottom" timestamp="1588626811437">
+    <state width="1322" height="401" key="GridCell.Tab.0.bottom" timestamp="1588651522184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588626811437" />
-    <state width="1322" height="555" key="GridCell.Tab.0.center" timestamp="1588626811436">
+    <state width="1322" height="401" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588651522184" />
+    <state width="1322" height="401" key="GridCell.Tab.0.center" timestamp="1588651522184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588626811436" />
-    <state width="1322" height="555" key="GridCell.Tab.0.left" timestamp="1588626811436">
+    <state width="1322" height="401" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588651522184" />
+    <state width="1322" height="401" key="GridCell.Tab.0.left" timestamp="1588651522183">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588626811436" />
-    <state width="1322" height="555" key="GridCell.Tab.0.right" timestamp="1588626811437">
+    <state width="1322" height="401" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588651522183" />
+    <state width="1322" height="401" key="GridCell.Tab.0.right" timestamp="1588651522184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588626811437" />
+    <state width="1322" height="401" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588651522184" />
     <state width="1322" height="211" key="GridCell.Tab.1.bottom" timestamp="1588565295516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

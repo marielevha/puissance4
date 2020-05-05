@@ -16,6 +16,7 @@ public class Graphic {
     private static boolean win = false, added = false;
     private static Plateau plateau;
     private static Fenetre  fenetre;
+    private static Souris souris;
     private static IAMariel mariel;
     private static Player realPlayer;
 
@@ -24,7 +25,8 @@ public class Graphic {
      * @param args
      */
     public static void main(String[] args) {
-        init();
+        //init();
+        test(1);
     }
     /*public static void main(String[] args) {
         String s = "6x7-211222112211201112210121212000200000000000".replace('1','0').replace('2','0');
@@ -124,7 +126,7 @@ public class Graphic {
         plateau = new Plateau(6, 7);
         //System.out.print(plateau.toString());
         fenetre = new Fenetre("Puissance 4", (plateau.getLineColumn()[1] * 100), (plateau.getLineColumn()[0]) * 100);
-        Souris souris = fenetre.getSouris();
+        souris = fenetre.getSouris();
         Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre.getWidth(), fenetre.getHeight()), true);
         fenetre.effacer();
         fenetre.ajouter(rectangle);
@@ -152,6 +154,7 @@ public class Graphic {
             if (souris.getClicGauche()) {
                 player = realPlayer.getNumber();
                 int place = souris.getPosition().getX();
+                System.err.println(souris.getPosition().getX() + "-" + souris.getPosition().getY());
                 if (player == realPlayer.getNumber() && tour == 1) {
                     //mariel.addPoint();
                     // Si plateau n'est pas plein jouer le coup
@@ -311,5 +314,43 @@ public class Graphic {
             plateau.empty();
         }
         fenetre.fermer();
+    }
+
+    private static void test(int player) {
+        Rectangle rectangle, rectangle1, rectangle2;
+        Texte text, text1, text2;
+        player = (player % 2 == 1 ? 1 : 2);
+        Fenetre fenetre = new Fenetre("Puissance 4 Winner Player : " + player, 300, 200);
+        Souris souris = fenetre.getSouris();
+        rectangle = new Rectangle((player%2==1 ? Couleur.JAUNE : Couleur.ROUGE), new Point(0,0), new Point(fenetre.getWidth(), fenetre.getHeight()), true);
+        String message = "Winner Player " + (player % 2 == 1 ? "YELLOW" : "RED");
+
+        
+        rectangle1 = new Rectangle(Couleur.VERT, new Point(50, 0), new Point(150, 50), true);
+        rectangle2 = new Rectangle(Couleur.ROUGE, new Point(150, 0), new Point(250, 50), true);
+        fenetre.ajouter(rectangle);
+        fenetre.ajouter(rectangle1);
+        fenetre.ajouter(rectangle2);
+
+        text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,100));
+        text1 = new Texte("Play !", new Font("Calibri", Font.ITALIC, 24), new Point(100,25));
+        text2 = new Texte("Leave !", new Font("Calibri", Font.ITALIC, 24), new Point(200,25));
+        fenetre.ajouter(text);
+        fenetre.ajouter(text1);
+        fenetre.ajouter(text2);
+
+        fenetre.rafraichir();
+        int x, y; boolean test = true;
+        boolean s = souris.getClicGauche();
+        System.out.println("x : " );
+        /*while(true) {
+            if (souris.getClicGauche()) {
+                x = souris.getPosition().getX();
+                y = souris.getPosition().getY();
+                System.out.println("x : " + x);
+                System.out.println("y : " + y);
+                System.err.println(souris.getPosition().getX() + "-" + souris.getPosition().getY());
+            }
+        }*/
     }
 }
