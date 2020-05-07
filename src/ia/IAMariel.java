@@ -1,6 +1,7 @@
 package ia;
 
 import engine.Plateau;
+import ia.minmax.PlatCopy;
 import old.PlateauCopy;
 import old.Player;
 
@@ -18,7 +19,8 @@ public class IAMariel extends Player{
     private int number = 2;
     private Type type;
     private static PlateauCopy plateauCopy;
-    private static Player player = new Player(2);
+    private static PlatCopy plat;
+    private static Player player;// = new Player(2);
 
     public IAMariel() {
         super(2);
@@ -32,12 +34,13 @@ public class IAMariel extends Player{
         plateau = new Plateau(string, 1);
     }
 
-    public IAMariel(int level, int player) {
-        super(player);
+    public IAMariel(int level, int number) {
+        super(number);
         this.level = level;
         if (level == 5) {
             //this.type = Type.MIN_MAX;
             plateauCopy = new PlateauCopy(line,column);
+            plat = new PlatCopy(line, column);
         }
         else if (level == 6) {
             //this.type = Type.ALPHA_BETA;
@@ -50,7 +53,8 @@ public class IAMariel extends Player{
      * @param string
      * @return
      */
-    public int bestMove(String string){
+    public int bestMove(String string, int player){
+        IAMariel.player = new Player(player);
         plateau = new Plateau(string, 0);
         switch (level) {
             case 1 : {
@@ -66,13 +70,16 @@ public class IAMariel extends Player{
                 return levelFourMove();
             }
             case 5 : {
+                this.setDepth(6);
                 return levelFiveMove(plateau);
             }
-            case 6 : {
+            /*case 6 : {
+                this.setDepth(8);
                 return levelSixMove(plateau);
-            }
+            }*/
             default : {
-                return -1;
+                this.setDepth(8);
+                return levelSixMove(plateau);
             }
         }
     }
@@ -88,7 +95,7 @@ public class IAMariel extends Player{
                 return 3;
             }
             else {
-                int column = random.nextInt(plateau.getLineColumn()[1]);
+                int column = random.nextInt(plateau.getColumn());
                 if (!plateau.fullColumn(column)){
                     return column;
                 }
@@ -163,6 +170,7 @@ public class IAMariel extends Player{
      * @return column
      */
     public int levelFiveMove(Plateau plateau){
+        //plat = new PlatCopy();
         if (winMove(plateau) != -1){
             return winMove(plateau);
         }
@@ -170,6 +178,7 @@ public class IAMariel extends Player{
             return blockMove(plateau);
         }
         else {
+            player.setDepth(6);
             if (plateau.getXY(3, 5).getContent() == 0){
                 return 3;
             }
@@ -180,7 +189,9 @@ public class IAMariel extends Player{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return plateauCopy.MinMaxMove(player);
+                return plat.MinMaxMove(this);
+                //System.err.println("Plat : " + plat.MinMaxMove(player));
+                //return plateauCopy.MinMaxMove(player);
             }
         }
     }
@@ -201,6 +212,7 @@ public class IAMariel extends Player{
             return blockMove(plateau);
         }
         else {
+            player.setDepth(8);
             if (plateau.getXY(3, 5).getContent() == 0){
                 return 3;
             }
@@ -221,8 +233,8 @@ public class IAMariel extends Player{
      * @param plateau
      */
     public void evaluate(Plateau plateau){
-        line = plateau.getLineColumn()[0];
-        column = plateau.getLineColumn()[1];
+        line = plateau.getLine();
+        column = plateau.getColumn();
         buildMatrix(line, column);
 
         //Détermine
@@ -261,12 +273,13 @@ public class IAMariel extends Player{
      * @return
      */
     public int winMove(Plateau plateau){
-        for (int i = 0; i < plateau.getLineColumn()[0]; i++){
-            for (int j = 0; j < plateau.getLineColumn()[1]; j++){
+        for (int i = 0; i < plateau.getLine(); i++){
+            for (int j = 0; j < plateau.getColumn(); j++){
                 if (plateau.getXY(j, i).getContent() == 0){
                     //cmp++;
-                    plateau.addPoint(j, 2);
-                    if (plateau.checkHorizontal(plateau.getLineAdd(), 4) || plateau.checkVertical(j, 4)
+                    plateau.addPoint(j, player.getNumber());
+                    if (plateau.checkHorizontal(plateau.getLineAdd(), 4)
+                            || plateau.checkVertical(j, 4)
                             || plateau.checkDiagonal(plateau.getLineAdd(), j, 4)
                             || plateau.checkReverseDiagonal(plateau.getLineAdd(), j, 4)
                     ){
@@ -289,11 +302,12 @@ public class IAMariel extends Player{
      * @return
      */
     public int blockMove(Plateau plateau){
-        for (int i = 0; i < plateau.getLineColumn()[0]; i++){
-            for (int j = 0; j < plateau.getLineColumn()[1]; j++){
+        int playerAdverse = (player.getNumber() == 1) ? 2 : 1;
+        for (int i = 0; i < plateau.getLine(); i++){
+            for (int j = 0; j < plateau.getColumn(); j++){
                 if (plateau.getXY(j, i).getContent() == 0){
                     //cmp++;
-                    plateau.addPoint(j, 1);
+                    plateau.addPoint(j, playerAdverse);
                     if (plateau.checkHorizontal(plateau.getLineAdd(),4) || plateau.checkVertical(j,4)
                             || plateau.checkDiagonal(plateau.getLineAdd(), j, 4)
                             || plateau.checkReverseDiagonal(plateau.getLineAdd(), j, 4)
@@ -317,10 +331,10 @@ public class IAMariel extends Player{
      * @return
      */
     public int alignThree(Plateau plateau){
-        for (int i = 0; i < plateau.getLineColumn()[0]; i++){
-            for (int j = 0; j < plateau.getLineColumn()[1]; j++){
+        for (int i = 0; i < plateau.getLine(); i++){
+            for (int j = 0; j < plateau.getColumn(); j++){
                 if (plateau.getXY(j, i).getContent() == 0){
-                    plateau.addPoint(j, 2);
+                    plateau.addPoint(j, player.getNumber());
                     if (plateau.checkHorizontal(plateau.getLineAdd(), 3) || plateau.checkVertical(j, 3)
                             || plateau.checkDiagonal(plateau.getLineAdd(), j, 3)
                             || plateau.checkReverseDiagonal(plateau.getLineAdd(), j, 3)
@@ -439,7 +453,8 @@ public class IAMariel extends Player{
     }
     public void addPoint(int column, int player){
         if (level > 4){
-            plateauCopy.addPoint(column, player);
+            //plateauCopy.addPoint(column, player);
+            plat.addPoint(column, player);
         }
     }
 }

@@ -5,36 +5,41 @@ import engine.Plateau;
 
 public class MinMax {
     private static int [][] matrix;
-    private static int column, line, columnMax, currentPlayer = 2, depthPlayer, heuristicPlayer = 1;
+    private static int column, line, columnMax, player = 2, currentPlayer = 2, depthPlayer, heuristicPlayer = 1;
     private static Plateau plateau;
 
 
     public MinMax(String string) {
         plateau = new Plateau(string, 0);
-        line = plateau.getLineColumn()[0];
-        column = plateau.getLineColumn()[1];
+        line = plateau.getLine();
+        column = plateau.getColumn();
+        //System.err.println(plateau.toStringIA());
     }
 
     public int minMax(){
-        treatment(0, currentPlayer);
+        treatment(100, player, currentPlayer);
         return columnMax;
     }
 
-    public int treatment(int depth, int player){
-        int player_adverse = (player == 1) ? 2 : 1;
+    public int treatment(int depth, int player, int currentPlayer){
+        int playerAdverse = (player == 1) ? 2 : 1;
+        int currentPlayerAdverse = (currentPlayer == 1) ? 2 : 1;
         int[] win = checkVictory();
-        if (win[0] != -1){
+        /*if (win[0] != -1){
             if (win[1] == player){
                 return (1000 - depth);
             }
             else {
                 return (-1000 + depth);
             }
-        }
+        }*/
 
         //Verify depth
         if ((currentPlayer == 1 && depth == depthPlayer) || (currentPlayer == 2 && depth == depthPlayer)) {
             if ((currentPlayer == 1 && heuristicPlayer == 1) || (currentPlayer == 2 && heuristicPlayer == 1)) {
+                return new Evaluate().evaluate(plateau, currentPlayer);
+            }
+            else {
                 return new Evaluate().evaluate(plateau, currentPlayer);
             }
         }
@@ -49,7 +54,7 @@ public class MinMax {
                 boolean bool = plateau.fullColumn(i);
                 if (!bool) {
                     plateau.addPoint(i, player);
-                    int value = treatment(depth, player_adverse);
+                    int value = treatment(depth, playerAdverse, currentPlayer);
                     if (max < value) {
                         max = value;
                         col = i;
@@ -63,11 +68,11 @@ public class MinMax {
         }
         else {
             int min = 10000;
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < column; i++) {
                 boolean bool = plateau.fullColumn(i);
                 if (!bool) {
-                    plateau.addPoint(i, player_adverse);
-                    int value = treatment(depth, player_adverse);
+                    plateau.addPoint(i, currentPlayerAdverse);
+                    int value = treatment(depth, playerAdverse, currentPlayer);
                     if (min > value) {
                         min = value;
                         //col = i;

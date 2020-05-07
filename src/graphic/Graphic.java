@@ -25,91 +25,9 @@ public class Graphic {
      * @param args
      */
     public static void main(String[] args) {
-        //init();
-        test(1);
+        init();
+        //test(1);
     }
-    /*public static void main(String[] args) {
-        String s = "6x7-211222112211201112210121212000200000000000".replace('1','0').replace('2','0');
-        Plateau plateau = new Plateau(s);
-        System.out.print(plateau.toString());
-        Fenetre fenetre = new Fenetre("Puissance 4", (plateau.getLineColumn()[1] * 100), (plateau.getLineColumn()[0]) * 100);
-        Souris souris = fenetre.getSouris();
-        Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre.getWidth(), fenetre.getHeight()), true);
-        fenetre.effacer();
-        fenetre.ajouter(rectangle);
-        initPlateau(fenetre, plateau);
-        fenetre.rafraichir();
-        //int player = 2;
-        while (!win){
-            if (souris.getClicGauche()){
-                int place = souris.getPosition().getX();
-                if (player == 1){
-                    if (!addPoint(plateau, player, place)){
-                        player = 2;
-                    }
-                    //addPoint(plateau, player, place);
-
-                    //System.out.print("Player One");
-                }
-                else {
-                    //IAMariel mariel = new IAMariel();
-                    //place = mariel.levelTwoMove(plateau);
-                    if (!addPoint(plateau, player, (place * 100))){
-                        player = 1;
-                    }
-                    //addPoint(plateau, player, place);
-                    //System.out.print("Player Two");
-                }
-                initPlateau(fenetre, plateau);
-                System.out.println(plateau.toString());
-                //addPoint(plateau, 1, 1);
-                //System.out.print(souris.getClicGauche());
-            }
-            fenetre.rafraichir();
-        }
-        winner();
-    }*/
-    /*public static void main(String[] args) {
-        String s = "6x7-211222112211201112210121212000200000000000".replace('1','0').replace('2','0');
-        Plateau plateau = new Plateau(s);
-        System.out.print(plateau.toString());
-        Fenetre fenetre = new Fenetre("Puissance 4", (plateau.getLineColumn()[1] * 100), (plateau.getLineColumn()[0]) * 100);
-        Souris souris = fenetre.getSouris();
-        Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre.getWidth(), fenetre.getHeight()), true);
-        fenetre.effacer();
-        fenetre.ajouter(rectangle);
-        initPlateau(fenetre, plateau);
-        fenetre.rafraichir();
-        //int player = 2;
-        while (!win){
-            if (souris.getClicGauche()){
-                int place = souris.getPosition().getX();
-                if (player == 1){
-                    if (!addPoint(plateau, player, place)){
-                        player = 2;
-                    }
-                    //addPoint(plateau, player, place);
-
-                    //System.out.print("Player One");
-                }
-                else {
-                    if (!addPoint(plateau, player, place)){
-                        player = 1;
-                    }
-
-                    }
-                    //addPoint(plateau, player, place);
-                    //System.out.print("Player Two");
-                }
-                initPlateau(fenetre, plateau);
-                System.out.println(plateau.toString());
-                //addPoint(plateau, 1, 1);
-                //System.out.print(souris.getClicGauche());
-            }
-            fenetre.rafraichir();
-
-        winner();
-    }*/
 
     /**
      * Init : initialisation de la partie
@@ -125,7 +43,7 @@ public class Graphic {
         //plateau = new Plateau(string, 0);
         plateau = new Plateau(6, 7);
         //System.out.print(plateau.toString());
-        fenetre = new Fenetre("Puissance 4", (plateau.getLineColumn()[1] * 100), (plateau.getLineColumn()[0]) * 100);
+        fenetre = new Fenetre("Puissance 4", (plateau.getColumn() * 100), (plateau.getLine()) * 100);
         souris = fenetre.getSouris();
         Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre.getWidth(), fenetre.getHeight()), true);
         fenetre.effacer();
@@ -158,7 +76,7 @@ public class Graphic {
                 if (player == realPlayer.getNumber() && tour == 1) {
                     //mariel.addPoint();
                     // Si plateau n'est pas plein jouer le coup
-                    if (!plateau.noCheck()) {
+                    if (!plateau.full()) {
                         if (!addPoint(plateau, player, place) && added) {
                             player = mariel.getNumber(); tour = 2;
                         }
@@ -182,11 +100,11 @@ public class Graphic {
                     if (player == mariel.getNumber() && tour == 2) {
                         System.err.println("Treatment IA");
                         //IAMariel mariel = new IAMariel(3);
-                        int place = mariel.bestMove(plateau.toStringIA()) + 1;
+                        int place = mariel.bestMove(plateau.toStringIA(), mariel.getNumber()) + 1;
                         //int place = (new Random().nextInt(7) + 1) * 100;
                         //System.err.println(place);
                         // Si plateau n'est pas pleine jouer le coup
-                        if (!plateau.noCheck()) {
+                        if (!plateau.full()) {
                             if (!addPoint(plateau, player, (place * 100)) && added) {
                                 player = realPlayer.getNumber();    tour = 1;
                             }
@@ -218,9 +136,9 @@ public class Graphic {
     public static void initPlateau(Fenetre fenetre, Plateau plateau) {
         int space = 45, add = 100;
         int spaceY = -space;
-        for (int i = plateau.getLineColumn()[0] - 1; i >= 0; i--) {
+        for (int i = plateau.getLine() - 1; i >= 0; i--) {
             int spaceX = -space;
-            for (int j = 0; j < plateau.getLineColumn()[1]; j++) {
+            for (int j = 0; j < plateau.getColumn(); j++) {
                 if (plateau.getXY(j, i).getContent() == 0) {
                     Cercle cercle = new Cercle(Couleur.BLANC, new Point((spaceX + add), (spaceY + add)),space,true);
                     fenetre.ajouter(cercle);

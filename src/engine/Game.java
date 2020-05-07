@@ -1,9 +1,9 @@
 package engine;
 
 import ia.IAMariel;
+import ia.MinMax;
 import old.Player;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -58,7 +58,7 @@ public class Game {
                     column  = Integer.parseInt(line);
                     if (column >= 1 && column <= 7) {
                         // Si plateau n'est pas plein, jouer le coup
-                        if (!plateau.noCheck()) {
+                        if (!plateau.full()) {
                             if (!plateau.fullColumn(column)) {
                                 win = plateau.addPoint((column - 1), player);
                                 if (!win) {
@@ -85,10 +85,13 @@ public class Game {
                 System.out.println("Choice column 1 to 7 : ");
                 String line = scanner.nextLine();
                 try {
+                    MinMax minMax = new MinMax(plateau.toStringIA());
+                    int mm = minMax.minMax();
+                    System.err.println("MIN_MAX : " + mm);
                     column  = Integer.parseInt(line);
                     if (column >= 1 && column <= 7) {
                         // Si plateau n'est pas pleine, jouer le coup
-                        if (!plateau.noCheck()) {
+                        if (!plateau.full()) {
                             if (!plateau.fullColumn(column)) {
                                 win = plateau.addPoint((column - 1), player);
                                 if (!win) {

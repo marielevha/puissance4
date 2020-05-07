@@ -2,18 +2,23 @@ package old;
 
 public class Player {
     public TypePlayer type;
-    public int number;
-    public int level;
+    public int number, level, depth;
+
+    public Player() {
+        depth = 8;
+    }
 
     public Player(int number) {
         this.number = number;
         //If IA level <= 6
-        if (number == 2) {
-            setLevel(6);
-        }
+        //if (number == 2) {
+        //}
     }
     public int getNumber() {
         return number;
+    }
+    public void setNumber(int number) {
+        this.number = number;
     }
     public TypePlayer getType(){
         return type;
@@ -27,6 +32,14 @@ public class Player {
     public int getLevel(){
         return level;
     }
+
+    public int getDepth() {
+        return depth;
+    }
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
+
     public String toString(){
         return ("Joueur "+ number +" ");
     }

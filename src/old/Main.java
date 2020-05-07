@@ -1,6 +1,7 @@
 package old;
 
 import ia.IAMariel;
+import ia.minmax.PlatCopy;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class Main {
     public static ArrayList<Integer> choice = new ArrayList<Integer>();
     public static final int nbrLignes = 6;
     public static final int nbrColonnes = 7;
-    private static PlateauCopy plateau;
+    private static PlatCopy plateau;
     private static boolean IATermine;
     //private PanelPlateau panelPlateau;
     //private PanelBarreEtat barreEtat;
@@ -24,8 +25,9 @@ public class Main {
         joueur1 = new Player(1);
         joueur2 = new Player(2);
         //ecouteur = new Ecouteur(joueur1,joueur2);
-        plateau = new PlateauCopy(nbrLignes,nbrColonnes);
-        System.out.println(plateau.toString() + "ToString");
+        plateau = new PlatCopy(nbrLignes,nbrColonnes);
+        //System.out.println(plateau.toString() + "ToString");
+        plateau.display();
 
         IAMariel mariel = new IAMariel();
         int[][] matrix = mariel.buildMatrix();
@@ -41,7 +43,7 @@ public class Main {
         }
         System.err.println("\n");*/
 
-        plateau.initCopy(matrix);
+        //plateau.initCopy(matrix);
 
         /*matrix = plateau.getP4();
         for (int i = 0; i < 6; i++){
@@ -57,9 +59,18 @@ public class Main {
 
         //plateau.display();
 
-        //plateau.jouerCoup(3, joueur1.getNumber());
         plateau.addPoint(3, joueur1.getNumber());
-        //plateau.display();
+        /*for (int i = 0; i < 6; i++){
+            if (i >= 3){
+                for (int j = 0; j < 3; j++){
+                    plateau.addPoint(i, joueur1.getNumber());
+                    plateau.addPoint(i, joueur2.getNumber());
+                }
+            }
+            plateau.addPoint(i, joueur1.getNumber());
+            plateau.addPoint(i, joueur2.getNumber());
+        }
+        plateau.display();*/
         jouerIA();
         plateau.addPoint(3, joueur1.getNumber());
         jouerIA();
@@ -99,7 +110,7 @@ public class Main {
             //plateau.jouerMinMax(joueur2);
             choice.add(plateau.MinMaxMove(joueur2));
         }else{
-            plateau.AlphaBetaMove(joueur2);
+            plateau.MinMaxMove(joueur2);
         }
         try {
             Thread.currentThread();

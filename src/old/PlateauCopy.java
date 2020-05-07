@@ -75,22 +75,21 @@ public class PlateauCopy {
      */
     public void display(){
         //this.toString();
-        for (int colonne = 0; colonne< column; colonne++){
+        for (int colonne = 0; colonne < column; colonne++) {
             System.out.print("-");
         }
         System.out.println();
-        for(int ligne = line -1; ligne>-1; ligne--){
-            for (int colonne = 0; colonne< column; colonne++){
-                if(p4[ligne][colonne]==0){
+        for(int ligne = (line -1); ligne > -1; ligne--) {
+            for (int colonne = 0; colonne < column; colonne++) {
+                if(p4[ligne][colonne] == 0) {
                     System.out.print(" ");
                 }else{
                     System.out.print(p4[ligne][colonne]);
                 }
-
             }
             System.out.println();
         }
-        for (int colonne = 0; colonne< column; colonne++){
+        for (int colonne = 0; colonne < column; colonne++){
             System.out.print("-");
         }
         System.out.println();
@@ -102,12 +101,12 @@ public class PlateauCopy {
      * @param player
      * @return
      */
-    public int addPoint(int column, int player){
+    public int addPoint(int column, int player) {
 
-        for(int ligne = 0; ligne< line; ligne++){
-            if(p4[ligne][column]==VIDE){
+        for(int ligne = 0; ligne < line; ligne++) {
+            if(p4[ligne][column] == VIDE){
                 p4[ligne][column] = player;
-                System.out.println(ligne + "-" + column);
+                //System.out.println(ligne + "-" + column);
                 return ligne;
             }
         }
@@ -119,16 +118,16 @@ public class PlateauCopy {
      * @param colonne
      * @return
      */
-    public boolean placeDispo(int colonne){
+    public boolean placeDispo(int colonne) {
         boolean dispo = false;
-        for(int ligne = 0; ligne< line; ligne++){
-            if(p4[ligne][colonne]==VIDE){
+        for(int ligne = 0; ligne < line; ligne++) {
+            if(p4[ligne][colonne] == VIDE){
                 dispo = true;
             }
         }
         return dispo;
     }
-    public int cherche(int joueur,int nombre){
+    public int cherche(int joueur, int nombre){
         int compteur = 0;
         //horizontales
         for (int ligne = 0; ligne < line; ligne++) {
@@ -274,7 +273,6 @@ public class PlateauCopy {
         // Aucun alignement n'a �t� trouv�
         return -1;
     }
-
 
     public boolean isTermine(){
         for(int j = 0; j< line; j++){
@@ -615,7 +613,6 @@ public class PlateauCopy {
             ligne--;
         }
         this.p4[ligne][column] = VIDE;
-
     }
     public int getLastColumn(){
         return lastColumn;

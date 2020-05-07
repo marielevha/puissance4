@@ -1,6 +1,8 @@
 package engine;
 
-public class Plateau {
+import _interface.IPlateau;
+
+public class Plateau implements IPlateau {
     private static final int ALIGN = 4;
     private Line[] lines;
     private static int row, column;
@@ -115,8 +117,8 @@ public class Plateau {
      * @param col
      * @return true si colonne pleine, sinon false
      */
-    public boolean fullColumn(int col){
-        if (lines[0].getX(col).getContent() != 0){
+    public boolean fullColumn(int col) {
+        if (lines[0].getX(col).getContent() != 0) {
             return true;
         }
         else {
@@ -133,10 +135,10 @@ public class Plateau {
      * @param numPlayer
      * @return bool
      */
-    public boolean addPoint(int numColumn, int numPlayer){
+    public boolean addPoint(int numColumn, int numPlayer) {
         boolean verify = false;
-        for (int i =  this.lines.length - 1; i >= 0; i--){
-            if (!verify){
+        for (int i =  this.lines.length - 1; i >= 0; i--) {
+            if (!verify) {
                 //System.out.print( this.tabLigne[i].toString() + " i : " + i + " ");
                 /*for (int j = 0; j < this.tabLigne[i].getTaille(); j++){
                     if (this.tabLigne[i].getX(numColumn).getContent() == 0){
@@ -151,24 +153,24 @@ public class Plateau {
                         verify = true;
                     }
                 }*/
-                for (int j = 0; j < this.lines[i].getSize(); j++){
+                for (int j = 0; j < this.lines[i].getSize(); j++) {
                     //System.err.print(j);
                     //System.err.print("\n");
                     //System.err.print(tabLigne[i].getX(j).getContent() + " : " + j);
-                    if (this.lines[i].getX(numColumn).getContent() == 0){
+                    if (this.lines[i].getX(numColumn).getContent() == 0) {
                         this.lines[i].setX(numColumn, numPlayer);
                         lineAdd = i;
                         //System.out.print(this.tabLigne[i].toString());//setX(numColumn, numPlayer);
                         verify = true;
-                        if (verify){
+                        if (verify) {
                             //System.out.print(checkHorizontal(i));
                             //System.err.print(checkVertical(numColumn));
                             if (checkHorizontal(i, ALIGN) || checkVertical(numColumn, ALIGN)
-                                    || checkDiagonal(i, numColumn, ALIGN) || checkReverseDiagonal(i, numColumn, ALIGN)){
+                                    || checkDiagonal(i, numColumn, ALIGN) || checkReverseDiagonal(i, numColumn, ALIGN)) {
                                 return true;
                             }
                             else {
-                                return noCheck();
+                                return full();
                             }
                             /*checkHorizontal(i);
                             checkVertical(numColumn);
@@ -190,7 +192,7 @@ public class Plateau {
      * @param MAX_ALIGN
      * @return bool
      */
-    public boolean checkHorizontal(int line, int MAX_ALIGN){
+    public boolean checkHorizontal(int line, int MAX_ALIGN) {
         /*String str = this.tabLigne[line].toString();
         Ligne ligne = new Ligne(str.length());
         ligne.setLine(str);*/
@@ -204,9 +206,9 @@ public class Plateau {
      * @param MAX_ALIGN
      * @return bool
      */
-    public boolean checkVertical(int column, int MAX_ALIGN){
+    public boolean checkVertical(int column, int MAX_ALIGN) {
         String str = "";
-        for (int i = 0; i < row; i++){
+        for (int i = 0; i < row; i++) {
             //System.out.println(this.tabLigne[i].getX(column).getContent());
             str = str + this.lines[i].getX(column).getContent();
         }
@@ -224,7 +226,7 @@ public class Plateau {
      * @param MAX_ALIGN
      * @return bool
      */
-    public boolean checkDiagonal(int lgn, int col, int MAX_ALIGN){
+    public boolean checkDiagonal(int lgn, int col, int MAX_ALIGN) {
         if (lgn >= 0 && lgn < lines.length && col >= 0 && col < lines[0].getSize()) {
             StringBuilder stringBuilder = new StringBuilder();
             String str1 = "";
@@ -262,7 +264,7 @@ public class Plateau {
      * @param MAX_ALIGN
      * @return bool
      */
-    public boolean checkReverseDiagonal(int lgn, int col, int MAX_ALIGN){
+    public boolean checkReverseDiagonal(int lgn, int col, int MAX_ALIGN) {
         if (lgn >= 0 && lgn < lines.length && col >= 0 && col < lines[0].getSize()) {
             StringBuilder stringBuilder = new StringBuilder();
             String str1 = "";
@@ -292,25 +294,47 @@ public class Plateau {
         return false;
     }
 
-    /**
-     *  NoCheck : vérifie si le plateau est plein
-     * @return
-     */
-    public boolean noCheck(){
+
+    /*public boolean full() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 //System.out.print(this.tabLigne[i].getX(j).getContent());
                 if (lines[i].getX(j).getContent() == 0) {
-                    end = false;
+                    return false;
                 }
             }
         }
-        return end;
+        return true;
+    }*/
+    /**
+     *  NoCheck : vérifie si le plateau est plein
+     * @return boolean
+     */
+    @Override
+    public boolean full() {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                //System.out.print(this.tabLigne[i].getX(j).getContent());
+                if (lines[i].getX(j).getContent() == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
+
+    /*public void empty() {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                lines[i].getX(j).setContent(0);
+            }
+        }
+    }*/
 
     /**
      * Empty : vider plateau
      */
+    @Override
     public void empty() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -326,8 +350,8 @@ public class Plateau {
     @Override
     public String toString() {
         String str = "|---------------|" + "\n";
-        for (int i = 0; i < row; i++){
-            str = str + "| " + this.lines[i].toString() + "|" + "\n";
+        for (int i = 0; i < row; i++) {
+            str = str + "| " + lines[i].toString() + "|" + "\n";
         }
         str += "|---------------|";
         return str;//.replace('0','0');
@@ -341,7 +365,7 @@ public class Plateau {
     public String toStringIA() {
         String str = row + "x" + column + "-";
         for (int i = row; i > 0; i--) {
-            str = str + this.lines[i - 1].toString();
+            str = str + lines[i - 1].toString();
         }
         return str.replace(" ","");
     }
@@ -380,7 +404,7 @@ public class Plateau {
      * GetLine : retourne nombre de lignes
      * @return row : Integer
      */
-    public static int geLine() {
+    public int getLine() {
         return row;
     }
 
@@ -388,7 +412,7 @@ public class Plateau {
      * GetColumn : retourne nombre de colonnes
      * @return column : Integer
      */
-    public static int getColumn() {
+    public int getColumn() {
         return column;
     }
 }
