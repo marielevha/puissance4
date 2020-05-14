@@ -30,7 +30,7 @@ public class Main {
         plateau.display();
 
         IAMariel mariel = new IAMariel();
-        int[][] matrix = mariel.buildMatrix();
+        int[][] matrix = mariel.buildMatrix1();
 
         /*for (int i = 0; i < 6; i++){
             for (int j = 0; j < 7; j++){

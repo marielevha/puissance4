@@ -61,7 +61,7 @@ public class Graphic {
          * @level : 5
          * @number : 2
          */
-        mariel = new IAMariel(5, 2);
+        mariel = new IAMariel(2, 4);
 
         /**
          * Boucle infinie de la partie jusqu'à ce qu'il aiet un gagnant
@@ -72,7 +72,6 @@ public class Graphic {
             if (souris.getClicGauche()) {
                 player = realPlayer.getNumber();
                 int place = souris.getPosition().getX();
-                System.err.println(souris.getPosition().getX() + "-" + souris.getPosition().getY());
                 if (player == realPlayer.getNumber() && tour == 1) {
                     //mariel.addPoint();
                     // Si plateau n'est pas plein jouer le coup
@@ -80,6 +79,9 @@ public class Graphic {
                         if (!addPoint(plateau, player, place) && added) {
                             player = mariel.getNumber(); tour = 2;
                         }
+                    }
+                    else {
+                        winner(false);
                     }
                 }
                 //System.out.println("Treatment Player");
@@ -92,7 +94,7 @@ public class Graphic {
                     }
                 }*/
                 initPlateau(fenetre, plateau);
-                System.out.println(plateau.toString());
+                //System.out.println(plateau.toString());
             }
             else {
                 try {
@@ -100,14 +102,27 @@ public class Graphic {
                     if (player == mariel.getNumber() && tour == 2) {
                         System.err.println("Treatment IA");
                         //IAMariel mariel = new IAMariel(3);
-                        int place = mariel.bestMove(plateau.toStringIA(), mariel.getNumber()) + 1;
+                        int place = mariel.bestMove(plateau.toStringIA(), mariel.getNumber());// + 1;
                         //int place = (new Random().nextInt(7) + 1) * 100;
                         //System.err.println(place);
                         // Si plateau n'est pas pleine jouer le coup
                         if (!plateau.full()) {
-                            if (!addPoint(plateau, player, (place * 100)) && added) {
+                            /*if (!addPoint(plateau, player, (place * 100)) && added) {
                                 player = realPlayer.getNumber();    tour = 1;
+                            }*/
+                            //place--;
+                            if (!plateau.fullColumn(place)) {
+                                win = plateau.addPoint(place, player);
+                                added = true;
+                                if (!win) {
+                                    // Ajoute un pion dans la copy du plateau utilisé par l'agorithme MinMax
+                                    mariel.addPoint(place, player);
+                                    player = realPlayer.getNumber();    tour = 1;
+                                }
                             }
+                        }
+                        else {
+                            winner(false);
                         }
                         /*IAMariel mariel = new IAMariel(4);
                         place = mariel.bestMove(plateau.toStringIA()) + 1;
@@ -117,7 +132,7 @@ public class Graphic {
                         }*/
                         //initPlateau(fenetre, plateau);
                         initPlateau(fenetre, plateau);
-                        System.out.println(plateau.toString());
+                        //System.err.println(plateau.toString());
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -125,11 +140,11 @@ public class Graphic {
             }
             fenetre.rafraichir();
         }
-        winner();
+        winner(true);
     }
 
     /**
-     * Init plateau : Initialise le plateau graphique du jeu
+     * InitPlateau : Initialise le plateau graphique du jeu
      * @param fenetre
      * @param plateau
      */
@@ -158,7 +173,7 @@ public class Graphic {
     }
 
     /**
-     * Add Point : méthode permettant d'ajouter un pion au plateau
+     * AddPoint : méthode permettant d'ajouter un pion au plateau
      * @param plateau
      * @param player
      * @param place
@@ -196,13 +211,10 @@ public class Graphic {
             mariel.addPoint(5, player);
             added = true;
         }
-        else if (place > 600 && place <= 700 && (!plateau.fullColumn(5))) {
+        else if (place > 600 && place <= 700 && (!plateau.fullColumn(6))) {
             win = plateau.addPoint(6, player);
             mariel.addPoint(6, player);
             added = true;
-        }
-        else {
-            added = false;
         }
         return win;
     }
@@ -212,15 +224,26 @@ public class Graphic {
      * Si type = true il y a un gagnant
      * Sinon match null
      */
-    private static void winner() {
-        player = (player % 2 == 1 ? 1 : 2);
-        Fenetre fenetre = new Fenetre("Puissance 4 Winner Player : " + player, 300, 100);
-        Rectangle rectangle = new Rectangle((player%2==1 ? Couleur.JAUNE : Couleur.ROUGE), new Point(0,0), new Point(fenetre.getWidth(), fenetre.getHeight()), true);
-        String message = "Winner Player " + (player % 2 == 1 ? "YELLOW" : "RED");
-        Texte text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,50));
-        fenetre.ajouter(rectangle);
-        fenetre.ajouter(text);
-        fenetre.rafraichir();
+    private static void winner(boolean winner) {
+        if (winner) {
+            player = (player % 2 == 1 ? 1 : 2);
+            Fenetre fenetre = new Fenetre("Puissance 4 Winner Player : " + player, 300, 100);
+            Rectangle rectangle = new Rectangle((player%2==1 ? Couleur.JAUNE : Couleur.ROUGE), new Point(0,0), new Point(fenetre.getWidth(), fenetre.getHeight()), true);
+            String message = "Winner Player " + (player % 2 == 1 ? "YELLOW" : "RED");
+            Texte text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,50));
+            fenetre.ajouter(rectangle);
+            fenetre.ajouter(text);
+            fenetre.rafraichir();
+        }
+        else {
+            Fenetre fenetre = new Fenetre("Puissance 4 no winning player", 300, 100);
+            Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre.getWidth(), fenetre.getHeight()), true);
+            String message = "No winning player !!!";
+            Texte text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,50));
+            fenetre.ajouter(rectangle);
+            fenetre.ajouter(text);
+            fenetre.rafraichir();
+        }
     }
 
     /**

@@ -51,8 +51,9 @@ public class Line {
             cases[i].setContent(value);
         }
         else {
-            System.err.println("Argument invalid !!");
-            System.exit(0);
+            /*System.err.println("Argument invalid !!");
+            System.exit(0);*/
+            cases[i].setContent(0);
         }
     }
 

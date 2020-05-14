@@ -13,6 +13,7 @@ public class IAMariel extends Player{
     private static int VALUE_GAME_RED = 0, VALUE_GAME_YELLOW = 0, POSITION_WIN = -1, POSITION_BLOCK = -1, POSITION_DEFAULT = -1;
     private static int cmp = 0;
     private static int [][] matrix;
+    private static int frontCount = 0, afterCount = 0;
 
     private static Plateau plateau;
     private int level;
@@ -34,12 +35,12 @@ public class IAMariel extends Player{
         plateau = new Plateau(string, 1);
     }
 
-    public IAMariel(int level, int number) {
+    public IAMariel(int number, int level) {
         super(number);
         this.level = level;
         if (level == 5) {
             //this.type = Type.MIN_MAX;
-            plateauCopy = new PlateauCopy(line,column);
+            //plateauCopy = new PlateauCopy(line,column);
             plat = new PlatCopy(line, column);
         }
         else if (level == 6) {
@@ -146,20 +147,87 @@ public class IAMariel extends Player{
      * @return column
      */
     public int levelFourMove(){
-        if (plateau.getXY(3, 5).getContent() == 0) {
-            return 3;
+        int max = 0; int col = -1;
+        //evaluate(plateau);
+        if (winMove(plateau) != -1){
+            System.out.println("WIN-" + winMove(plateau));
+            return winMove(plateau);
         }
-        evaluate(plateau);
-        if (POSITION_WIN != -1){
-            return POSITION_WIN;
-        }
-        else if (POSITION_BLOCK != -1){
-            return POSITION_BLOCK;
+        else if (blockMove(plateau) != -1){
+            System.out.println("BLOCK-" + blockMove(plateau));
+            return blockMove(plateau);
         }
         else {
-            return POSITION_DEFAULT;
+            buildMatrix();
+            /*if (plateau.getXY(3, 5).getContent() == 0) {
+                return 3;
+            }*/
+            //else {
+
+                //POSITION_DEFAULT = 0;
+            int test= 1;
+            frontCount = 0; afterCount = 0;
+                for (int i = 0; i < line; i++) {
+                    for (int j = 0; j < column; j++) {
+                        if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0)) {
+                            /*frontCount += 1;*/    /*afterCount += 1;*/
+                            if (plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), i).getContent()) {
+                                //frontCount += 1;
+
+                                frontCount += (j == 2 ? 2 : 0);
+                                frontCount += (j == 3 ? 3 : 0);
+
+                                afterCount += (j == 2 ? 3 : 0);
+                                afterCount += (j == 3 ? 2 : 0);
+
+                                if ((frontCount >= 2) && (afterCount >= 2)) {
+                                    System.err.println("COUP-" + (j - 1));
+                                    System.err.println("COUP-" + (j + 2));
+                                    return (j - 1);
+                                }
+
+                                /*if (j == 2) {
+                                    afterCount += 3;
+                                }
+                                if (j == 3) {
+                                    afterCount += 2;
+                                }*/
+
+                                /*afterCount += ((j + 1) == 2 ? 1 : 0);
+                                afterCount += ((j + 1) == 2 ? 1 : 0);*/
+
+                                System.err.println("ENTRY TEST-" + j);
+                                System.err.println("FRONT-" + frontCount);
+                                System.err.println("AFTER-" + afterCount);
+                                //System.err.println("ENTRY TEST-" + (j + 1));
+                            }
+                        }
+                        if (test == 1) {
+                            if (i <= (line - 2)) {
+                                if ((plateau.getXY(j, i).getContent() == 0)
+                                        && (matrix[i][j] > max)
+                                        && (plateau.getXY(j, (i+1)).getContent() != 0))
+                                {
+                                    max = matrix[i][j];
+                                    col = j;
+                                }
+                            }
+                            else {
+                                if (plateau.getXY(j, i).getContent() == 0 && matrix[i][j] > max) {
+                                    max = matrix[i][j];
+                                    col = j;
+                                }
+                            }
+                        }
+                    }
+                }
+                System.out.println("MAX-" + max);
+                System.out.println("COL-" + col);
+                return col;
+            //}
         }
     }
+
 
     /**
      * Algorithm MinMax
@@ -228,6 +296,7 @@ public class IAMariel extends Player{
             }
         }
     }
+
     /**
      *
      * @param plateau
@@ -235,7 +304,7 @@ public class IAMariel extends Player{
     public void evaluate(Plateau plateau){
         line = plateau.getLine();
         column = plateau.getColumn();
-        buildMatrix(line, column);
+        buildMatrix();
 
         //Détermine
         /*for (int i = 0; i < line; i++){
@@ -256,21 +325,22 @@ public class IAMariel extends Player{
 
         if (winMove(plateau) != -1){
             POSITION_WIN = k;
-            matrix[plateau.getLineAdd()][k] = 278;
+            //matrix[plateau.getLineAdd()][k] = 278;
         }
         else if (blockMove(plateau) != -1){
             POSITION_BLOCK = l;
-            matrix[plateau.getLineAdd()][l] = 277;
+            //matrix[plateau.getLineAdd()][l] = 277;
         }
-        else {
+        /*else {
+            //POSITION_DEFAULT = levelOneMove();
             max(plateau);
-        }
+        }*/
     }
 
     /**
-     *
+     * WinMove : vérifie si c'est un coup gagnant et retourne la colonne
      * @param plateau
-     * @return
+     * @return Integer column
      */
     public int winMove(Plateau plateau){
         for (int i = 0; i < plateau.getLine(); i++){
@@ -297,9 +367,9 @@ public class IAMariel extends Player{
     }
 
     /**
-     *
+     * BlockMove : vérifie si on peut blocker l'adversaire et retourne la colonne
      * @param plateau
-     * @return
+     * @return Integer column
      */
     public int blockMove(Plateau plateau){
         int playerAdverse = (player.getNumber() == 1) ? 2 : 1;
@@ -325,10 +395,29 @@ public class IAMariel extends Player{
         return -1;
     }
 
+    public int blockMove(int row, int col) {
+        if (plateau.getXY(col, row).getContent() == plateau.getXY((col + 1), row).getContent()) {
+            //frontCount += 1;
+
+            frontCount += (col == 2 ? 2 : 0);
+            frontCount += (col == 3 ? 3 : 0);
+
+            afterCount += (col == 2 ? 3 : 0);
+            afterCount += (col == 3 ? 2 : 0);
+
+            if ((frontCount >= 2) && (afterCount >= 2)) {
+                System.err.println("COUP-" + (col - 1));
+                System.err.println("COUP-" + (col + 2));
+                return (col - 1);
+            }
+        }
+        return -1;
+    }
+
     /**
-     *
+     * AlignThree : vérifie si on peut blocker l'adversaire et retourne la colonne
      * @param plateau
-     * @return
+     * @return Integer column
      */
     public int alignThree(Plateau plateau){
         for (int i = 0; i < plateau.getLine(); i++){
@@ -350,11 +439,9 @@ public class IAMariel extends Player{
     }
 
     /**
-     *
-     * @param line
-     * @param column
+     * BuildMatrix : construit la la matrice d'évaluation de jeu
      */
-    public void buildMatrix(int line, int column) {
+    public void buildMatrix() {
         String string = "3;4;5;7;5;4;3;" +
                 "4;6;8;10;8;6;4;" +
                 "5;8;11;13;11;8;5;" +
@@ -374,7 +461,7 @@ public class IAMariel extends Player{
     }
 
     /**
-     *
+     * ReadMatrix : affiche la matrice
      */
     public void readMatrix(){
         for (int i = 0; i < line; i++){
@@ -390,7 +477,7 @@ public class IAMariel extends Player{
      * @param plateau
      * @return
      */
-    public String max(Plateau plateau) {
+    public String max1(Plateau plateau) {
         int max = matrix[0][0];   // start with the first value
         int x = 0, y = 0;
         for (int i = 0; i < line; i++){
@@ -432,7 +519,20 @@ public class IAMariel extends Player{
         return "max : " + max + " || x-y : " + x + "-" +y;
     }//end method max
 
-    public int[][] buildMatrix(){
+    public void max(Plateau plateau){
+        int max = 0;
+        //POSITION_DEFAULT = 0;
+        for (int i = 0; i < line; i++) {
+            for (int j = 0; j < column; j++) {
+                if (plateau.getXY(j, i).getContent() == 0 && matrix[i][j] > max) {
+                    max = matrix[i][j];
+                    POSITION_DEFAULT = j;
+                }
+            }
+        }
+        System.err.println("DEFAULT : " + POSITION_DEFAULT);
+    }
+    public int[][] buildMatrix1(){
         //line = data[0]; column = data[1];
         matrix = new int[line][column];
         for (int i = line - 1; i >= 0; i--){
@@ -440,17 +540,15 @@ public class IAMariel extends Player{
                 matrix[i][j] = plateau.getXY(j, i).getContent();
             }
         }
-
-        //Read
-        /*for (int i = 0; i < line; i++){
-            for (int j = 0; j < column; j++){
-                System.err.print(matrix[i][j]);
-            }
-            System.err.println();
-        }
-        System.err.println("\n");*/
         return matrix;
     }
+
+    /**
+     * AddPoint : ajoute un pion à la copie du plateau utilisé
+     * par l'algorithme MinMax
+     * @param column
+     * @param player
+     */
     public void addPoint(int column, int player){
         if (level > 4){
             //plateauCopy.addPoint(column, player);

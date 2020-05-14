@@ -11,24 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/_interface/IPlateau.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ia/minmax/PlatCopy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/old/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/PlateauCopy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/old/PlateauCopy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Case.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ia/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/MinMax.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/old/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/PlateauCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/PlateauCopy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +123,7 @@
       <workItem from="1588364033548" duration="66138000" />
       <workItem from="1588625180113" duration="8365000" />
       <workItem from="1588714097494" duration="31553000" />
+      <workItem from="1589318342089" duration="29282000" />
     </task>
     <servers />
   </component>
@@ -171,22 +163,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586885619949" />
-    <state width="1322" height="475" key="GridCell.Tab.0.bottom" timestamp="1588742187204">
+    <state width="1322" height="555" key="GridCell.Tab.0.bottom" timestamp="1589412449360">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="475" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588742187204" />
-    <state width="1322" height="475" key="GridCell.Tab.0.center" timestamp="1588742187204">
+    <state width="1322" height="555" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589412449360" />
+    <state width="1322" height="555" key="GridCell.Tab.0.center" timestamp="1589412448494">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="475" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588742187204" />
-    <state width="1322" height="475" key="GridCell.Tab.0.left" timestamp="1588742187204">
+    <state width="1322" height="555" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589412448494" />
+    <state width="1322" height="555" key="GridCell.Tab.0.left" timestamp="1589412447447">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="475" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588742187204" />
-    <state width="1322" height="475" key="GridCell.Tab.0.right" timestamp="1588742187204">
+    <state width="1322" height="555" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589412447447" />
+    <state width="1322" height="555" key="GridCell.Tab.0.right" timestamp="1589412448717">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="475" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588742187204" />
+    <state width="1322" height="555" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589412448717" />
     <state width="1322" height="211" key="GridCell.Tab.1.bottom" timestamp="1588565295516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -215,6 +207,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="247" y="120" width="890" height="597" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1588371524222" />
+    <state x="339" y="157" key="run.anything.popup" timestamp="1589323164226">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1589323164226" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1588742645469">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
