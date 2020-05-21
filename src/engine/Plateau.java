@@ -6,18 +6,7 @@ public class Plateau implements IPlateau {
     private static final int ALIGN = 4;
     private Line[] lines;
     private static int row, column;
-    private static int [] data;
-    private static int [][] matrix;
-    private boolean end = true;
     private static int lineAdd;
-
-    /**
-     * GetLineAdd : retourne la ligne ou le pion est ajouté
-     * @return lineAdd
-     */
-    public int getLineAdd() {
-        return lineAdd;
-    }
 
     /**
      * Constructor : construit un plateau d'une case vide
@@ -56,24 +45,13 @@ public class Plateau implements IPlateau {
      * @param string : format "6x7-211222112211201112210121212000200000000000"
      */
     public Plateau(String string, int direction) {
-        //int line, column;
-        /*this.tabLigne = new Ligne[column];
-        for (int i = 0; i < column; i++){
-            this.tabLigne[i] = new Ligne(line);
-        }
-        //System.out.println(this.tabLigne[0].toString());*/
-        // "6x7-211222112211201112210121212000200000000000";
         String[] split0 = string.split("-");
         String[] split1 = split0[0].split("x");
 
         row = Integer.parseInt(split1[0]);
         column = Integer.parseInt(split1[1]);
-        /*System.out.println(split0[0]);
-        System.out.println("line : " + line);
-        System.out.println("column : " + column);*/
 
         this.lines = new Line[row];
-        //System.err.println("################");
         int cmp = 0;
         if (direction == 0){
             for (int i = split0[1].length(); i > 0; i -= column){
@@ -93,13 +71,6 @@ public class Plateau implements IPlateau {
                 cmp++;
             }
         }
-
-
-
-
-        //String data = "65165189516151351891512189";
-        //System.err.println(split0[1].substring(data.length() - 7, 7));
-
     }
 
     /**
@@ -124,9 +95,6 @@ public class Plateau implements IPlateau {
         else {
             return false;
         }
-        //System.err.println(" first : " + tabLigne[0].toString().charAt(col));
-        //System.err.println(" second : " + tabLigne[0].getX(col).getContent());
-        //return lines[0].getX(col).getContent() != 0;
     }
 
     /**
@@ -298,17 +266,6 @@ public class Plateau implements IPlateau {
         return false;
     }
 
-    /*public boolean full() {
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                //System.out.print(this.tabLigne[i].getX(j).getContent());
-                if (lines[i].getX(j).getContent() == 0) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }*/
     /**
      *  NoCheck : vérifie si le plateau est plein
      * @return boolean
@@ -325,14 +282,6 @@ public class Plateau implements IPlateau {
         }
         return true;
     }
-
-    /*public void empty() {
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                lines[i].getX(j).setContent(0);
-            }
-        }
-    }*/
 
     /**
      * Empty : vider plateau
@@ -373,36 +322,6 @@ public class Plateau implements IPlateau {
         return str.replace(" ","");
     }
 
-    public void win() {
-        getLineColumn();
-        Win win = new Win();
-        win.BuildMatrix(this.lines, data);
-        /*matrix = new int[line][column];
-        for (int i = 0; i < line; i++){
-            for (int j = 0; j < column; j++){
-                matrix[i][j] = this.tabLigne[i].getX(j).getContent();
-            }
-        }
-
-        for (int i = 0; i < line; i++){
-            for (int j = 0; j < column; j++){
-                System.err.print(matrix[i][j]);
-            }
-            System.err.println();
-        }*/
-    }
-
-    /**
-     * GetLineColumn : retourne le nombre de lignes et de colonnes
-     * @return [] int
-     */
-    public int [] getLineColumn() {
-        data = new int[2];
-        data[0] = row;
-        data[1] = column;
-        return data;
-    }
-
     /**
      * GetLine : retourne nombre de lignes
      * @return row : Integer
@@ -419,6 +338,10 @@ public class Plateau implements IPlateau {
         return column;
     }
 
+    /**
+     * AvailableColumn : retourne le nombre de colonne disponible
+     * @return Integer count
+     */
     public int availableColumn() {
         int count = 0;
         for (int i = 0; i < column; i++) {
@@ -427,5 +350,13 @@ public class Plateau implements IPlateau {
             }
         }
         return count;
+    }
+
+    /**
+     * GetLineAdd : retourne la ligne ou le pion est ajouté
+     * @return lineAdd
+     */
+    public int getLineAdd() {
+        return lineAdd;
     }
 }

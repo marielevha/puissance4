@@ -1,8 +1,7 @@
 package engine;
 
 import ia.IAMariel;
-import ia.MinMax;
-import old.Player;
+import engine.player.Player;
 
 import java.util.Scanner;
 
@@ -14,9 +13,6 @@ public class Game {
     private static Player player1, player2;
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        //plateau = new Plateau(6, 7);
-        //System.out.print(plateau.toString() + "\n");
-        //System.out.print(plateau.toStringIA() + "\n");
         init();
     }
 
@@ -25,7 +21,6 @@ public class Game {
      */
     public static void init() {
         plateau = new Plateau(6, 7);
-        //plateau = new Plateau(6, 7);
         System.out.print(plateau.toString() + "\n");
 
         /**
@@ -40,14 +35,6 @@ public class Game {
          */
         player2 = new Player(2);
 
-        /**
-         * Initialisation de l'IA avec le numéro 2 et le niveau 5
-         * @level : 5
-         * @number : 2
-         */
-        //mariel = new IAMariel(5, 2);
-
-        //player = player1.getNumber();
         while (!win) {
             if (tour == 1) {
                 player = player1.getNumber();
@@ -55,34 +42,6 @@ public class Game {
                 if (added) {
                     tour = 2;
                 }
-                /*System.out.println("player " + player + "'s turn !");
-                System.out.println("Choice column 1 to 7 : ");
-                String line = scanner.nextLine();
-                try {
-                    column  = Integer.parseInt(line);
-                    if (column >= 1 && column <= 7) {
-                        // Si plateau n'est pas plein, jouer le coup
-                        if (!plateau.full()) {
-                            if (!plateau.fullColumn(column)) {
-                                win = plateau.addPoint((column - 1), player);
-                                if (!win) {
-                                    player = player2.getNumber();
-                                }
-                                System.out.println(plateau.toString());
-                            }
-                        }
-                        // Sinon partie terminée : match null
-                        else {
-                            end(false);
-                        }
-                    }
-                    else {
-                        System.err.println("Illegal entry new column !");
-                    }
-                } catch (Exception e) {
-                    System.err.println("Illegal entry new column !");
-                    System.err.println(e.getMessage());
-                }*/
             }
             else {
                 player = player2.getNumber();
@@ -90,42 +49,15 @@ public class Game {
                 if (added) {
                     tour = 1;
                 }
-                /*System.out.println("player " + player + "'s turn !");
-                System.out.println("Choice column 1 to 7 : ");
-                String line = scanner.nextLine();
-                try {
-                    //MinMax minMax = new MinMax(plateau.toStringIA());
-                    //int mm = minMax.minMax();
-                    //System.err.println("MIN_MAX : " + mm);
-                    column  = Integer.parseInt(line);
-                    if (column >= 1 && column <= 7) {
-                        // Si plateau n'est pas pleine, jouer le coup
-                        if (!plateau.full()) {
-                            if (!plateau.fullColumn(column)) {
-                                win = plateau.addPoint((column - 1), player);
-                                if (!win) {
-                                    player = player1.getNumber();
-                                }
-                                System.out.println(plateau.toString());
-                            }
-                        }
-                        // Sinon partie terminée : match null
-                        else {
-                            end(false);
-                        }
-                    }
-                    else {
-                        System.err.println("Illegal entry new column !");
-                    }
-                } catch (Exception e) {
-                    System.err.println("Illegal entry new column !");
-                    System.err.println(e.getMessage());
-                }*/
             }
         }
         end(true);
     }
 
+    /**
+     * Move : cette méthode permet de à un joueur réel de jouer un coup
+     * @param realPlayer
+     */
     public static void move(Player realPlayer) {
         System.out.println("player " + realPlayer.getNumber() + "'s turn !");
         System.out.println("Choice column 1 to 7 : ");

@@ -11,21 +11,145 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/graphic/Program.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/puissance4_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/puissance4.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Case.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Line.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/branch.txt" beforeDir="false" afterPath="$PROJECT_DIR$/branch.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/_interface/IPlateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Case.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Line.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Plateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/engine/Win.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/graphic/Program.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/Evaluate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/MinMax.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/Type.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/minmax/PlatCopy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/Clavier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/Fenetre.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/FenetrePleinEcran.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/Panneau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/Souris.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/Bruitage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/BruitageATester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/Musique$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/Musique.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/MusiqueATester$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/MusiqueATester$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/MusiqueATester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/Converter$PrintWriterProgressListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/Converter$ProgressListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/Converter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/RiffFile$RiffChunkHeader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/RiffFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFile$WaveFileSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFile$WaveFormat_Chunk.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFile$WaveFormat_ChunkData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/WaveFileObuffer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/jlc$jlcArgs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/converter/jlc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/BitReserve.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Bitstream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/BitstreamErrors.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/BitstreamException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Control.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Crc16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Decoder$Params.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Decoder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/DecoderErrors.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/DecoderException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Equalizer$EQFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Equalizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/FrameDecoder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Header.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/InputStreamSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerErrors.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerHook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/JavaLayerUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder$Subband.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder$SubbandLayer1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder$SubbandLayer1IntensityStereo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder$SubbandLayer1Stereo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIDecoder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIDecoder$SubbandLayer2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIDecoder$SubbandLayer2IntensityStereo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIDecoder$SubbandLayer2Stereo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIDecoder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$III_side_info_t.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$SBI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$Sftable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$gr_info_s.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$temporaire.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder$temporaire2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/LayerIIIDecoder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Manager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Obuffer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/OutputChannels.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/SampleBuffer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/Source.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/SynthesisFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/au2lin.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/huffcodetab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/l3reorder.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/lin2au.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/decoder/sfd.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/AudioDevice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/AudioDeviceBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/AudioDeviceFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/FactoryRegistry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/JavaSoundAudioDevice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/JavaSoundAudioDeviceFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/NullAudioDevice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/PlayerApplet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/AdvancedPlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/PlaybackEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/PlaybackListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/jlap$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/jlap$InfoListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/advanced/jlap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/audio/player/jlp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Animation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/BoiteEnglobante.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Carre.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Cercle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Couleur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Dessin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Ligne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Ovale.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Point.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Rectangle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Texte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Texture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/mg2d/geometrie/Triangle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/Jeton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/PlateauCopy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/old/TypePlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Case.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Win.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Program.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/Evaluate.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ia/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/MinMax.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ia/minmax/PlatCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/minmax/PlatCopy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/MinMax.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/minmax/PlatCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/Jeton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/PlateauCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/PlateauCopy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/player/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +177,17 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/META-INF" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -100,7 +228,7 @@
       <module name="puissance4" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="old.*" />
+          <option name="PATTERN" value="engine.player.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,7 +279,7 @@
       <workItem from="1589855364633" duration="2000" />
       <workItem from="1589857161680" duration="32000" />
       <workItem from="1589860293561" duration="125000" />
-      <workItem from="1589940712010" duration="39686000" />
+      <workItem from="1589940712010" duration="44275000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589417099375</created>
@@ -179,6 +307,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
@@ -191,6 +320,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1590000064951" />
+    <state x="434" y="153" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1590034005712">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="434" y="153" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1590034005712" />
     <state x="466" y="257" width="433" height="222" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588438904217">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -199,50 +332,50 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="76" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1588444883197" />
-    <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1586885619949">
+    <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1590033916724">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586885619949" />
-    <state width="1322" height="555" key="GridCell.Tab.0.bottom" timestamp="1590028231710">
+    <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590033916724" />
+    <state width="1322" height="217" key="GridCell.Tab.0.bottom" timestamp="1590032273128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590028231710" />
-    <state width="1322" height="555" key="GridCell.Tab.0.center" timestamp="1590028231710">
+    <state width="1322" height="217" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590032273128" />
+    <state width="1322" height="217" key="GridCell.Tab.0.center" timestamp="1590032273128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590028231710" />
-    <state width="1322" height="555" key="GridCell.Tab.0.left" timestamp="1590028231710">
+    <state width="1322" height="217" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590032273128" />
+    <state width="1322" height="217" key="GridCell.Tab.0.left" timestamp="1590032273128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590028231710" />
-    <state width="1322" height="555" key="GridCell.Tab.0.right" timestamp="1590028231710">
+    <state width="1322" height="217" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590032273128" />
+    <state width="1322" height="217" key="GridCell.Tab.0.right" timestamp="1590032273128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="555" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590028231710" />
-    <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1590019692756">
+    <state width="1322" height="217" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590032273128" />
+    <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1590032273128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="217" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590019692756" />
-    <state width="1322" height="217" key="GridCell.Tab.1.center" timestamp="1590019692756">
+    <state width="1322" height="217" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590032273128" />
+    <state width="1322" height="217" key="GridCell.Tab.1.center" timestamp="1590032273128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="217" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1590019692756" />
-    <state width="1322" height="217" key="GridCell.Tab.1.left" timestamp="1590019692756">
+    <state width="1322" height="217" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1590032273128" />
+    <state width="1322" height="217" key="GridCell.Tab.1.left" timestamp="1590032273128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="217" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1590019692756" />
-    <state width="1322" height="217" key="GridCell.Tab.1.right" timestamp="1590019692756">
+    <state width="1322" height="217" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1590032273128" />
+    <state width="1322" height="217" key="GridCell.Tab.1.right" timestamp="1590032273128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="217" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1590019692756" />
+    <state width="1322" height="217" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1590032273128" />
     <state x="454" y="83" key="RollbackChangesDialog" timestamp="1588733457076">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="454" y="83" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588733457076" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1588563156743">
+    <state x="184" y="0" key="SettingsEditor" timestamp="1590034041788">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1588563156743" />
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1590034041788" />
     <state x="247" y="120" width="890" height="597" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1589850665615">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -1,12 +1,12 @@
 package ia.minmax;
 
 import engine.Plateau;
-import old.Player;
+import engine.player.Player;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class PlatCopy {
+public class MinMax {
     public final static int VIDE = 0;
     public final static int JOUEUR1 = 1;
     public final static int JOUEUR2 = 2;
@@ -22,7 +22,7 @@ public class PlatCopy {
      * @param l : nombre de ligne
      * @param c : nombre de colonne
      */
-    public PlatCopy(int l, int c) {
+    public MinMax(int l, int c) {
         plateau = new Plateau(l, c);
         line = plateau.getLine();
         column = plateau.getColumn();

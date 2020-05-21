@@ -1,6 +1,7 @@
 package old;
 
 import engine.Plateau;
+import engine.player.Player;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -63,11 +63,5 @@ public class Case {
     @Override
     public String toString() {
         return String.valueOf(this.getContent());
-        /*if (content == 0){
-            return "" + 0;
-        }
-        else {
-            return ""+content;
-        }*/
     }
 }

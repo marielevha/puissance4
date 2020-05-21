@@ -1,7 +1,8 @@
 package old;
 
+import engine.player.Player;
 import ia.IAMariel;
-import ia.minmax.PlatCopy;
+import ia.minmax.MinMax;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class Main {
     public static ArrayList<Integer> choice = new ArrayList<Integer>();
     public static final int nbrLignes = 6;
     public static final int nbrColonnes = 7;
-    private static PlatCopy plateau;
+    private static MinMax plateau;
     private static boolean IATermine;
     //private PanelPlateau panelPlateau;
     //private PanelBarreEtat barreEtat;
@@ -25,7 +26,7 @@ public class Main {
         joueur1 = new Player(1);
         joueur2 = new Player(2);
         //ecouteur = new Ecouteur(joueur1,joueur2);
-        plateau = new PlatCopy(nbrLignes,nbrColonnes);
+        plateau = new MinMax(nbrLignes,nbrColonnes);
         //System.out.println(plateau.toString() + "ToString");
         plateau.display();
 

@@ -7,7 +7,7 @@ import mg2d.Souris;
 import mg2d.geometrie.*;
 import mg2d.geometrie.Point;
 import mg2d.geometrie.Rectangle;
-import old.Player;
+import engine.player.Player;
 
 import java.awt.*;
 

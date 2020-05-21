@@ -1,4 +1,6 @@
-package old;
+package engine.player;
+
+import old.TypePlayer;
 
 public class Player {
     public TypePlayer type;
