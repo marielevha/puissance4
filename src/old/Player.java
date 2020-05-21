@@ -3,6 +3,7 @@ package old;
 public class Player {
     public TypePlayer type;
     public int number, level, depth;
+    private String typePlayer;
 
     public Player() {
         depth = 8;
@@ -10,6 +11,7 @@ public class Player {
 
     public Player(int number) {
         this.number = number;
+        this.typePlayer = "Real";
         //If IA level <= 6
         //if (number == 2) {
         //}
@@ -20,12 +22,14 @@ public class Player {
     public void setNumber(int number) {
         this.number = number;
     }
+
     public TypePlayer getType(){
         return type;
     }
     public void setType(TypePlayer type){
         this.type = type;
     }
+
     public void setLevel(int level){
         this.level = level;
     }
@@ -40,7 +44,14 @@ public class Player {
         this.depth = depth;
     }
 
+    public String getTypePlayer() {
+        return typePlayer;
+    }
+    public void setTypePlayer(String typePlayer) {
+        this.typePlayer = typePlayer;
+    }
+
     public String toString(){
-        return ("Joueur "+ number +" ");
+        return ("Player "+ number +" ");
     }
 }

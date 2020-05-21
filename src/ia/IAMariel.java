@@ -14,6 +14,7 @@ public class IAMariel extends Player{
     private static int cmp = 0;
     private static int [][] matrix;
     private static int frontCount = 0, afterCount = 0;
+    private static boolean test = true;
 
     private static Plateau plateau;
     private int level;
@@ -38,6 +39,7 @@ public class IAMariel extends Player{
     public IAMariel(int number, int level) {
         super(number);
         this.level = level;
+        this.setTypePlayer("IA");
         if (level == 5) {
             //this.type = Type.MIN_MAX;
             //plateauCopy = new PlateauCopy(line,column);
@@ -79,7 +81,7 @@ public class IAMariel extends Player{
                 return levelSixMove(plateau);
             }*/
             default : {
-                this.setDepth(8);
+                this.setDepth(6);
                 return levelSixMove(plateau);
             }
         }
@@ -159,75 +161,50 @@ public class IAMariel extends Player{
         }
         else {
             buildMatrix();
-            /*if (plateau.getXY(3, 5).getContent() == 0) {
-                return 3;
-            }*/
-            //else {
-
-                //POSITION_DEFAULT = 0;
-            int test= 1;
             frontCount = 0; afterCount = 0;
                 for (int i = 0; i < line; i++) {
                     for (int j = 0; j < column; j++) {
-                        if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0)) {
-                            /*frontCount += 1;*/    /*afterCount += 1;*/
-                            if (plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), i).getContent()) {
-                                //frontCount += 1;
-
-                                frontCount += (j == 2 ? 2 : 0);
-                                frontCount += (j == 3 ? 3 : 0);
-
-                                afterCount += (j == 2 ? 3 : 0);
-                                afterCount += (j == 3 ? 2 : 0);
-
-                                if ((frontCount >= 2) && (afterCount >= 2)) {
-                                    System.err.println("COUP-" + (j - 1));
-                                    System.err.println("COUP-" + (j + 2));
-                                    return (j - 1);
-                                }
-
-                                /*if (j == 2) {
-                                    afterCount += 3;
-                                }
-                                if (j == 3) {
-                                    afterCount += 2;
-                                }*/
-
-                                /*afterCount += ((j + 1) == 2 ? 1 : 0);
-                                afterCount += ((j + 1) == 2 ? 1 : 0);*/
-
-                                System.err.println("ENTRY TEST-" + j);
-                                System.err.println("FRONT-" + frontCount);
-                                System.err.println("AFTER-" + afterCount);
-                                //System.err.println("ENTRY TEST-" + (j + 1));
+                        if (i <= (line - 2)) {
+                            //System.out.println("Second if");
+                            if ((plateau.getXY(j, i).getContent() == 0)
+                                    && (matrix[i][j] > max)
+                                    && (plateau.getXY(j, (i+1)).getContent() != 0))
+                            {
+                                max = matrix[i][j];
+                                col = j;
                             }
                         }
-                        if (test == 1) {
-                            if (i <= (line - 2)) {
-                                if ((plateau.getXY(j, i).getContent() == 0)
-                                        && (matrix[i][j] > max)
-                                        && (plateau.getXY(j, (i+1)).getContent() != 0))
-                                {
-                                    max = matrix[i][j];
-                                    col = j;
+                        else {
+                            if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0) && test) {
+                                if (plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), i).getContent()) {
+                                    frontCount += (j == 2 ? 2 : 0);
+                                    frontCount += (j == 3 ? 3 : 0);
+
+                                    afterCount += (j == 2 ? 3 : 0);
+                                    afterCount += (j == 3 ? 2 : 0);
+                                    if ((frontCount >= 2) && (afterCount >= 1)) {
+                                        test = false;
+                                        return (j - 1);
+                                    }
+                                    else if ((frontCount >= 1) && (afterCount >= 2)) {
+                                        test = false;
+                                        return (j + 2);
+                                    }
                                 }
                             }
-                            else {
-                                if (plateau.getXY(j, i).getContent() == 0 && matrix[i][j] > max) {
-                                    max = matrix[i][j];
-                                    col = j;
-                                }
+                            else if (plateau.getXY(j, i).getContent() == 0 && matrix[i][j] > max) {
+                                max = matrix[i][j];
+                                col = j;
                             }
                         }
                     }
                 }
-                System.out.println("MAX-" + max);
-                System.out.println("COL-" + col);
+                //System.out.println("MAX-" + max);
+                //System.out.println("COL-" + col);
                 return col;
             //}
         }
     }
-
 
     /**
      * Algorithm MinMax
@@ -240,26 +217,68 @@ public class IAMariel extends Player{
     public int levelFiveMove(Plateau plateau){
         //plat = new PlatCopy();
         if (winMove(plateau) != -1){
+            //System.err.println("WIN");
             return winMove(plateau);
         }
         else if (blockMove(plateau) != -1){
+            //System.err.println("BLOCK");
             return blockMove(plateau);
         }
         else {
-            player.setDepth(6);
+            this.setDepth(6);
             if (plateau.getXY(3, 5).getContent() == 0){
                 return 3;
             }
             else {
+                int col = 0;
                 try {
                     Thread.currentThread();
                     Thread.sleep(10);
+
+                    col = plat.MinMaxMove(this);
+                    for (int i = 0; i < 5; i++) {
+                        //System.out.println("entry");
+                        //col = plat.MinMaxMove(this);
+                        plateau.addPoint(col,this.getNumber());
+                        int lastLine = plateau.getLineAdd();
+
+                        int block = blockMove(plateau);
+                        if ((block != -1) && (plateau.availableColumn() >= 2)) {
+                            //System.out.println("bad move ");
+                            plateau.getXY(col, lastLine).setContent(0);
+                            col = plat.MinMaxMove(this);
+                            //System.err.println("MOVE : " + col);
+                        }
+                        else {
+                            //System.err.println("MOVE : " +plateau.toString());
+                            plateau.getXY(col, lastLine).setContent(0);
+                            return col;
+                        }
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return plat.MinMaxMove(this);
+
+                System.err.println(plateau.toString());
+                return col;
+                /*/if (plateau.addPoint(col,this.getNumber())) {
+                System.out.println("a " + plateau.toString());
+                plateau.addPoint(col,this.getNumber());
+                System.out.println("p " + plateau.toString());
+                int lastLine = plateau.getLineAdd();
+                //plateau.getXY(col, lastLine).setContent(0);
+                System.out.println("last " + lastLine);
+                 block = blockMove(plateau);
+                if (block != -1) {
+                    System.out.println("bad move ");
+                    plateau.getXY(col, lastLine).setContent(0);
+                    col = plat.MinMaxMove(this);
+                }
+                return col;*/
+                //}
                 //System.err.println("Plat : " + plat.MinMaxMove(player));
                 //return plateauCopy.MinMaxMove(player);
+                //return col;
             }
         }
     }
@@ -280,7 +299,7 @@ public class IAMariel extends Player{
             return blockMove(plateau);
         }
         else {
-            player.setDepth(8);
+            this.setDepth(8);
             if (plateau.getXY(3, 5).getContent() == 0){
                 return 3;
             }
@@ -292,7 +311,7 @@ public class IAMariel extends Player{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return plateauCopy.AlphaBetaMove(player);
+                return plateauCopy.AlphaBetaMove(this);
             }
         }
     }
@@ -342,12 +361,12 @@ public class IAMariel extends Player{
      * @param plateau
      * @return Integer column
      */
-    public int winMove(Plateau plateau){
+    public int winMove(Plateau plateau) {
         for (int i = 0; i < plateau.getLine(); i++){
             for (int j = 0; j < plateau.getColumn(); j++){
                 if (plateau.getXY(j, i).getContent() == 0){
                     //cmp++;
-                    plateau.addPoint(j, player.getNumber());
+                    plateau.addPoint(j, this.getNumber());
                     if (plateau.checkHorizontal(plateau.getLineAdd(), 4)
                             || plateau.checkVertical(j, 4)
                             || plateau.checkDiagonal(plateau.getLineAdd(), j, 4)
@@ -371,8 +390,8 @@ public class IAMariel extends Player{
      * @param plateau
      * @return Integer column
      */
-    public int blockMove(Plateau plateau){
-        int playerAdverse = (player.getNumber() == 1) ? 2 : 1;
+    public int blockMove(Plateau plateau) {
+        int playerAdverse = (this.getNumber() == 1) ? 2 : 1;
         for (int i = 0; i < plateau.getLine(); i++){
             for (int j = 0; j < plateau.getColumn(); j++){
                 if (plateau.getXY(j, i).getContent() == 0){
@@ -395,25 +414,6 @@ public class IAMariel extends Player{
         return -1;
     }
 
-    public int blockMove(int row, int col) {
-        if (plateau.getXY(col, row).getContent() == plateau.getXY((col + 1), row).getContent()) {
-            //frontCount += 1;
-
-            frontCount += (col == 2 ? 2 : 0);
-            frontCount += (col == 3 ? 3 : 0);
-
-            afterCount += (col == 2 ? 3 : 0);
-            afterCount += (col == 3 ? 2 : 0);
-
-            if ((frontCount >= 2) && (afterCount >= 2)) {
-                System.err.println("COUP-" + (col - 1));
-                System.err.println("COUP-" + (col + 2));
-                return (col - 1);
-            }
-        }
-        return -1;
-    }
-
     /**
      * AlignThree : vérifie si on peut blocker l'adversaire et retourne la colonne
      * @param plateau
@@ -423,7 +423,7 @@ public class IAMariel extends Player{
         for (int i = 0; i < plateau.getLine(); i++){
             for (int j = 0; j < plateau.getColumn(); j++){
                 if (plateau.getXY(j, i).getContent() == 0){
-                    plateau.addPoint(j, player.getNumber());
+                    plateau.addPoint(j, this.getNumber());
                     if (plateau.checkHorizontal(plateau.getLineAdd(), 3) || plateau.checkVertical(j, 3)
                             || plateau.checkDiagonal(plateau.getLineAdd(), j, 3)
                             || plateau.checkReverseDiagonal(plateau.getLineAdd(), j, 3)
@@ -555,4 +555,42 @@ public class IAMariel extends Player{
             plat.addPoint(column, player);
         }
     }
+
+    /*if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0)) {
+                            System.out.println("First if");
+                            //frontCount += 1;    afterCount += 1;
+                            if ((
+                                    plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), i).getContent())
+                                    && (i <= (line - 2))
+                                    && plateau.getXY(j, i).getContent() != this.getNumber())
+                            {
+                                if (((plateau.getXY((j - 1), (i+1)).getContent() != 0) && (plateau.getXY((j - 2), (i+1)).getContent() != 0) && (plateau.getXY((j + 2), (i+1)).getContent() != 0))
+                                || ((plateau.getXY((j - 1), (i+1)).getContent() != 0) && (plateau.getXY((j + 2), (i+1)).getContent() != 0) && (plateau.getXY((j + 3), (i+1)).getContent() != 0))) {
+                                    System.err.println("First if -> if");
+                                     frontCount += (j == 2 ? 2 : 0);
+                                    frontCount += (j == 3 ? 3 : 0);
+
+                                    afterCount += (j == 2 ? 3 : 0);
+                                    afterCount += (j == 3 ? 2 : 0);
+
+                                    if ((frontCount >= 2) && (afterCount >= 1)) {
+                                        System.err.println("COUP-" + (j - 1));
+                                        return (j - 1);
+                                    }
+                                    else if ((frontCount >= 1) && (afterCount >= 2)) {
+                                        System.err.println("COUP+" + (j + 2));
+                                        return (j + 2);
+                                    }
+                                }
+
+                                //frontCount += 1;
+
+
+
+                                //System.err.println("ENTRY TEST-" + j);
+                                //System.err.println("FRONT-" + frontCount);
+                                //System.err.println("AFTER-" + afterCount);
+                                //System.err.println("ENTRY TEST-" + (j + 1));
+                            }
+                        }*/
 }

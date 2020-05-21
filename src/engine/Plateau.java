@@ -115,7 +115,7 @@ public class Plateau implements IPlateau {
     /**
      * FullColumn : vérifie diponibilité de la colonne
      * @param col
-     * @return true si colonne pleine, sinon false
+     * @return boolean true si colonne pleine, sinon false
      */
     public boolean fullColumn(int col) {
         if (lines[0].getX(col).getContent() != 0) {
@@ -169,9 +169,9 @@ public class Plateau implements IPlateau {
                                     || checkDiagonal(i, numColumn, ALIGN) || checkReverseDiagonal(i, numColumn, ALIGN)) {
                                 return true;
                             }
-                            else {
+                            /*else {
                                 return full();
-                            }
+                            }*/
                             /*checkHorizontal(i);
                             checkVertical(numColumn);
                             checkDiagonal(numColumn);*/
@@ -187,10 +187,11 @@ public class Plateau implements IPlateau {
     }
 
     /**
-     * CheckHorizontal :
+     * CheckHorizontal : verifie s'il y'a un alignement horizontal
+     * retourne true s'il y a un gagnant sinon false
      * @param line
      * @param MAX_ALIGN
-     * @return bool
+     * @return boolean
      */
     public boolean checkHorizontal(int line, int MAX_ALIGN) {
         /*String str = this.tabLigne[line].toString();
@@ -201,10 +202,11 @@ public class Plateau implements IPlateau {
     }
 
     /**
-     * CheckVertical :
+     * CheckVertical : construis une verticale et verifie s'il y'a un alignement
+     * retourne true s'il y a un gagnant, sinon false
      * @param column
      * @param MAX_ALIGN
-     * @return bool
+     * @return boolean
      */
     public boolean checkVertical(int column, int MAX_ALIGN) {
         String str = "";
@@ -220,7 +222,8 @@ public class Plateau implements IPlateau {
     }
 
     /**
-     *  CheckDiagonal :
+     *  CheckDiagonal : construis une line à partir de la diagonale et verifie s'il y'a un alignement
+     *  retourne true s'il y a un gagnant sinon false
      * @param lgn
      * @param col
      * @param MAX_ALIGN
@@ -258,7 +261,8 @@ public class Plateau implements IPlateau {
     }
 
     /**
-     *   CheckReverseDiagonal :
+     *   CheckReverseDiagonal : construis une line à partir de la diagonale inverse et verifie s'il y'a un alignement
+     *   retourne true s'il y a un gagnant sinon false
      * @param lgn
      * @param col
      * @param MAX_ALIGN
@@ -293,7 +297,6 @@ public class Plateau implements IPlateau {
         }
         return false;
     }
-
 
     /*public boolean full() {
         for (int i = 0; i < row; i++) {
@@ -414,5 +417,15 @@ public class Plateau implements IPlateau {
      */
     public int getColumn() {
         return column;
+    }
+
+    public int availableColumn() {
+        int count = 0;
+        for (int i = 0; i < column; i++) {
+            if (!fullColumn(i)) {
+                count++;
+            }
+        }
+        return count;
     }
 }

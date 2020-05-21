@@ -89,7 +89,7 @@ public class MinMax {
     public int[] checkVictory(){
         int player = 2; int[] data = new int[2];
         data[0] = -1;
-        for (int i = 0; i < line; i++){
+        /*for (int i = 0; i < line; i++){
             for (int j = 0; j < column; j++){
                 if (plateau.getXY(j, i).getContent() == 0){
                     //cmp++;
@@ -108,7 +108,7 @@ public class MinMax {
                     plateau.getXY(j, plateau.getLineAdd()).setContent(0);
                 }
             }
-        }
+        }*/
         //buildMatrix();
         //Balayage horizontal _
         /*for (int ligne = 0; ligne <= 3; ligne++) {

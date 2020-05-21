@@ -121,7 +121,7 @@ public class PlatCopy {
         for (int i = 0; i < line; i++) {
             if (plateau.getXY(column, i).getContent() == VIDE) {
                 plateau.getXY(column, i).setContent(player);
-                System.out.println(i + "-" + column);
+                //System.out.println(i + "-" + column);
                 return i;
             }
         }
@@ -389,7 +389,7 @@ public class PlatCopy {
                 }
             }
             Collections.shuffle(choices);
-            System.out.println(choices);
+            //System.out.println(choices);
             col = choices.get(0);
             this.addPoint(col, player.getNumber());
             this.lastColumn = col;
