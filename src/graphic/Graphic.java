@@ -46,7 +46,6 @@ public class Graphic {
         } else {
             modeRealVSReal();
         }
-
     }
 
     /**
@@ -58,9 +57,10 @@ public class Graphic {
          * @number : 1
          */
         realPlayer = new Player(2);
+
         /**
-         * Initialisation de l'IA avec le numéro 2 et le niveau 5
-         * @level : 5
+         * Initialisation de l'IA avec le numéro 2 et le niveau passé en paramètre
+         * @level : levelIA
          * @number : 2
          */
         mariel = new IAMariel(1, levelIA);
@@ -70,7 +70,6 @@ public class Graphic {
          * @win : si win = true, partie terminée
          */
         while (!win) {
-            //System.err.println("win : " + win);
             if (souris.getClicGauche()) {
                 moveReal(realPlayer);
             }
@@ -79,7 +78,6 @@ public class Graphic {
             }
             fenetre.rafraichir();
         }
-        //winner(true);
         launchWindow(true);
     }
 
@@ -94,10 +92,10 @@ public class Graphic {
          * @number : 1
          */
         realPlayer = new Player(1);
+
         /**
-         * Initialisation de l'IA avec le numéro 2 et le niveau 5
-         * @level : 5
-         * @number : 2
+         * Initialisation du joueur réel avec le numéro 2
+         * @number : 1
          */
         realPlayer2 = new Player(2);
 
@@ -106,24 +104,19 @@ public class Graphic {
          * @win : si win = true, partie terminée
          */
         while (!win) {
-            //System.err.println("win : " + win);
             if (souris.getClicGauche()) {
                 if (tour == 1) {
                     moveReal(realPlayer);
                     tour = 2;
-                    System.err.println("One");
-                    fenetre.rafraichir();
                 }
                 else {
                     moveReal(realPlayer2);
                     tour = 1;
-                    System.err.println("Two");
-                    fenetre.rafraichir();
                 }
+                fenetre.rafraichir();
             }
             fenetre.rafraichir();
         }
-        //winner(true);
         launchWindow(true);
     }
 
@@ -167,48 +160,42 @@ public class Graphic {
         int column = 0;
         if (place > -701 && place <= 100 && (!plateau.fullColumn(0))) {
             win = plateau.addPoint(0, player);
-            // Ajout du pion dans le plateau utilisé par l'agorithme MinMax
-            //mariel.addPoint(0, player);
             column = 0;
             added = true;
         }
         else if (place > 100 && place <= 200 && (!plateau.fullColumn(1))) {
             win = plateau.addPoint(1, player);
-            //mariel.addPoint(1, player);
             column = 1;
             added = true;
         }
         else if (place > 200 && place <= 300 && (!plateau.fullColumn(2))) {
             win = plateau.addPoint(2, player);
-            //mariel.addPoint(2, player);
             column = 2;
             added = true;
         }
         else if (place > 300 && place <= 400 && (!plateau.fullColumn(3))) {
             win = plateau.addPoint(3, player);
-            //mariel.addPoint(3, player);
             column = 3;
             added = true;
         }
         else if (place > 400 && place <= 500 && (!plateau.fullColumn(4))) {
             win = plateau.addPoint(4, player);
-            //mariel.addPoint(4, player);
             column = 4;
             added = true;
         }
         else if (place > 500 && place <= 600 && (!plateau.fullColumn(5))) {
             win = plateau.addPoint(5, player);
-            //mariel.addPoint(5, player);
             column = 5;
             added = true;
         }
         else if (place > 600 && place <= 700 && (!plateau.fullColumn(6))) {
             win = plateau.addPoint(6, player);
-            //mariel.addPoint(6, player);
             column = 6;
             added = true;
         }
+
         if (GAME_MODE == 1) {
+            // Ajout du pion dans le plateau utilisé par l'agorithme MinMax
             mariel.addPoint(column, player);
         }
         fenetre.rafraichir();
@@ -220,7 +207,6 @@ public class Graphic {
      */
     private static void full() {
         if (plateau.full()) {
-            //winner(false);
             launchWindow(false);
         }
     }
@@ -231,19 +217,15 @@ public class Graphic {
     private static void reload(boolean choice) {
         if (choice) {
             closeWindow(fenetre);
-            //closeWindow(fenetre1);
             closeWindow(fenetre2);
 
             plateau.empty();
             player = 1; tour = 1;
             win = false;
             windowGameMode();
-            //widowLevel();
-            //init(plateau);
         }
         else {
             closeWindow(fenetre);
-            //closeWindow(fenetre1);
             closeWindow(fenetre2);
             System.exit(0);
         }
@@ -268,14 +250,12 @@ public class Graphic {
         }
         else {
             couleur = Couleur.BLEU;
-            //couleur1 = Couleur.ROUGE;
             title = "Puissance 4 no winning player";
             message = "No winning player !!!";
         }
         fenetre2 = new Fenetre(title, 300, 200);
         Souris souris = fenetre2.getSouris();
         Rectangle rectangle = new Rectangle(couleur, new Point(0,0), new Point(fenetre2.getWidth(), fenetre2.getHeight()), true);
-        //String message = "No winning player !!!";
         Texte text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,100));
         Texte text1 = new Texte("Play !", new Font("Calibri", Font.ITALIC, 24), new Point(100,25));
         Texte text2 = new Texte("Leave !", new Font("Calibri", Font.ITALIC, 24), new Point(200,25));
@@ -298,11 +278,11 @@ public class Graphic {
                 int x = souris.getPosition().getX();
                 int y = souris.getPosition().getY();
                 if ((x >= 50 && x <= 150) && (y >= 0 && y <= 50)) {
-                    System.out.println(x + "-" + y);
+                    //System.out.println(x + "-" + y);
                     reload(true);
                 }
                 else if ((x >= 150 && x <= 250) && (y >= 0 && y <= 50)) {
-                    System.err.println(x + "-" + y);
+                    //System.err.println(x + "-" + y);
                     reload(false);
                 }
                 //System.out.println("X : " + souris.getPosition().getX());
@@ -310,41 +290,6 @@ public class Graphic {
             }
             fenetre2.rafraichir();
         }
-        /*Rectangle rectangle, rectangle1, rectangle2;
-        Texte text, text1, text2;
-        player = (player % 2 == 1 ? 1 : 2);
-        Fenetre fenetre2 = new Fenetre("Puissance 4 Winner Player : " + player, 300, 200);
-        Souris souris = fenetre2.getSouris();
-        rectangle = new Rectangle((player%2==1 ? Couleur.JAUNE : Couleur.ROUGE), new Point(0,0), new Point(fenetre2.getWidth(), fenetre2.getHeight()), true);
-        String message = "Winner Player " + (player % 2 == 1 ? "YELLOW" : "RED");
-
-        
-        rectangle1 = new Rectangle(Couleur.VERT, new Point(50, 0), new Point(150, 50), true);
-        rectangle2 = new Rectangle(Couleur.ROUGE, new Point(150, 0), new Point(250, 50), true);
-        fenetre2.ajouter(rectangle);
-        fenetre2.ajouter(rectangle1);
-        fenetre2.ajouter(rectangle2);
-
-        text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,100));
-        text1 = new Texte("Play !", new Font("Calibri", Font.ITALIC, 24), new Point(100,25));
-        text2 = new Texte("Leave !", new Font("Calibri", Font.ITALIC, 24), new Point(200,25));
-        fenetre2.ajouter(text);
-        fenetre2.ajouter(text1);
-        fenetre2.ajouter(text2);
-
-        fenetre2.rafraichir();
-        int x, y; boolean test = true;
-        boolean s = souris.getClicGauche();
-        System.out.println("x : " );
-        /*while(true) {
-            if (souris.getClicGauche()) {
-                x = souris.getPosition().getX();
-                y = souris.getPosition().getY();
-                System.out.println("x : " + x);
-                System.out.println("y : " + y);
-                System.err.println(souris.getPosition().getX() + "-" + souris.getPosition().getY());
-            }
-        }*/
     }
 
     /**
@@ -377,15 +322,13 @@ public class Graphic {
         fenetre3 = new Fenetre("CHOOSE LEVEL IA", 300, 200);
         Souris souris = fenetre3.getSouris();
         Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre3.getWidth(), fenetre3.getHeight()), true);
-        //String message = "No winning player !!!";
-        //Texte text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,100));
         Texte text1 = new Texte("Level 5 !", new Font("Calibri", Font.ITALIC, 18), new Point(125,20));
         Texte text2 = new Texte("Level 4", new Font("Calibri", Font.ITALIC, 18), new Point(125,55));
         Texte text3 = new Texte("Level 3", new Font("Calibri", Font.ITALIC, 18), new Point(125,95));
         Texte text4 = new Texte("Level 2", new Font("Calibri", Font.ITALIC, 18), new Point(125,135));
         Texte text5 = new Texte("Level 1", new Font("Calibri", Font.ITALIC, 18), new Point(125,175));
 
-        int size = 50, space = 5, height = 35;
+        int size = 50, height = 35;
         Rectangle rectangle1 = new Rectangle(Couleur.VERT, new Point(size, 5), new Point(200, height), true);
         Rectangle rectangle2 = new Rectangle(Couleur.VERT, new Point(size, 40), new Point(200, 75), true);
         Rectangle rectangle3 = new Rectangle(Couleur.VERT, new Point(size, 80), new Point(200, 115), true);
@@ -400,7 +343,6 @@ public class Graphic {
         fenetre3.ajouter(rectangle4);
         fenetre3.ajouter(rectangle5);
 
-        //fenetre3.ajouter(text);
         fenetre3.ajouter(text1);
         fenetre3.ajouter(text2);
         fenetre3.ajouter(text3);
@@ -417,37 +359,31 @@ public class Graphic {
                     System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
-                    //closeWindow(fenetre3);
                     break;
-                    //reload(true);
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 120 && y <= 155)) {
                     levelIA = 2;
                     System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
-                    //reload(false);
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 80 && y <= 115)) {
                     levelIA = 3;
                     System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
-                    //reload(false);
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 40 && y <= 75)) {
                     levelIA = 4;
                     System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
-                    //reload(false);
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 5 && y <= 35)) {
                     levelIA = 5;
                     System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
-                    //reload(false);
                 }
                 //System.out.println("X : " + souris.getPosition().getX());
                 //System.out.println("Y : " + souris.getPosition().getY());
@@ -465,12 +401,10 @@ public class Graphic {
         fenetre4 = new Fenetre("CHOOSE GAME MODE", 300, 200);
         Souris souris = fenetre4.getSouris();
         Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre4.getWidth(), fenetre4.getHeight()), true);
-        //String message = "No winning player !!!";
-        //Texte text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,100));
         Texte text3 = new Texte("Real VS Real", new Font("Calibri", Font.ITALIC, 18), new Point(125,95));
         Texte text4 = new Texte("Real VS IA", new Font("Calibri", Font.ITALIC, 18), new Point(125,135));
 
-        int size = 50, space = 5, height = 35;
+        int size = 50;
         Rectangle rectangle3 = new Rectangle(Couleur.VERT, new Point(size, 80), new Point(200, 115), true);
         Rectangle rectangle4 = new Rectangle(Couleur.VERT, new Point(size, 120), new Point(200, 155), true);
 
@@ -479,7 +413,6 @@ public class Graphic {
         fenetre4.ajouter(rectangle3);
         fenetre4.ajouter(rectangle4);
 
-        //fenetre3.ajouter(text);
         fenetre4.ajouter(text3);
         fenetre4.ajouter(text4);
 
@@ -493,15 +426,12 @@ public class Graphic {
                     System.err.println(GAME_MODE);
                     closeWindow(fenetre4);
                     widowLevel();
-                    //init(plateau);
-                    //reload(false);
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 80 && y <= 115)) {
                     GAME_MODE = 2;
                     System.err.println(GAME_MODE);
                     closeWindow(fenetre4);
                     init(plateau);
-                    //reload(false);
                 }
                 //System.out.println("X : " + souris.getPosition().getX());
                 //System.out.println("Y : " + souris.getPosition().getY());
@@ -518,23 +448,13 @@ public class Graphic {
             Thread.sleep(0);
             if (player == mariel.getNumber() && tour == 2) {
                 System.err.println("Treatment IA");
-                //IAMariel mariel = new IAMariel(3);
                 int place = mariel.bestMove(plateau.toStringIA(), mariel.getNumber());// + 1;
-                System.err.println("Place : "  + place);
-                //int place = (new Random().nextInt(7) + 1) * 100;
-                //System.err.println(place);
                 // Si plateau n'est pas pleine jouer le coup
                 if (!plateau.full()) {
-                            /*if (!addPoint(plateau, player, (place * 100)) && added) {
-                                player = realPlayer.getNumber();    tour = 1;
-                            }*/
-                    //place--;
                     if (!plateau.fullColumn(place)) {
                         win = plateau.addPoint(place, player);
                         added = true;
                         initPlateau(fenetre, plateau);
-                        //fenetre.rafraichir();
-                        //System.out.println("Winner : " + win);
                         if (!win) {
                             full();
                             // Ajoute un pion dans la copy du plateau utilisé par l'agorithme MinMax
@@ -544,19 +464,11 @@ public class Graphic {
                     }
                 }
                 else {
-                    //System.out.println("Winner False");
-                    //winner(false);
                     launchWindow(false);
                 }
-                        /*IAMariel mariel = new IAMariel(4);
-                        place = mariel.bestMove(plateau.toStringIA()) + 1;
-                        System.err.println(place);
-                        if (!addPoint(plateau, player, (place * 100))){
-                            player = 1;
-                        }*/
                 //initPlateau(fenetre, plateau);
                 initPlateau(fenetre, plateau);
-                //System.err.println(plateau.toString());
+                System.err.println(plateau.toString());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -571,7 +483,6 @@ public class Graphic {
         player = realPlayer.getNumber();
         int place = souris.getPosition().getX();
         if (player == realPlayer.getNumber() && (tour == 1 || tour == 2)) {
-            //mariel.addPoint();
             // Si plateau n'est pas plein jouer le coup
             if (!plateau.full()) {
                 if (!addPoint(plateau, player, place) && added) {
@@ -584,22 +495,11 @@ public class Graphic {
                 }
             }
             else {
-                //System.out.println("Winner False");
-                //winner(false);
                 launchWindow(false);
             }
         }
-        //System.out.println("Treatment Player");
-                /*else {
-
-                    place = mariel.bestMove(plateau.toStringIA()) + 1;
-                    System.err.println(place);
-                    if (!addPoint(plateau, player, (place * 100))){
-                        player = 1;
-                    }
-                }*/
         initPlateau(fenetre, plateau);
-        //System.out.println(plateau.toString());
+        System.out.println(plateau.toString());
     }
 
     private static void test() {
