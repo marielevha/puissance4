@@ -1,5 +1,7 @@
 package engine;
 
+import ia.IAMariel;
+
 public class Line {
     private Case [] cases;
     private static boolean state_string = true;
@@ -100,22 +102,25 @@ public class Line {
      * @return true s'il y a alignement
      */
     public boolean win(int align) {
-        switch (align) {
-            case 3 : {
-                for (int i = (cases.length - 1); i >= 2; i--){
-                    if (cases[i].getContent() != 0){
-                        if (cases[i].getContent() == cases[i - 1].getContent()
-                                && cases[i].getContent() == cases[i - 2].getContent()
-                        ){
-                            if ((cases[i - 1].getContent()
-                                    + cases[i].getContent() + cases[i - 2].getContent()) == 6){
-                                return true;
-                            }
+        if (align == 3) {
+            for (int i = (cases.length - 1); i >= 2; i--) {
+                if (cases[i].getContent() != 0) {
+                    if (cases[i].getContent() == cases[i - 1].getContent()
+                            && cases[i].getContent() == cases[i - 2].getContent()
+                    ){
+                        int test = (IAMariel.getSsdlv() == 1 ? 3 : 6);
+                        //System.out.println(test);
+                        if ((cases[i - 1].getContent()
+                                + cases[i].getContent() + cases[i - 2].getContent()) == test){
+                            //System.err.println(cases[i].getContent() + cases[i - 1].getContent() + cases[i - 2].getContent());
+                            return true;
                         }
                     }
                 }
             }
-            case 4 : for (int i = (cases.length - 1); i >= 3; i--){
+        }
+        else {
+            for (int i = (cases.length - 1); i >= 3; i--){
                 if (cases[i].getContent() != 0){
                     if (cases[i].getContent() == cases[i - 1].getContent()
                             && cases[i].getContent() == cases[i - 2].getContent()
@@ -125,8 +130,8 @@ public class Line {
                     }
                 }
             }
-            default : return false;
         }
+        return false;
     }
 
     /**

@@ -56,14 +56,14 @@ public class Graphic {
          * Initialisation du joueur réel avec le numéro 1
          * @number : 1
          */
-        realPlayer = new Player(2);
+        realPlayer = new Player(1);
 
         /**
          * Initialisation de l'IA avec le numéro 2 et le niveau passé en paramètre
          * @level : levelIA
          * @number : 2
          */
-        mariel = new IAMariel(1, levelIA);
+        mariel = new IAMariel(2, levelIA);
 
         /**
          * Boucle infinie de la partie jusqu'à ce qu'il aiet un gagnant
@@ -85,8 +85,6 @@ public class Graphic {
      * ModeRealVSReal : lancement du mode de jeu Real VS Real (un jeoueur réel contre un autre)
      */
     public static void modeRealVSReal() {
-        GAME_MODE = 2;
-
         /**
          * Initialisation du joueur réel avec le numéro 1
          * @number : 1
@@ -356,32 +354,32 @@ public class Graphic {
                 int y = souris.getPosition().getY();
                 if ((x >= 35 && x <= 200) && (y >= 160 && y <= 195)) {
                     levelIA = 1;
-                    System.err.println(levelIA);
+                    //System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
                     break;
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 120 && y <= 155)) {
                     levelIA = 2;
-                    System.err.println(levelIA);
+                    //System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 80 && y <= 115)) {
                     levelIA = 3;
-                    System.err.println(levelIA);
+                    //System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 40 && y <= 75)) {
                     levelIA = 4;
-                    System.err.println(levelIA);
+                    //System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 5 && y <= 35)) {
                     levelIA = 5;
-                    System.err.println(levelIA);
+                    //System.err.println(levelIA);
                     closeWindow(fenetre3);
                     init(plateau);
                 }
@@ -423,13 +421,13 @@ public class Graphic {
                 int y = souris.getPosition().getY();
                 if ((x >= 35 && x <= 200) && (y >= 120 && y <= 155)) {
                     GAME_MODE = 1;
-                    System.err.println(GAME_MODE);
+                    //System.err.println(GAME_MODE);
                     closeWindow(fenetre4);
                     widowLevel();
                 }
                 else if ((x >= 35 && x <= 200) && (y >= 80 && y <= 115)) {
                     GAME_MODE = 2;
-                    System.err.println(GAME_MODE);
+                    //System.err.println(GAME_MODE);
                     closeWindow(fenetre4);
                     init(plateau);
                 }
@@ -468,7 +466,7 @@ public class Graphic {
                 }
                 //initPlateau(fenetre, plateau);
                 initPlateau(fenetre, plateau);
-                System.err.println(plateau.toString());
+                //System.err.println(plateau.toString());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -499,7 +497,7 @@ public class Graphic {
             }
         }
         initPlateau(fenetre, plateau);
-        System.out.println(plateau.toString());
+        //System.out.println(plateau.toString());
     }
 
     private static void test() {

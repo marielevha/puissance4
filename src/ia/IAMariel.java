@@ -17,27 +17,20 @@ public class IAMariel extends Player{
     private static boolean test = true;
 
     private static Plateau plateau;
+    private static int ssdlv;
     private int level;
     private static PlateauCopy plateauCopy;
     private static MinMax plat;
     private static Player player;// = new Player(2);
 
     public IAMariel() {
-        super(2);
-        String string = "6x7-" +
-                "0000000" +
-                "0000000" +
-                "0000000" +
-                "0000000" +
-                "0000000" +
-                "0000000";
-        plateau = new Plateau(string, 1);
     }
 
     public IAMariel(int number, int level) {
         super(number);
         this.level = level;
         this.setTypePlayer("IA");
+        ssdlv = number;
         if (level == 5) {
             plat = new MinMax(line, column);
         }
@@ -52,7 +45,8 @@ public class IAMariel extends Player{
      * @return
      */
     public int bestMove(String string, int player){
-        IAMariel.player = new Player(player);
+        //IAMariel.player = new Player(player);
+        this.setNumber(player);
         plateau = new Plateau(string, 0);
         switch (level) {
             case 1 : {
@@ -142,11 +136,11 @@ public class IAMariel extends Player{
     public int levelFourMove(){
         int max = 0; int col = -1;
         if (winMove(plateau) != -1){
-            System.out.println("WIN-" + winMove(plateau));
+            //System.out.println("WIN-" + winMove(plateau));
             return winMove(plateau);
         }
         else if (blockMove(plateau) != -1){
-            System.out.println("BLOCK-" + blockMove(plateau));
+            //System.out.println("BLOCK-" + blockMove(plateau));
             return blockMove(plateau);
         }
         else {
@@ -162,20 +156,58 @@ public class IAMariel extends Player{
                             max = matrix[i][j];
                             col = j;
                         }
+                        else if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0)) {
+                            /*System.err.println("ENTRY");
+                            System.err.println(plateau.toString());
+                            System.err.println("ENTRY");*/
+                            if (plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), i).getContent()) {
+                                int left = countEmptyCase(i, j, "left");
+                                int right = countEmptyCase(i, j, "right");
+                                //System.out.println(left + "line : " + i);
+                                //System.out.println(right + "line : " + i);
+
+                                int downLeft = countFilledCase(i, j, "left");
+                                int downRight = countFilledCase(i, j, "right");
+
+                                if ((left >= 2) && (right >= 1)) {
+                                    System.err.println(downLeft + "||" + i + "-" + j);
+                                    System.err.println(downRight + "||" + i + "-" + j);
+                                    if ((downLeft >= 2) && (downRight >= 1)) {
+                                        if (plateau.getXY(j, i).getContent() != this.getNumber()) {
+                                            return (j - 1);
+                                        }
+                                        else {
+
+                                        }
+                                    }
+                                    else if ((downLeft >= 1) && (downRight >= 2)) {
+                                        return (j - 1);
+                                    }
+                                }
+                                else if ((left >= 1) && (right >= 2)) {
+                                    System.out.println(downLeft + "||" + i + "-" + j);
+                                    System.out.println(downRight + "||" + i + "-" + j);
+                                }
+                            }
+                        }
                     }
                     else {
                         if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0) && test) {
                             if (plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), i).getContent()) {
-                                frontCount += (j == 2 ? 2 : 0);
+                                /*frontCount += (j == 2 ? 2 : 0);
                                 frontCount += (j == 3 ? 3 : 0);
 
                                 afterCount += (j == 2 ? 3 : 0);
-                                afterCount += (j == 3 ? 2 : 0);
-                                if ((frontCount >= 2) && (afterCount >= 1)) {
+                                afterCount += (j == 3 ? 2 : 0);*/
+                                int left = countEmptyCase(i, j, "left");
+                                int right = countEmptyCase(i, j, "right");
+                                //System.out.println(right);
+                                //System.out.println(left);
+                                if ((left >= 2) && (right >= 1)) {
                                     test = false;
                                     return (j - 1);
                                 }
-                                else if ((frontCount >= 1) && (afterCount >= 2)) {
+                                else if ((left >= 1) && (right >= 2)) {
                                     test = false;
                                     return (j + 2);
                                 }
@@ -283,27 +315,7 @@ public class IAMariel extends Player{
      * @return Integer column
      */
     public int winMove(Plateau plateau) {
-        for (int i = 0; i < plateau.getLine(); i++){
-            for (int j = 0; j < plateau.getColumn(); j++){
-                if (plateau.getXY(j, i).getContent() == 0){
-                    //cmp++;
-                    plateau.addPoint(j, this.getNumber());
-                    if (plateau.checkHorizontal(plateau.getLineAdd(), 4)
-                            || plateau.checkVertical(j, 4)
-                            || plateau.checkDiagonal(plateau.getLineAdd(), j, 4)
-                            || plateau.checkReverseDiagonal(plateau.getLineAdd(), j, 4)
-                    ){
-                        //cmp--;
-                        //System.err.println("WINNER");
-                        plateau.getXY(j, plateau.getLineAdd()).setContent(0);
-                        return j;
-                    }
-                    //cmp--;
-                    plateau.getXY(j, plateau.getLineAdd()).setContent(0);
-                }
-            }
-        }
-        return -1;
+        return alignment(plateau,this.getNumber(), 4);
     }
 
     /**
@@ -313,26 +325,7 @@ public class IAMariel extends Player{
      */
     public int blockMove(Plateau plateau) {
         int playerAdverse = (this.getNumber() == 1) ? 2 : 1;
-        for (int i = 0; i < plateau.getLine(); i++){
-            for (int j = 0; j < plateau.getColumn(); j++){
-                if (plateau.getXY(j, i).getContent() == 0){
-                    //cmp++;
-                    plateau.addPoint(j, playerAdverse);
-                    if (plateau.checkHorizontal(plateau.getLineAdd(),4) || plateau.checkVertical(j,4)
-                            || plateau.checkDiagonal(plateau.getLineAdd(), j, 4)
-                            || plateau.checkReverseDiagonal(plateau.getLineAdd(), j, 4)
-                    ){
-                        //System.err.println("BLOCK");
-                        plateau.getXY(j, plateau.getLineAdd()).setContent(0);
-                        //cmp--;
-                        return j;
-                    }
-                    //cmp--;
-                    plateau.getXY(j, plateau.getLineAdd()).setContent(0);
-                }
-            }
-        }
-        return -1;
+        return alignment(plateau, playerAdverse, 4);
     }
 
     /**
@@ -340,23 +333,8 @@ public class IAMariel extends Player{
      * @param plateau
      * @return Integer column
      */
-    public int alignThree(Plateau plateau){
-        for (int i = 0; i < plateau.getLine(); i++){
-            for (int j = 0; j < plateau.getColumn(); j++){
-                if (plateau.getXY(j, i).getContent() == 0){
-                    plateau.addPoint(j, this.getNumber());
-                    if (plateau.checkHorizontal(plateau.getLineAdd(), 3) || plateau.checkVertical(j, 3)
-                            || plateau.checkDiagonal(plateau.getLineAdd(), j, 3)
-                            || plateau.checkReverseDiagonal(plateau.getLineAdd(), j, 3)
-                    ){
-                        plateau.getXY(j, plateau.getLineAdd()).setContent(0);
-                        return j;
-                    }
-                    plateau.getXY(j, plateau.getLineAdd()).setContent(0);
-                }
-            }
-        }
-        return -1;
+    public int alignThree(Plateau plateau) {
+        return alignment(plateau, this.getNumber(), 3);
     }
 
     /**
@@ -430,4 +408,91 @@ public class IAMariel extends Player{
         }
     }
 
+    /**
+     * Alignment : renvoi la colonne s'il y a un nombre d'alignement passé en paramètre
+     * @param plateau
+     * @param player
+     * @param alignment
+     * @return Integer
+     */
+    private int alignment(Plateau plateau, int player, int alignment) {
+        for (int i = 0; i < plateau.getLine(); i++){
+            for (int j = 0; j < plateau.getColumn(); j++){
+                if (plateau.getXY(j, i).getContent() == 0){
+                    //cmp++;
+                    plateau.addPoint(j, player);
+                    if (plateau.checkHorizontal(plateau.getLineAdd(),alignment) || plateau.checkVertical(j,alignment)
+                            || plateau.checkDiagonal(plateau.getLineAdd(), j, alignment)
+                            || plateau.checkReverseDiagonal(plateau.getLineAdd(), j, alignment)
+                    ){
+                        //System.err.println("BLOCK");
+                        plateau.getXY(j, plateau.getLineAdd()).setContent(0);
+                        //cmp--;
+                        return j;
+                    }
+                    //cmp--;
+                    plateau.getXY(j, plateau.getLineAdd()).setContent(0);
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * CountEmptyCase : comppte le nombre de cases disponibles
+     * à gauche et droite d'une position
+     * @param line
+     * @param col
+     * @param position
+     * @return
+     */
+    private int countEmptyCase(int line, int col, String position) {
+        int count = 0;
+        if (position.equals("left")) {
+            for (int i = (col - 1); i >= 0; i--) {
+                if (plateau.getXY(i, line).getContent() == 0) {
+                    count++;
+                }
+            }
+        }
+        else if (position.equals("right")) {
+            for (int i = (col + 1); i < plateau.getColumn(); i++) {
+                if (plateau.getXY(i, line).getContent() == 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * CountFilledCase : comppte le nombre de cases occupées
+     * à gauche et droite d'une position
+     * @param line
+     * @param col
+     * @param position
+     * @return
+     */
+    private int countFilledCase(int line, int col, String position) {
+        int count = 0;
+        if (position.equals("left")) {
+            for (int i = (col - 1); i >= 0; i--) {
+                if (plateau.getXY(i, (line + 1)).getContent() != 0) {
+                    count++;
+                }
+            }
+        }
+        else if (position.equals("right")) {
+            for (int i = (col + 2); i < plateau.getColumn(); i++) {
+                if (plateau.getXY(i, (line + 1)).getContent() != 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int getSsdlv() {
+        return ssdlv;
+    }
 }
