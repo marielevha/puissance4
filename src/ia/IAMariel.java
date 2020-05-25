@@ -36,7 +36,7 @@ public class IAMariel extends Player{
         }
         else if (level == 6) {
             plateauCopy = new PlateauCopy(line,column);
-            plateauCopy.display();
+            //plateauCopy.display();
         }
     }
 
@@ -311,7 +311,7 @@ public class IAMariel extends Player{
             return blockMove(plateau);
         }
         else {
-            this.setDepth(8);
+            this.setDepth(6);
             if (plateau.getXY(3, 5).getContent() == 0){
                 return 3;
             }

@@ -71,7 +71,7 @@ public class Graphic {
          * @level : levelIA
          * @number : 2
          */
-        mariel = new IAMariel(2, 6);
+        mariel = new IAMariel(2, levelIA);
 
         /**
          * Boucle infinie de la partie jusqu'à ce qu'il aiet un gagnant
