@@ -389,7 +389,7 @@ public class MinMax {
                 }
             }
             Collections.shuffle(choices);
-            //System.out.println(choices);
+            System.out.println(choices);
             col = choices.get(0);
             this.addPoint(col, player.getNumber());
             this.lastColumn = col;

@@ -19,9 +19,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/puissance4_jar/puissance4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/puissance4_jar/puissance4.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/PlateauCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/PlateauCopy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +153,7 @@
       <workItem from="1589857161680" duration="32000" />
       <workItem from="1589860293561" duration="125000" />
       <workItem from="1589940712010" duration="47176000" />
-      <workItem from="1590266853111" duration="15676000" />
+      <workItem from="1590266853111" duration="28140000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589417099375</created>
@@ -209,22 +210,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590033916724" />
-    <state width="1322" height="494" key="GridCell.Tab.0.bottom" timestamp="1590282819935">
+    <state width="1322" height="317" key="GridCell.Tab.0.bottom" timestamp="1590367853931">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="494" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590282819935" />
-    <state width="1322" height="494" key="GridCell.Tab.0.center" timestamp="1590282819935">
+    <state width="1322" height="317" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590367853931" />
+    <state width="1322" height="317" key="GridCell.Tab.0.center" timestamp="1590367853931">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="494" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590282819935" />
-    <state width="1322" height="494" key="GridCell.Tab.0.left" timestamp="1590282819935">
+    <state width="1322" height="317" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590367853931" />
+    <state width="1322" height="317" key="GridCell.Tab.0.left" timestamp="1590367853931">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="494" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590282819935" />
-    <state width="1322" height="494" key="GridCell.Tab.0.right" timestamp="1590282819935">
+    <state width="1322" height="317" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590367853931" />
+    <state width="1322" height="317" key="GridCell.Tab.0.right" timestamp="1590367853931">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="494" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590282819935" />
+    <state width="1322" height="317" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590367853931" />
     <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1590279277461">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

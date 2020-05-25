@@ -36,6 +36,7 @@ public class IAMariel extends Player{
         }
         else if (level == 6) {
             plateauCopy = new PlateauCopy(line,column);
+            plateauCopy.display();
         }
     }
 
@@ -144,19 +145,13 @@ public class IAMariel extends Player{
             return blockMove(plateau);
         }
         else {
+            test = true;
             buildMatrix();
             frontCount = 0; afterCount = 0;
             for (int i = 0; i < line; i++) {
                 for (int j = 0; j < column; j++) {
                     if (i <= (line - 2)) {
-                        if ((plateau.getXY(j, i).getContent() == 0)
-                                && (matrix[i][j] > max)
-                                && (plateau.getXY(j, (i+1)).getContent() != 0))
-                        {
-                            max = matrix[i][j];
-                            col = j;
-                        }
-                        else if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0)) {
+                        if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0)) {
                             /*System.err.println("ENTRY");
                             System.err.println(plateau.toString());
                             System.err.println("ENTRY");*/
@@ -166,29 +161,50 @@ public class IAMariel extends Player{
                                 //System.out.println(left + "line : " + i);
                                 //System.out.println(right + "line : " + i);
 
-                                int downLeft = countFilledCase(i, j, "left");
-                                int downRight = countFilledCase(i, j, "right");
+                                int downLeft = 0;// = countFilledCase(i, j, "left");
+                                int downRight = 0;// = countFilledCase(i, j, "right");
 
                                 if ((left >= 2) && (right >= 1)) {
-                                    System.err.println(downLeft + "||" + i + "-" + j);
-                                    System.err.println(downRight + "||" + i + "-" + j);
+                                    downLeft = countFilledCase(i, j, "left");
+                                    downRight = countFilledCase(i, j, "right");
+                                    //System.err.println("Others lines + (left >= 2) && (right >= 1) ");
+                                    //System.err.println(downLeft + "||" + i + "-" + j);
+                                    //System.err.println(downRight + "||" + i + "-" + j);
                                     if ((downLeft >= 2) && (downRight >= 1)) {
-                                        if (plateau.getXY(j, i).getContent() != this.getNumber()) {
-                                            return (j - 1);
-                                        }
-                                        else {
-
-                                        }
+                                        return (j - 1);
                                     }
                                     else if ((downLeft >= 1) && (downRight >= 2)) {
-                                        return (j - 1);
+                                        return (j + 2);
                                     }
                                 }
                                 else if ((left >= 1) && (right >= 2)) {
-                                    System.out.println(downLeft + "||" + i + "-" + j);
-                                    System.out.println(downRight + "||" + i + "-" + j);
+                                    downLeft = countFilledCase(i, j, "left");
+                                    downRight = countFilledCase(i, j, "right");
+                                    //System.out.println("Others lines + (left >= 1) && (right >= 2) " + i + "-" + j);
+                                    //System.out.println(downLeft + "||" + i + "-" + j);
+                                    //System.out.println(downRight + "||" + i + "-" + j);
+                                    if ((downLeft >= 2) && (downRight >= 1)) {
+                                        if ((plateau.getXY((j-1), i).getContent() == 0)) {
+                                            System.out.println("Others lines + (downLeft >= 2) && (downRight >= 1) " + i + "-" + j);
+                                            return (j - 1);
+                                        }
+                                    }
+                                    else if ((downLeft >= 1) && (downRight >= 2)) {
+                                        if ((plateau.getXY((j-1), i).getContent() == 0)) {
+                                            System.err.println("Others lines + (downLeft >= 1) && (downRight >= 2) " + i + "-" + j);
+                                            return (j + 2);
+                                        }
+                                    }
                                 }
                             }
+                        }
+                        else if ((plateau.getXY(j, i).getContent() == 0)
+                                && (matrix[i][j] > max)
+                                && (plateau.getXY(j, (i+1)).getContent() != 0))
+                        {
+                            max = matrix[i][j];
+                            col = j;
+                            //System.err.println("Others lines + max ");
                         }
                     }
                     else {
@@ -204,10 +220,12 @@ public class IAMariel extends Player{
                                 //System.out.println(right);
                                 //System.out.println(left);
                                 if ((left >= 2) && (right >= 1)) {
+                                    //System.err.println("Last line + (left >= 2) && (right >= 1) ");
                                     test = false;
                                     return (j - 1);
                                 }
                                 else if ((left >= 1) && (right >= 2)) {
+                                    //System.err.println("Last line + (left >= 1) && (right >= 2) ");
                                     test = false;
                                     return (j + 2);
                                 }
@@ -216,6 +234,7 @@ public class IAMariel extends Player{
                         else if (plateau.getXY(j, i).getContent() == 0 && matrix[i][j] > max) {
                             max = matrix[i][j];
                             col = j;
+                            //System.err.println("Last line + max ");
                         }
                     }
                 }
@@ -402,9 +421,11 @@ public class IAMariel extends Player{
      * @param player
      */
     public void addPoint(int column, int player){
-        if (level > 4){
-            //plateauCopy.addPoint(column, player);
+        if (level == 5) {
             plat.addPoint(column, player);
+        }
+        else if (level == 6) {
+            plateauCopy.addPoint(column, player);
         }
     }
 

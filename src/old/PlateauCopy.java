@@ -107,7 +107,7 @@ public class PlateauCopy {
         for(int ligne = 0; ligne < line; ligne++) {
             if(p4[ligne][column] == VIDE){
                 p4[ligne][column] = player;
-                //System.out.println(ligne + "-" + column);
+                System.out.println(ligne + "-" + column);
                 return ligne;
             }
         }

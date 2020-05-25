@@ -25,6 +25,14 @@ public class Graphic {
      * @param args
      */
     public static void main(String[] args) {
+        String string = "6x7-" +
+                "1211222" +
+                "2122112" +
+                "1211222" +
+                "1012111" +
+                "2011020" +
+                "0020000";
+        //plateau = new Plateau(string, 0);
         plateau = new Plateau(6, 7);
         windowGameMode();
     }
@@ -63,7 +71,7 @@ public class Graphic {
          * @level : levelIA
          * @number : 2
          */
-        mariel = new IAMariel(2, levelIA);
+        mariel = new IAMariel(2, 6);
 
         /**
          * Boucle infinie de la partie jusqu'à ce qu'il aiet un gagnant
@@ -445,8 +453,9 @@ public class Graphic {
         try {
             Thread.sleep(0);
             if (player == mariel.getNumber() && tour == 2) {
-                System.err.println("Treatment IA");
+                //System.err.println("Treatment IA");
                 int place = mariel.bestMove(plateau.toStringIA(), mariel.getNumber());// + 1;
+                System.err.println("Treatment IA -> " + place);
                 // Si plateau n'est pas pleine jouer le coup
                 if (!plateau.full()) {
                     if (!plateau.fullColumn(place)) {
