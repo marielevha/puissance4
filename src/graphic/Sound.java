@@ -7,9 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Sound {
-    public static void playMusic(boolean state) {
+    public static void playMusic() {
         int count = 0;
-        while (!state) {
+        while (true) {
             try {
                 String path = "music/Super" + count +".mp3";
                 FileInputStream file = new FileInputStream(path);

@@ -31,7 +31,7 @@ public class Graphic {
             @Override
             public void run() {
                 super.run();
-                Sound.playMusic(win);
+                Sound.playMusic();
             }
         };
         sound.start();
@@ -40,21 +40,12 @@ public class Graphic {
             @Override
             public void run() {
                 super.run();
-                /*String string = "6x7-" +
-                        "1211222" +
-                        "2122112" +
-                        "1211222" +
-                        "1012111" +
-                        "2011020" +
-                        "0020000";
-                //plateau = new Plateau(string, 0);*/
                 plateau = new Plateau(6, 7);
                 System.out.println(plateau.toString());
                 windowGameMode();
             }
         };
         game.start();
-
     }
 
     /**
@@ -363,7 +354,6 @@ public class Graphic {
         Rectangle rectangle3 = new Rectangle(Couleur.VERT, new Point(size, 80), new Point(200, 115), true);
         Rectangle rectangle4 = new Rectangle(Couleur.VERT, new Point(size, 120), new Point(200, 155), true);
         Rectangle rectangle5 = new Rectangle(Couleur.VERT, new Point(size, 160), new Point(200, 195), true);
-
 
         fenetre3.ajouter(rectangle);
         fenetre3.ajouter(rectangle1);
