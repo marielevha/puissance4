@@ -26,16 +26,35 @@ public class Graphic {
      * @param args
      */
     public static void main(String[] args) {
-        String string = "6x7-" +
-                "1211222" +
-                "2122112" +
-                "1211222" +
-                "1012111" +
-                "2011020" +
-                "0020000";
-        //plateau = new Plateau(string, 0);
-        plateau = new Plateau(6, 7);
-        windowGameMode();
+        Thread game, sound;
+        sound = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                Sound.playMusic(win);
+            }
+        };
+        sound.start();
+
+        game = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                /*String string = "6x7-" +
+                        "1211222" +
+                        "2122112" +
+                        "1211222" +
+                        "1012111" +
+                        "2011020" +
+                        "0020000";
+                //plateau = new Plateau(string, 0);*/
+                plateau = new Plateau(6, 7);
+                System.out.println(plateau.toString());
+                windowGameMode();
+            }
+        };
+        game.start();
+
     }
 
     /**
