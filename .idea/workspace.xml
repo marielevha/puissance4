@@ -15,7 +15,19 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="update" />
+    <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/puissance4_jar/puissance4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/puissance4_jar/puissance4.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/graphic/Graphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/IAMariel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puissance4/ia/minmax/MinMax.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puissance4/ia/minmax/MinMax.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~WRL0005.tmp" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,6 +158,9 @@
       <workItem from="1589860293561" duration="125000" />
       <workItem from="1589940712010" duration="47176000" />
       <workItem from="1590266853111" duration="30459000" />
+      <workItem from="1590425186065" duration="254000" />
+      <workItem from="1590435684565" duration="447000" />
+      <workItem from="1590436456107" duration="10184000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589417099375</created>
@@ -202,22 +217,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590033916724" />
-    <state width="1322" height="217" key="GridCell.Tab.0.bottom" timestamp="1590372872003">
+    <state width="1322" height="503" key="GridCell.Tab.0.bottom" timestamp="1590440689017">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="217" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590372872003" />
-    <state width="1322" height="217" key="GridCell.Tab.0.center" timestamp="1590372872003">
+    <state width="1322" height="503" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590440689017" />
+    <state width="1322" height="503" key="GridCell.Tab.0.center" timestamp="1590440689017">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="217" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590372872003" />
-    <state width="1322" height="217" key="GridCell.Tab.0.left" timestamp="1590372872003">
+    <state width="1322" height="503" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590440689017" />
+    <state width="1322" height="503" key="GridCell.Tab.0.left" timestamp="1590440689017">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="217" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590372872003" />
-    <state width="1322" height="217" key="GridCell.Tab.0.right" timestamp="1590372872003">
+    <state width="1322" height="503" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590440689017" />
+    <state width="1322" height="503" key="GridCell.Tab.0.right" timestamp="1590440689017">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="217" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590372872003" />
+    <state width="1322" height="503" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590440689017" />
     <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1590372872003">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

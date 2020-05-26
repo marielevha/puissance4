@@ -32,6 +32,7 @@ public class IAMariel extends Player{
         this.setTypePlayer("IA");
         ssdlv = number;
         if (level == 5) {
+            this.setDepth(6);
             plat = new MinMax(line, column);
         }
         else if (level == 6) {
@@ -256,41 +257,24 @@ public class IAMariel extends Player{
     public int levelFiveMove(Plateau plateau){
         if (winMove(plateau) != -1){
             return winMove(plateau);
+            /*plat.addPoint(col, this.getNumber());
+            return col;*/
         }
         else if (blockMove(plateau) != -1){
-            return blockMove(plateau);
+            int col = blockMove(plateau);
+            plat.addPoint(col, this.getNumber());
+            return col;
         }
         else {
             this.setDepth(6);
             if (plateau.getXY(3, 5).getContent() == 0){
+                plat.addPoint(3, this.getNumber());
                 return 3;
             }
             else {
-                int col = 0;
-                try {
-                    Thread.currentThread();
-                    Thread.sleep(10);
-
-                    col = plat.MinMaxMove(this);
-                    for (int i = 0; i < 5; i++) {
-                        plateau.addPoint(col,this.getNumber());
-                        int lastLine = plateau.getLineAdd();
-
-                        int block = blockMove(plateau);
-                        if ((block != -1) && (plateau.availableColumn() >= 2)) {
-                            plateau.getXY(col, lastLine).setContent(0);
-                            col = plat.MinMaxMove(this);
-                        }
-                        else {
-                            plateau.getXY(col, lastLine).setContent(0);
-                            return col;
-                        }
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                plat.MinMaxMove(this);
                 //System.err.println(plateau.toString());
-                return col;
+                return plat.getLastColumn();
             }
         }
     }
@@ -421,12 +405,13 @@ public class IAMariel extends Player{
      * @param player
      */
     public void addPoint(int column, int player){
-        if (level == 5) {
+        if ((level == 5) && (player != this.getNumber())) {
             plat.addPoint(column, player);
         }
-        else if (level == 6) {
+        //plat.display();
+        /*else if (level == 6) {
             plateauCopy.addPoint(column, player);
-        }
+        }*/
     }
 
     /**

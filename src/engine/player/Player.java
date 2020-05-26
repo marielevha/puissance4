@@ -13,7 +13,7 @@ public class Player {
 
     public Player(int number) {
         this.number = number;
-        this.typePlayer = "Real";
+        this.typePlayer = "Real Player !";
         //If IA level <= 6
         //if (number == 2) {
         //}

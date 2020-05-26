@@ -19,13 +19,13 @@ public class MinMax {
 
     /**
      * Constructor
-     * @param l : nombre de ligne
-     * @param c : nombre de colonne
+     * @param line : nombre de ligne
+     * @param column : nombre de colonne
      */
-    public MinMax(int l, int c) {
-        plateau = new Plateau(l, c);
-        line = plateau.getLine();
-        column = plateau.getColumn();
+    public MinMax(int line, int column) {
+        plateau = new Plateau(line, column);
+        this.line = plateau.getLine();
+        this.column = plateau.getColumn();
         //System.err.println(plateau.toString());
     }
     public void display(){
@@ -47,7 +47,7 @@ public class MinMax {
         for (int colonne = 0; colonne < column; colonne++){
             System.out.print("-");
         }
-        plateau.toString();
+        //plateau.toString();
         System.out.println();
     }
 
@@ -355,8 +355,8 @@ public class MinMax {
      * @param player
      * @return column
      */
-    public synchronized int MinMaxMove(Player player) {
-        if(totalPoints()>1) {
+    public synchronized void MinMaxMove(Player player) {
+        if(totalPoints() > 1) {
             this.nbrNoeuds = 0;
             int max = -10000000;
             ArrayList<Integer> choices = new ArrayList<Integer>();
@@ -364,21 +364,21 @@ public class MinMax {
             int depth = player.getDepth();
 
             ///ArrayList<PanelMiniPlateau> miniPlateaux = new ArrayList<PanelMiniPlateau>();
-            for(int i = 0; i< column; i++){
+            for(int i = 0; i< column; i++) {
                 if(fullColumn(i)) {
                     this.addPoint(i, player.getNumber());
                     int evaluation = this.min((depth - 1), player.getNumber(), player);
 
-                    //System.out.println("Joueur " + player + " a joue " + i + " eval = " + evaluation);
+                    System.out.println("Joueur " + player + " a joue " + i + " eval = " + evaluation);
                     ///miniPlateaux.add(new PanelMiniPlateau(p4,i,evaluation));
 
-                    if(evaluation > max){
+                    if(evaluation > max) {
                         max = evaluation;
                         choices.clear();
                         choices.add(i);
                         //System.err.println("Evaluation > max :" + max);
                     }
-                    else if(evaluation == max){
+                    else if(evaluation == max) {
                         choices.add(i);
                         //System.err.println("Evaluation == max :" + max);
                     }
@@ -393,47 +393,42 @@ public class MinMax {
             col = choices.get(0);
             this.addPoint(col, player.getNumber());
             this.lastColumn = col;
-            //System.err.println(this.lastColumn +" Nombre de noeud parcourus : "+nbrNoeuds);
+            //System.err.println("Nombre de noeud parcourus : "+nbrNoeuds);
             System.out.println();
             //display();
-            return this.lastColumn;
+            //return this.lastColumn;
         }
         else {
             this.addPoint((column / 2), player.getNumber());
             this.lastColumn = (column / 2);
-            this.nbrNoeuds=0;
+            this.nbrNoeuds = 0;
             //display();
-            return this.lastColumn;
+            //return this.lastColumn;
         }
     }
 
     /**
      * Partie Max de MinMax
-     * @param profondeur
+     * @param depth : profondeur
      * @param player
      * @param currentPlayer
      * @return max
      */
-    private int max(int profondeur, int player, Player currentPlayer){
+    private int max(int depth, int player, Player currentPlayer) {
         this.nbrNoeuds++;
-        /*if(player == 1){
-            player = 2;
-        }else{
-            player = 1;
-        }*/
+
         player = (player == 1) ? 2 : 1;
-        if(profondeur == 0 || full() || this.search4() != -1){
-            int eval = this.evaluation(currentPlayer, profondeur);
-            return eval;
+        if(depth == 0 || full() || this.search4() != -1) {
+            return this.evaluation(currentPlayer, depth);
         }
         int max = -10000000;
-        for(int i = 0; i < column; i++){
+        for(int i = 0; i < column; i++) {
             if(fullColumn(i)){
                 this.addPoint(i, player);
-                int evaluation = this.min((profondeur - 1), player, currentPlayer);
+                int evaluation = this.min((depth - 1), player, currentPlayer);
                 //System.out.println("Joueur "+player+" a joue "+i+" eval = "+evaluation);
 
-                if(evaluation > max){
+                if(evaluation > max) {
                     max = evaluation;
                 }
                 this.cancelMove(i);
@@ -444,31 +439,26 @@ public class MinMax {
 
     /**
      * Partie Min de MinMax
-     * @param profondeur
+     * @param depth : profondeur
      * @param player
      * @param currentPlayer
      * @return min
      */
-    private int min(int profondeur, int player, Player currentPlayer) {
+    private int min(int depth, int player, Player currentPlayer) {
         this.nbrNoeuds++;
-        /*if(player == 1){
-            player = 2;
-        }else{
-            player = 1;
-        }*/
+
         player = (player == 1) ? 2 : 1;
-        if(profondeur ==0 || full() || this.search4() != -1){
-            int eval = this.evaluation(currentPlayer,profondeur);
-            return eval;
+        if(depth ==0 || full() || this.search4() != -1) {
+            return this.evaluation(currentPlayer, depth);
         }
         int min = 10000000;
         for(int i = 0; i < column; i++){
             if(fullColumn(i)){
                 this.addPoint(i, player);
-                int evaluation = this.max((profondeur - 1), player, currentPlayer);
+                int evaluation = this.max((depth - 1), player, currentPlayer);
                 //System.out.println("Joueur "+player+" a joue "+i+" eval = "+evaluation);
 
-                if(evaluation < min){
+                if(evaluation < min) {
                     min = evaluation;
                 }
                 this.cancelMove(i);
@@ -477,5 +467,7 @@ public class MinMax {
         }
         return min;
     }
-
+    public int getLastColumn() {
+        return lastColumn;
+    }
 }

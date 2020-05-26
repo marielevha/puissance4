@@ -109,7 +109,7 @@ public class Main {
         IATermine = false;
         if(joueur2.getType()==TypePlayer.MinMax){
             //plateau.jouerMinMax(joueur2);
-            choice.add(plateau.MinMaxMove(joueur2));
+            //choice.add(plateau.MinMaxMove(joueur2));
         }else{
             plateau.MinMaxMove(joueur2);
         }

@@ -14,6 +14,7 @@ import java.awt.*;
 public class Graphic {
     private static int player, tour = 1, levelIA = 5, GAME_MODE = 1;
     private static boolean win = false, added = false;
+    private static String typePlayer;
     private static Plateau plateau;
     private static Fenetre  fenetre, fenetre1, fenetre2, fenetre3, fenetre4;
     private static Souris souris;
@@ -244,12 +245,13 @@ public class Graphic {
      * @param winner
      */
     private static void gameOver(boolean winner) {
-        String title, message; Couleur couleur, couleur1 = Couleur.ROUGE;
+        String title, message, message1 = null; Couleur couleur, couleur1 = Couleur.ROUGE;
         if (winner) {
             player = (player % 2 == 1 ? 1 : 2);
             couleur = (player%2==1 ? Couleur.JAUNE : Couleur.ROUGE);
             title = "Puissance 4 Winner Player : " + player;
-            message = "Winner Player " + (player % 2 == 1 ? "YELLOW" : "RED");
+            message = "Winner Player " + (player % 2 == 1 ? "YELLOW" : "RED ");
+            message1 = "(" + typePlayer + ")";
             if (couleur == Couleur.ROUGE) {
                 couleur1 = Couleur.BLEU;
             }
@@ -262,7 +264,8 @@ public class Graphic {
         fenetre2 = new Fenetre(title, 300, 200);
         Souris souris = fenetre2.getSouris();
         Rectangle rectangle = new Rectangle(couleur, new Point(0,0), new Point(fenetre2.getWidth(), fenetre2.getHeight()), true);
-        Texte text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,100));
+        Texte text = new Texte(message, new Font("Calibri", Font.BOLD, 24), new Point(150,150));
+        Texte text0 = new Texte(message1, new Font("Calibri", Font.BOLD, 24), new Point(150,100));
         Texte text1 = new Texte("Play !", new Font("Calibri", Font.ITALIC, 24), new Point(100,25));
         Texte text2 = new Texte("Leave !", new Font("Calibri", Font.ITALIC, 24), new Point(200,25));
 
@@ -275,6 +278,7 @@ public class Graphic {
         fenetre2.ajouter(rectangle2);
 
         fenetre2.ajouter(text);
+        fenetre2.ajouter(text0);
         fenetre2.ajouter(text1);
         fenetre2.ajouter(text2);
 
@@ -328,7 +332,7 @@ public class Graphic {
         fenetre3 = new Fenetre("CHOOSE LEVEL IA", 300, 200);
         Souris souris = fenetre3.getSouris();
         Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre3.getWidth(), fenetre3.getHeight()), true);
-        Texte text1 = new Texte("Level 5 !", new Font("Calibri", Font.ITALIC, 18), new Point(125,20));
+        Texte text1 = new Texte("Level 5 : MinMax", new Font("Calibri", Font.ITALIC, 18), new Point(125,20));
         Texte text2 = new Texte("Level 4", new Font("Calibri", Font.ITALIC, 18), new Point(125,55));
         Texte text3 = new Texte("Level 3", new Font("Calibri", Font.ITALIC, 18), new Point(125,95));
         Texte text4 = new Texte("Level 2", new Font("Calibri", Font.ITALIC, 18), new Point(125,135));
@@ -453,6 +457,7 @@ public class Graphic {
         try {
             Thread.sleep(0);
             if (player == mariel.getNumber() && tour == 2) {
+                typePlayer = mariel.getTypePlayer();
                 //System.err.println("Treatment IA");
                 int place = mariel.bestMove(plateau.toStringIA(), mariel.getNumber());// + 1;
                 System.err.println("Treatment IA -> " + place);
@@ -490,6 +495,7 @@ public class Graphic {
         player = realPlayer.getNumber();
         int place = souris.getPosition().getX();
         if (player == realPlayer.getNumber() && (tour == 1 || tour == 2)) {
+            typePlayer = realPlayer.getTypePlayer();
             // Si plateau n'est pas plein jouer le coup
             if (!plateau.full()) {
                 if (!addPoint(plateau, player, place) && added) {
