@@ -2,7 +2,6 @@ package ia;
 
 import engine.Plateau;
 import ia.minmax.MinMax;
-import old.PlateauCopy;
 import engine.player.Player;
 
 import java.util.Random;
@@ -18,9 +17,7 @@ public class IAMariel extends Player{
     private static Plateau plateau;
     private static int ssdlv;
     private int level;
-    private static PlateauCopy plateauCopy;
-    private static MinMax plat;
-    private static Player player;// = new Player(2);
+    private static MinMax plateauMinMax;
 
     public IAMariel() {}
 
@@ -29,13 +26,9 @@ public class IAMariel extends Player{
         this.level = level;
         this.setTypePlayer("IA");
         ssdlv = number;
-        if (level == 5) {
+        if (level >= 5) {
             this.setDepth(6);
-            plat = new MinMax(line, column);
-        }
-        else if (level == 6) {
-            plateauCopy = new PlateauCopy(line,column);
-            //plateauCopy.display();
+            plateauMinMax = new MinMax(line, column);
         }
     }
 
@@ -62,12 +55,12 @@ public class IAMariel extends Player{
                 return levelFourMove();
             }
             case 5 : {
-                this.setDepth(8);
+                this.setDepth(6);
                 return levelFiveMove(plateau);
             }
             default : {
                 this.setDepth(8);
-                return levelSixMove(plateau);
+                return levelFiveMove(plateau);
             }
         }
     }
@@ -285,7 +278,7 @@ public class IAMariel extends Player{
         }
         else if (blockMove(plateau) != -1){
             int col = blockMove(plateau);
-            plat.addPoint(col, this.getNumber());
+            plateauMinMax.addPoint(col, this.getNumber());
             return col;
         }
         else {
@@ -298,42 +291,9 @@ public class IAMariel extends Player{
                 //System.err.println(plateau.toString());
                 return plat.getLastColumn();
             }*/
-            plat.MinMaxMove(this);
+            plateauMinMax.MinMaxMove(this);
             //System.err.println(plateau.toString());
-            return plat.getLastColumn();
-        }
-    }
-
-    /**
-     * Algorithm AlphaBeta
-     * Niveau 5, l'IA joue la position gagnante
-     * Sinon l'IA joue la position blockannte si possible
-     * Sinon l'IA joue selon l'evelution de l'algorithme AlphaBeta
-     * @param plateau
-     * @return column
-     */
-    public int levelSixMove(Plateau plateau){
-        if (winMove(plateau) != -1){
-            return winMove(plateau);
-        }
-        else if (blockMove(plateau) != -1){
-            return blockMove(plateau);
-        }
-        else {
-            this.setDepth(6);
-            if (plateau.getXY(3, 5).getContent() == 0){
-                return 3;
-            }
-            else {
-                try {
-                    Thread.currentThread();
-                    Thread.sleep(10);
-                    //player.setType(TypePlayer.AlphaBeta);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return plateauCopy.AlphaBetaMove(this);
-            }
+            return plateauMinMax.getLastColumn();
         }
     }
 
@@ -399,30 +359,6 @@ public class IAMariel extends Player{
         }
     }
 
-    public void max(Plateau plateau){
-        int max = 0;
-        //POSITION_DEFAULT = 0;
-        for (int i = 0; i < line; i++) {
-            for (int j = 0; j < column; j++) {
-                if (plateau.getXY(j, i).getContent() == 0 && matrix[i][j] > max) {
-                    max = matrix[i][j];
-                    POSITION_DEFAULT = j;
-                }
-            }
-        }
-        System.err.println("DEFAULT : " + POSITION_DEFAULT);
-    }
-    public int[][] buildMatrix1(){
-        //line = data[0]; column = data[1];
-        matrix = new int[line][column];
-        for (int i = line - 1; i >= 0; i--){
-            for (int j = 0; j < column; j++){
-                matrix[i][j] = plateau.getXY(j, i).getContent();
-            }
-        }
-        return matrix;
-    }
-
     /**
      * AddPoint : ajoute un pion à la copie du plateau utilisé
      * par l'algorithme MinMax
@@ -431,7 +367,7 @@ public class IAMariel extends Player{
      */
     public void addPoint(int column, int player){
         if ((level == 5) && (player != this.getNumber())) {
-            plat.addPoint(column, player);
+            plateauMinMax.addPoint(column, player);
         }
         //plat.display();
         /*else if (level == 6) {
@@ -526,4 +462,29 @@ public class IAMariel extends Player{
     public static int getSsdlv() {
         return ssdlv;
     }
+
+    public void max(Plateau plateau){
+        int max = 0;
+        //POSITION_DEFAULT = 0;
+        for (int i = 0; i < line; i++) {
+            for (int j = 0; j < column; j++) {
+                if (plateau.getXY(j, i).getContent() == 0 && matrix[i][j] > max) {
+                    max = matrix[i][j];
+                    POSITION_DEFAULT = j;
+                }
+            }
+        }
+        System.err.println("DEFAULT : " + POSITION_DEFAULT);
+    }
+    public int[][] buildMatrix1(){
+        //line = data[0]; column = data[1];
+        matrix = new int[line][column];
+        for (int i = line - 1; i >= 0; i--){
+            for (int j = 0; j < column; j++){
+                matrix[i][j] = plateau.getXY(j, i).getContent();
+            }
+        }
+        return matrix;
+    }
+
 }

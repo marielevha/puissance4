@@ -34,7 +34,7 @@ public class Graphic {
                 Sound.playMusic();
             }
         };
-        //sound.start();
+        sound.start();
 
         game = new Thread() {
             @Override
