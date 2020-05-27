@@ -7,14 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MinMax {
-    public final static int VIDE = 0;
-    public final static int JOUEUR1 = 1;
-    public final static int JOUEUR2 = 2;
+    public final static int EMPTY = 0;
     private int lastColumn;
-    private int line;
-    private int column;
-    private int[][] p4;
-    private int nbrNoeuds;
+    private final int line;
+    private final int column;
+    private int numberNode;
     private static Plateau plateau;
 
     /**
@@ -59,7 +56,7 @@ public class MinMax {
         int count = 0;
         for (int i = 0; i < line; i++) {
             for (int j = 0; j < column; j++) {
-                if (plateau.getXY(j, i).getContent() != VIDE) {
+                if (plateau.getXY(j, i).getContent() != EMPTY) {
                     count++;
                 }
             }
@@ -80,11 +77,6 @@ public class MinMax {
         }
         else if (winner == -1) {
             int playerAdverse = (player.getNumber() == 1) ? 2 : 1;
-            /*if(player.getNumber() == 1){
-                playerAdverse = 0;
-            }else{
-                playerAdverse = 1;
-            }*/
             return (search(player.getNumber(), 3) * 100)
                     - (search(playerAdverse,3) * 100)
                     + (search(player.getNumber(),2) * 50)
@@ -101,14 +93,10 @@ public class MinMax {
      */
     private void cancelMove(int column) {
         int row = line -1;
-        /*while(p4[row][column] == VIDE){
+        while (plateau.getXY(column, row).getContent() == EMPTY) {
             row--;
         }
-        this.p4[row][column] = VIDE;*/
-        while (plateau.getXY(column, row).getContent() == VIDE) {
-            row--;
-        }
-        plateau.getXY(column, row).setContent(VIDE);
+        plateau.getXY(column, row).setContent(EMPTY);
     }
 
     /**
@@ -119,7 +107,7 @@ public class MinMax {
      */
     public int addPoint(int column, int player) {
         for (int i = 0; i < line; i++) {
-            if (plateau.getXY(column, i).getContent() == VIDE) {
+            if (plateau.getXY(column, i).getContent() == EMPTY) {
                 plateau.getXY(column, i).setContent(player);
                 //System.out.println(i + "-" + column);
                 return i;
@@ -135,13 +123,8 @@ public class MinMax {
      */
     public boolean fullColumn(int column) {
         boolean available = false;
-        /*for(int ligne = 0; ligne < line; ligne++) {
-            if(p4[ligne][colonne] == VIDE){
-                available = true;
-            }
-        }*/
         for (int i = 0; i < line; i++) {
-            if (plateau.getXY(column, i).getContent() == VIDE) {
+            if (plateau.getXY(column, i).getContent() == EMPTY) {
                 available = true;
             }
         }
@@ -154,16 +137,9 @@ public class MinMax {
      * @return boolean
      */
     public boolean full() {
-        /*for(int j = 0; j< line; j++){
-            for (int i = 0; i< column; i++){
-                if(this.p4[j][i] ==VIDE){
-                    return false;
-                }
-            }
-        }*/
         for (int i = 0; i < line; i++) {
             for (int j = 0; j < column; j++) {
-                if (plateau.getXY(j, i).getContent() == VIDE) {
+                if (plateau.getXY(j, i).getContent() == EMPTY) {
                     return false;
                 }
             }
@@ -231,23 +207,23 @@ public class MinMax {
 
         while ((curCol >= 0) && (curCol < column) && (curRow >= 0) && (curRow < line)) {
             if (plateau.getXY(curCol, curRow).getContent() != player) {
-                if ((countPieces == number) && (previous == VIDE || plateau.getXY(curCol, curRow).getContent() == VIDE)){
+                if ((countPieces == number) && (previous == EMPTY || plateau.getXY(curCol, curRow).getContent() == EMPTY)){
                     countAligns++;
                 }
-                // Si la couleur change, on r�initialise le compteur
+                // Si le joueur change, on réinitialise le compteur
                 countPieces = 0;
                 previous = plateau.getXY(curCol, curRow).getContent();
             } else {
-                // Sinon on l'incr�mente
+                // Sinon on l'incrémente
                 countPieces++;
             }
 
-            // On passe � l'it�ration suivante
+            // On passe à l'itération suivante
             curCol += dCol;
             curRow += dLine;
         }
 
-        // Aucun alignement n'a �t� trouv�
+        // Aucun alignement n'a été trouvé
         return countAligns;
     }
 
@@ -258,7 +234,7 @@ public class MinMax {
      */
     public int search4() {
         int winner = -1;
-        // V�rifie les horizontales ( - )
+        // Vérifie les horizontales ( - )
         for (int ligne = 0; ligne < line; ligne++) {
             winner = search4Alignment(0, ligne, 1, 0);
             if (winner != -1) {
@@ -266,7 +242,7 @@ public class MinMax {
             }
         }
 
-        // V�rifie les verticales ( � )
+        // Vérifie les verticales ( | )
         for (int col = 0; col < column; col++) {
             winner = search4Alignment(col, 0, 0, 1);
             if (winner != -1) {
@@ -274,37 +250,37 @@ public class MinMax {
             }
         }
 
-        // Diagonales (cherche depuis la ligne du bas)
+        // Vérifie les diagonales (depuis les lignes su bas)
         for (int col = 0; col < column; col++) {
 
-            // Premi�re diagonale ( / )
+            // Première diagonale ( / )
             winner = search4Alignment(col, 0, 1, 1);
             if (winner != -1) {
                 return winner ;
             }
             winner = search4Alignment(col, 0, -1, 1);
-            // Deuxi�me diagonale ( \ )
+            // Deuxième diagonale ( \ )
             if (winner != -1) {
                 return winner ;
             }
         }
 
-        // Diagonales (cherche depuis les colonnes gauches et droites)
+        // Vérifie les diagonales (depuis les colonnes gauches et droites)
         for (int ligne = 0; ligne < line; ligne++) {
-            // Premi�re diagonale ( / )
+            // Première diagonale ( / )
             winner = search4Alignment(0, ligne, 1, 1);
 
             if (winner != -1) {
                 return winner ;
             }
-            // Deuxi�me diagonale ( \ )
+            // Deuxième diagonale ( \ )
             winner = search4Alignment(column - 1, ligne, -1, 1);
             if (winner != -1) {
                 return winner ;
             }
         }
 
-        // On n'a rien trouv�
+        // Rien n'a été trouvé
         return -1;
     }
 
@@ -318,7 +294,7 @@ public class MinMax {
      * @return Integer player
      */
     private int search4Alignment(int oCol, int oLine, int dCol, int dLine) {
-        int player = VIDE;
+        int player = EMPTY;
         int count = 0;
 
         int curCol = oCol;
@@ -327,26 +303,25 @@ public class MinMax {
         while ((curCol >= 0) && (curCol < column) && (curRow >= 0) && (curRow < line)) {
             //plateau.getXY(curCol, curRow);
             if (plateau.getXY(curCol, curRow).getContent() != player) {
-                // Si la player change, on r�initialise le count
+                // Si le joueur change, on réinitialise le compteur
                 player = plateau.getXY(curCol, curRow).getContent();
-                //p4[curRow][curCol];
                 count = 1;
             } else {
-                // Sinon on l'incr�mente
+                // Sinon on l'incrémente
                 count++;
             }
 
             // On sort lorsque le count atteint 4
-            if ((player != VIDE) && (count == 4)) {
+            if ((player != EMPTY) && (count == 4)) {
                 return player;
             }
 
-            // On passe � l'it�ration suivante
+            // On passe à l'itération suivante
             curCol += dCol;
             curRow += dLine;
         }
 
-        // Aucun alignement n'a �t� trouv�
+        // Aucun alignement n'a été trouvé
         return -1;
     }
 
@@ -357,7 +332,7 @@ public class MinMax {
      */
     public synchronized void MinMaxMove(Player player) {
         if(totalPoints() > 1) {
-            this.nbrNoeuds = 0;
+            this.numberNode = 0;
             int max = -10000000;
             ArrayList<Integer> choices = new ArrayList<Integer>();
             int col = -1;
@@ -370,7 +345,6 @@ public class MinMax {
                     int evaluation = this.min((depth - 1), player.getNumber(), player);
 
                     System.out.println("Joueur " + player + " a joue " + i + " eval = " + evaluation);
-                    ///miniPlateaux.add(new PanelMiniPlateau(p4,i,evaluation));
 
                     if(evaluation > max) {
                         max = evaluation;
@@ -401,7 +375,7 @@ public class MinMax {
         else {
             this.addPoint((column / 2), player.getNumber());
             this.lastColumn = (column / 2);
-            this.nbrNoeuds = 0;
+            this.numberNode = 0;
             //display();
             //return this.lastColumn;
         }
@@ -415,7 +389,7 @@ public class MinMax {
      * @return max
      */
     private int max(int depth, int player, Player currentPlayer) {
-        this.nbrNoeuds++;
+        this.numberNode++;
 
         player = (player == 1) ? 2 : 1;
         if(depth == 0 || full() || this.search4() != -1) {
@@ -445,7 +419,7 @@ public class MinMax {
      * @return min
      */
     private int min(int depth, int player, Player currentPlayer) {
-        this.nbrNoeuds++;
+        this.numberNode++;
 
         player = (player == 1) ? 2 : 1;
         if(depth ==0 || full() || this.search4() != -1) {

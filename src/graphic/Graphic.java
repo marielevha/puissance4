@@ -34,18 +34,54 @@ public class Graphic {
                 Sound.playMusic();
             }
         };
-        sound.start();
+        //sound.start();
 
         game = new Thread() {
             @Override
             public void run() {
                 super.run();
-                plateau = new Plateau(6, 7);
-                System.out.println(plateau.toString());
+                String string = "6x7-" +
+                        "1211121" +
+                        "2122122" +
+                        "1211221" +
+                        "2122112" +
+                        "0211221" +
+                        "0112212";
+                string = "6x7-" +
+                        "0211200" +
+                        "0102200" +
+                        "0001100" +
+                        "0000200" +
+                        "0000200" +
+                        "0000000";
+                plateau = new Plateau(string, 0);
+                //plateau = new Plateau(6, 7);
+                //System.out.println(plateau.toString());
                 windowGameMode();
+                //System.out.println("Left : " + countEmptyCase(4, 5, "left"));
+                //System.out.println("Right : " + countEmptyCase(4, 5, "right"));
             }
         };
         game.start();
+    }
+
+    public static int countEmptyCase(int line, int col, String position) {
+        int count = 0;
+        if (position.equals("left") && (plateau.getXY((col - 1), line).getContent() == 0)) {
+            for (int i = (col - 1); i >= 0; i--) {
+                if (plateau.getXY(i, line).getContent() == 0) {
+                    count++;
+                }
+            }
+        }
+        else if (position.equals("right") && (plateau.getXY((col + 2), line).getContent() == 0)) {
+            for (int i = (col + 1); i < plateau.getColumn(); i++) {
+                if (plateau.getXY(i, line).getContent() == 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     /**
@@ -270,6 +306,7 @@ public class Graphic {
             couleur = Couleur.BLEU;
             title = "Puissance 4 no winning player";
             message = "No winning player !!!";
+            message1 = "(Equality !!!)";
         }
         fenetre2 = new Fenetre(title, 300, 200);
         Souris souris = fenetre2.getSouris();

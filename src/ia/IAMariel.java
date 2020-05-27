@@ -9,11 +9,10 @@ import java.util.Random;
 
 public class IAMariel extends Player{
     private static Random random = new Random();
-    private static int MAX_ALIGN = 4, line = 6, column = 7;
-    private static int VALUE_GAME_RED = 0, VALUE_GAME_YELLOW = 0, POSITION_WIN = -1, POSITION_BLOCK = -1, POSITION_DEFAULT = -1;
-    private static int cmp = 0;
+    private static int line = 6;
+    private static int column = 7;
+    private static int POSITION_DEFAULT = -1;
     private static int [][] matrix;
-    private static int frontCount = 0, afterCount = 0;
     private static boolean test = true;
 
     private static Plateau plateau;
@@ -64,11 +63,11 @@ public class IAMariel extends Player{
                 return levelFourMove();
             }
             case 5 : {
-                this.setDepth(6);
+                this.setDepth(8);
                 return levelFiveMove(plateau);
             }
             default : {
-                this.setDepth(6);
+                this.setDepth(8);
                 return levelSixMove(plateau);
             }
         }
@@ -148,19 +147,44 @@ public class IAMariel extends Player{
         else {
             test = true;
             buildMatrix();
-            frontCount = 0; afterCount = 0;
             for (int i = 0; i < line; i++) {
                 for (int j = 0; j < column; j++) {
                     if (i <= (line - 2)) {
-                        if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0)) {
+                        if ((j >= 2) && (j <= (column - 3)) && (i >= 1)) {
+                            if ((plateau.getXY(j, i).getContent() != 0)
+                                    && (plateau.getXY(j, i).getContent()) == (plateau.getXY(j, (i + 1)).getContent())
+                                    && (plateau.getXY(j, (i - 1)).getContent() == 0)
+                            ) {
+                                if ((((plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), (i - 1)).getContent())
+                                        && (plateau.getXY(j, i).getContent() == plateau.getXY((j + 2), (i - 1)).getContent()))
+                                        && (plateau.getXY((j - 1), i).getContent() != 0))
+
+                                        || ((plateau.getXY(j, i).getContent() == plateau.getXY((j - 1), (i - 1)).getContent())
+                                        && (plateau.getXY(j, i).getContent() == plateau.getXY((j - 2), (i - 1)).getContent())
+                                        && (plateau.getXY((j + 1), i).getContent() != 0))
+                                ) {
+                                    System.err.println("TEST TRUE " + i + "-" + j);
+                                    return j;
+                                }
+                                /*else if ((plateau.getXY(j, i).getContent() == plateau.getXY((j - 1), (i - 1)).getContent())
+                                        && (plateau.getXY(j, i).getContent() == plateau.getXY((j - 2), (i - 1)).getContent())
+                                        && (plateau.getXY((j + 1), i).getContent() != 0)
+                                ) {
+                                    System.out.println("TEST TRUE " + i + "-" + j);
+                                    return j;
+                                }*/
+                            }
+                        }
+                        if ((j > 0) && (j <= (column - 3)) && (plateau.getXY(j, i).getContent() != 0)) {
                             /*System.err.println("ENTRY");
                             System.err.println(plateau.toString());
                             System.err.println("ENTRY");*/
+                            //System.out.println(i + "-" + j);
                             if (plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), i).getContent()) {
                                 int left = countEmptyCase(i, j, "left");
                                 int right = countEmptyCase(i, j, "right");
-                                //System.out.println(left + "line : " + i);
-                                //System.out.println(right + "line : " + i);
+                                System.out.println(left + "line : " + i + "-" + j);
+                                System.out.println(right + "line : " + i + "-" + j);
 
                                 int downLeft = 0;// = countFilledCase(i, j, "left");
                                 int downRight = 0;// = countFilledCase(i, j, "right");
@@ -168,7 +192,7 @@ public class IAMariel extends Player{
                                 if ((left >= 2) && (right >= 1)) {
                                     downLeft = countFilledCase(i, j, "left");
                                     downRight = countFilledCase(i, j, "right");
-                                    //System.err.println("Others lines + (left >= 2) && (right >= 1) ");
+
                                     //System.err.println(downLeft + "||" + i + "-" + j);
                                     //System.err.println(downRight + "||" + i + "-" + j);
                                     if ((downLeft >= 2) && (downRight >= 1)) {
@@ -185,13 +209,13 @@ public class IAMariel extends Player{
                                     //System.out.println(downLeft + "||" + i + "-" + j);
                                     //System.out.println(downRight + "||" + i + "-" + j);
                                     if ((downLeft >= 2) && (downRight >= 1)) {
-                                        if ((plateau.getXY((j-1), i).getContent() == 0)) {
+                                        if ((plateau.getXY((j - 1), i).getContent() == 0)) {
                                             System.out.println("Others lines + (downLeft >= 2) && (downRight >= 1) " + i + "-" + j);
                                             return (j - 1);
                                         }
                                     }
                                     else if ((downLeft >= 1) && (downRight >= 2)) {
-                                        if ((plateau.getXY((j-1), i).getContent() == 0)) {
+                                        if ((plateau.getXY((j - 1), i).getContent() == 0)) {
                                             System.err.println("Others lines + (downLeft >= 1) && (downRight >= 2) " + i + "-" + j);
                                             return (j + 2);
                                         }
@@ -209,7 +233,7 @@ public class IAMariel extends Player{
                         }
                     }
                     else {
-                        if ((j > 0) && (j <= (column - 2)) && (plateau.getXY(j, i).getContent() != 0) && test) {
+                        if ((j > 0) && (j <= (column - 3)) && (plateau.getXY(j, i).getContent() != 0) && test) {
                             if (plateau.getXY(j, i).getContent() == plateau.getXY((j + 1), i).getContent()) {
                                 /*frontCount += (j == 2 ? 2 : 0);
                                 frontCount += (j == 3 ? 3 : 0);
@@ -454,14 +478,14 @@ public class IAMariel extends Player{
      */
     private int countEmptyCase(int line, int col, String position) {
         int count = 0;
-        if (position.equals("left")) {
+        if (position.equals("left") && (plateau.getXY((col - 1), line).getContent() == 0)) {
             for (int i = (col - 1); i >= 0; i--) {
                 if (plateau.getXY(i, line).getContent() == 0) {
                     count++;
                 }
             }
         }
-        else if (position.equals("right")) {
+        else if (position.equals("right") && (plateau.getXY((col + 2), line).getContent() == 0)) {
             for (int i = (col + 1); i < plateau.getColumn(); i++) {
                 if (plateau.getXY(i, line).getContent() == 0) {
                     count++;
@@ -481,14 +505,14 @@ public class IAMariel extends Player{
      */
     private int countFilledCase(int line, int col, String position) {
         int count = 0;
-        if (position.equals("left")) {
+        if (position.equals("left")  && (plateau.getXY((col - 1), (line + 1)).getContent() != 0)) {
             for (int i = (col - 1); i >= 0; i--) {
                 if (plateau.getXY(i, (line + 1)).getContent() != 0) {
                     count++;
                 }
             }
         }
-        else if (position.equals("right")) {
+        else if (position.equals("right")  && (plateau.getXY((col + 2), (line + 1)).getContent() != 0)) {
             for (int i = (col + 2); i < plateau.getColumn(); i++) {
                 if (plateau.getXY(i, (line + 1)).getContent() != 0) {
                     count++;

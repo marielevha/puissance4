@@ -15,7 +15,6 @@ public class Sound {
                 FileInputStream file = new FileInputStream(path);
                 Player player = new Player(file);
                 player.play();
-                System.out.println("end " + count);
                 count++;
                 if (count > 2) {
                     count = 0;
