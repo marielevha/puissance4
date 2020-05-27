@@ -22,8 +22,7 @@ public class IAMariel extends Player{
     private static MinMax plat;
     private static Player player;// = new Player(2);
 
-    public IAMariel() {
-    }
+    public IAMariel() {}
 
     public IAMariel(int number, int level) {
         super(number);
@@ -290,8 +289,7 @@ public class IAMariel extends Player{
             return col;
         }
         else {
-            this.setDepth(6);
-            if (plateau.getXY(3, 5).getContent() == 0){
+            /*if (plateau.getXY(3, 5).getContent() == 0){
                 plat.addPoint(3, this.getNumber());
                 return 3;
             }
@@ -299,7 +297,10 @@ public class IAMariel extends Player{
                 plat.MinMaxMove(this);
                 //System.err.println(plateau.toString());
                 return plat.getLastColumn();
-            }
+            }*/
+            plat.MinMaxMove(this);
+            //System.err.println(plateau.toString());
+            return plat.getLastColumn();
         }
     }
 

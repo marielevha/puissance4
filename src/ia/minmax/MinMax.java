@@ -344,7 +344,7 @@ public class MinMax {
                     this.addPoint(i, player.getNumber());
                     int evaluation = this.min((depth - 1), player.getNumber(), player);
 
-                    System.out.println("Joueur " + player + " a joue " + i + " eval = " + evaluation);
+                    System.out.println("Player " + player + " played " + i + " eval = " + evaluation);
 
                     if(evaluation > max) {
                         max = evaluation;

@@ -65,25 +65,6 @@ public class Graphic {
         game.start();
     }
 
-    public static int countEmptyCase(int line, int col, String position) {
-        int count = 0;
-        if (position.equals("left") && (plateau.getXY((col - 1), line).getContent() == 0)) {
-            for (int i = (col - 1); i >= 0; i--) {
-                if (plateau.getXY(i, line).getContent() == 0) {
-                    count++;
-                }
-            }
-        }
-        else if (position.equals("right") && (plateau.getXY((col + 2), line).getContent() == 0)) {
-            for (int i = (col + 1); i < plateau.getColumn(); i++) {
-                if (plateau.getXY(i, line).getContent() == 0) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
     /**
      * Init : initialisation de la partie
      */

@@ -1,9 +1,6 @@
 package engine.player;
 
-import old.TypePlayer;
-
 public class Player {
-    public TypePlayer type;
     public int number, level, depth;
     private String typePlayer;
 
@@ -14,22 +11,12 @@ public class Player {
     public Player(int number) {
         this.number = number;
         this.typePlayer = "Real Player !";
-        //If IA level <= 6
-        //if (number == 2) {
-        //}
     }
     public int getNumber() {
         return number;
     }
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public TypePlayer getType(){
-        return type;
-    }
-    public void setType(TypePlayer type){
-        this.type = type;
     }
 
     public void setLevel(int level){
@@ -54,6 +41,6 @@ public class Player {
     }
 
     public String toString(){
-        return ("Player "+ number +" ");
+        return String.valueOf(number);
     }
 }
