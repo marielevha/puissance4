@@ -15,12 +15,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/PlateauCopy.java" beforeDir="false" />
-    </list>
+    <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,7 +149,7 @@
       <workItem from="1590425186065" duration="254000" />
       <workItem from="1590435684565" duration="447000" />
       <workItem from="1590436456107" duration="11103000" />
-      <workItem from="1590508909093" duration="36535000" />
+      <workItem from="1590508909093" duration="37522000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589417099375</created>
