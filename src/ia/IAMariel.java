@@ -33,9 +33,9 @@ public class IAMariel extends Player{
     }
 
     /***
-     * Meilleur Coupe
+     * Meilleur Coupe : Joue un coup en fonction du niveau de l'IA
      * @param string
-     * @return
+     * @return Integer column
      */
     public int bestMove(String string, int player){
         //IAMariel.player = new Player(player);

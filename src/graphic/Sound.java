@@ -11,7 +11,7 @@ public class Sound {
         int count = 0;
         while (true) {
             try {
-                String path = "music/Super" + count +".mp3";
+                String path = "res/music/Super" + count +".mp3";
                 FileInputStream file = new FileInputStream(path);
                 Player player = new Player(file);
                 player.play();
