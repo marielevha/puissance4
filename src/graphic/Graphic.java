@@ -54,8 +54,9 @@ public class Graphic {
                         "0000200" +
                         "0000200" +
                         "0000000";
-                plateau = new Plateau(string, 0);
-                //plateau = new Plateau(6, 7);
+                //
+                // plateau = new Plateau(string, 0);
+                plateau = new Plateau(6, 7);
                 //System.out.println(plateau.toString());
                 windowGameMode();
                 //System.out.println("Left : " + countEmptyCase(4, 5, "left"));

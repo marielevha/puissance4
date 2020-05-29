@@ -73,6 +73,7 @@ public class MinMax {
     public int evaluation(Player player, int depth) {
         int winner = search4();
         if (winner == player.getNumber()) {
+            System.err.println("WINNER -> " + (100000 - (player.getDepth() - depth)));
             return (100000 - (player.getDepth() - depth));
         }
         else if (winner == -1) {
@@ -331,6 +332,7 @@ public class MinMax {
      * @return column
      */
     public synchronized void MinMaxMove(Player player) {
+        // Si le plateau compte au moins 2 pions
         if(totalPoints() > 1) {
             this.numberNode = 0;
             int max = -10000000;
@@ -338,7 +340,6 @@ public class MinMax {
             int col = -1;
             int depth = player.getDepth();
 
-            ///ArrayList<PanelMiniPlateau> miniPlateaux = new ArrayList<PanelMiniPlateau>();
             for(int i = 0; i< column; i++) {
                 if(fullColumn(i)) {
                     this.addPoint(i, player.getNumber());
@@ -346,12 +347,14 @@ public class MinMax {
 
                     System.out.println("Player " + player + " played " + i + " eval = " + evaluation);
 
+                    // Si l'évaluation est supérieur au max, on vide la liste des choix puis on ajoute la colonne actuelle comme choix
                     if(evaluation > max) {
                         max = evaluation;
                         choices.clear();
                         choices.add(i);
                         //System.err.println("Evaluation > max :" + max);
                     }
+                    // Si l'évaluation est égal au max, n ajoute la colonne actuelle dans la liste de choix
                     else if(evaluation == max) {
                         choices.add(i);
                         //System.err.println("Evaluation == max :" + max);
@@ -372,6 +375,7 @@ public class MinMax {
             //display();
             //return this.lastColumn;
         }
+        // Si le plateau a au max 1 l'ia joue la colonne du milieu (3)
         else {
             this.addPoint((column / 2), player.getNumber());
             this.lastColumn = (column / 2);
@@ -392,15 +396,26 @@ public class MinMax {
         this.numberNode++;
 
         player = (player == 1) ? 2 : 1;
+        /**
+         * Si la profondeur = 0 ou
+         * Si le plateau est plein ou
+         * S'il y a un gagnant, l'on retourne une évaluation du joueur courant
+         */
         if(depth == 0 || full() || this.search4() != -1) {
             return this.evaluation(currentPlayer, depth);
         }
+        /**
+         * Sinon max est définit à = -10000000, on parcours les colonnes et sur celles disponibles,
+         * l'on simule un coup et on récupère l'évaluation de la partie min,
+         * si l'évalution est supérieur au max, ce dernier prend la valeur de l'évaluation (max = évaluation)
+         * le coup simule est annulé
+         */
         int max = -10000000;
         for(int i = 0; i < column; i++) {
             if(fullColumn(i)){
                 this.addPoint(i, player);
                 int evaluation = this.min((depth - 1), player, currentPlayer);
-                //System.out.println("Joueur "+player+" a joue "+i+" eval = "+evaluation);
+                //System.out.println("Player " + player + " played " + i + " eval = " + evaluation);
 
                 if(evaluation > max) {
                     max = evaluation;
@@ -422,25 +437,36 @@ public class MinMax {
         this.numberNode++;
 
         player = (player == 1) ? 2 : 1;
+        /**
+         * Si la profondeur = 0 ou
+         * Si le plateau est plein ou
+         * S'il y a un gagnant, l'on retourne une évaluation du joueur courant
+         */
         if(depth ==0 || full() || this.search4() != -1) {
             return this.evaluation(currentPlayer, depth);
         }
+        /**
+         * Sinon min est définit à = 10000000, on parcours les colonnes et sur celles disponibles,
+         * l'on simule un coup et on récupère l'évaluation de la partie max,
+         * si l'évalution est inférieur au min, ce dernier prend la valeur de l'évaluation (min = évaluation)
+         * le coup simule est annulé
+         */
         int min = 10000000;
         for(int i = 0; i < column; i++){
             if(fullColumn(i)){
                 this.addPoint(i, player);
                 int evaluation = this.max((depth - 1), player, currentPlayer);
-                //System.out.println("Joueur "+player+" a joue "+i+" eval = "+evaluation);
+                //System.out.println("Player " + player + " played " + i + " eval = "+evaluation);
 
                 if(evaluation < min) {
                     min = evaluation;
                 }
                 this.cancelMove(i);
             }
-
         }
         return min;
     }
+
     public int getLastColumn() {
         return lastColumn;
     }
