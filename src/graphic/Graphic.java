@@ -499,7 +499,7 @@ public class Graphic {
                 typePlayer = mariel.getTypePlayer();
                 //System.err.println("Treatment IA");
                 int place = mariel.bestMove(plateau.toStringIA(), mariel.getNumber());// + 1;
-                System.err.println("Treatment IA -> " + place);
+
                 // Si plateau n'est pas pleine jouer le coup
                 if (!plateau.full()) {
                     if (!plateau.fullColumn(place)) {
@@ -519,8 +519,8 @@ public class Graphic {
                 }
                 //initPlateau(fenetre, plateau);
                 initPlateau(fenetre, plateau);
-                //System.err.println(plateau.totalPoints());
-                System.err.println(plateau.toString());
+                System.out.println("\nTreatment IA -> " + place);
+                System.out.println(plateau.toString());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -552,7 +552,8 @@ public class Graphic {
             }
         }
         initPlateau(fenetre, plateau);
-        //System.out.println(plateau.toString());
+        System.err.println("\nTreatment Real -> ");
+        System.out.println(plateau.toString());
         //System.err.println(plateau.test(0).toString());
         //System.err.println(plateau.fullColumn(3));
     }

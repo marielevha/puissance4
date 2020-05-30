@@ -11,7 +11,7 @@ public class MinMax {
     private int lastColumn;
     private final int line;
     private final int column;
-    private int numberNode;
+    private int nodes;
     private static Plateau plateau;
 
     /**
@@ -25,44 +25,7 @@ public class MinMax {
         this.column = plateau.getColumn();
         //System.err.println(plateau.toString());
     }
-    public void display(){
-        //System.out.println(plateau.toString());
-        for (int colonne = 0; colonne < column; colonne++) {
-            System.out.print("-");
-        }
-        System.out.println();
-        for(int ligne = (line -1); ligne > -1; ligne--) {
-            for (int colonne = 0; colonne < column; colonne++) {
-                if(plateau.getXY(colonne, ligne).getContent() == 0) {
-                    System.out.print(" ");
-                }else{
-                    System.out.print(plateau.getXY(colonne, ligne).getContent());
-                }
-            }
-            System.out.println();
-        }
-        for (int colonne = 0; colonne < column; colonne++){
-            System.out.print("-");
-        }
-        //plateau.toString();
-        System.out.println();
-    }
 
-    /**
-     * TotalPoints : compte le nombre de pions dans le plateau
-     * @return Integer count
-     */
-    public int totalPoints() {
-        int count = 0;
-        for (int i = 0; i < line; i++) {
-            for (int j = 0; j < column; j++) {
-                if (plateau.getXY(j, i).getContent() != EMPTY) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
 
     /**
      * Evaluation : retourne une évaluation du plateau d'un joueur donné en fonction
@@ -74,7 +37,6 @@ public class MinMax {
     public int evaluation(Player player, int depth) {
         int winner = search4();
         if (winner == player.getNumber()) {
-            //System.err.println("WINNER -> " + (100000 - (player.getDepth() - depth)));
             return (100000 - (player.getDepth() - depth));
         }
         else if (winner == -1) {
@@ -90,18 +52,6 @@ public class MinMax {
     }
 
     /**
-     * CancelMove : annule un coup jouer en remplaçant le numéro du joueur par 0
-     * @param column
-     */
-    private void cancelMove(int column) {
-        int row = line -1;
-        while (plateau.getXY(column, row).getContent() == EMPTY) {
-            row--;
-        }
-        plateau.getXY(column, row).setContent(EMPTY);
-    }
-
-    /**
      * AddPoint : ajoute un pion du joueur au plateau dans la colonne indiquée
      * @param column
      * @param player
@@ -111,43 +61,10 @@ public class MinMax {
         for (int i = 0; i < line; i++) {
             if (plateau.getXY(column, i).getContent() == EMPTY) {
                 plateau.getXY(column, i).setContent(player);
-                //System.out.println(i + "-" + column);
                 return i;
             }
         }
         return -1;
-    }
-
-    /**
-     * FullColumn :
-     * @param column
-     * @return
-     */
-    public boolean fullColumn(int column) {
-        return !plateau.fullColumn(column);
-        /*boolean available = false;
-        for (int i = 0; i < line; i++) {
-            if (plateau.getXY(column, i).getContent() == EMPTY) {
-                available = true;
-            }
-        }
-        return available;*/
-    }
-
-    /**
-     * Full : vérifie si le plateau est plein
-     * Si plein true, sinon false
-     * @return boolean
-     */
-    public boolean full() {
-        /*for (int i = 0; i < line; i++) {
-            for (int j = 0; j < column; j++) {
-                if (plateau.getXY(j, i).getContent() == EMPTY) {
-                    return false;
-                }
-            }
-        }*/
-        return plateau.full();
     }
 
     /**
@@ -336,7 +253,7 @@ public class MinMax {
     public synchronized void move(Player player) {
         // Si le plateau compte au moins 2 pions
         if(plateau.totalPoints() > 1) {
-            this.numberNode = 0;
+            this.nodes = 0;
             int max = -10000000;
             ArrayList<Integer> choices = new ArrayList<Integer>();
             int col = -1;
@@ -364,7 +281,7 @@ public class MinMax {
                     //System.err.println("Evaluation < max :" + max);
 
                     //System.err.println(choices.get(0));
-                    cancelMove(i);
+                    plateau.cancelMove(i);
                 }
             }
             Collections.shuffle(choices);
@@ -377,11 +294,11 @@ public class MinMax {
             //display();
             //return this.lastColumn;
         }
-        // Si le plateau a au max 1 l'ia joue la colonne du milieu (3)
+        // Si le plateau a au max 1 pion l'ia joue la colonne du milieu (3)
         else {
             this.addPoint((column / 2), player.getNumber());
             this.lastColumn = (column / 2);
-            this.numberNode = 0;
+            this.nodes = 0;
             //display();
             //return this.lastColumn;
         }
@@ -395,7 +312,7 @@ public class MinMax {
      * @return max
      */
     private int max(int depth, int player, Player currentPlayer) {
-        this.numberNode++;
+        this.nodes++;
 
         player = (player == 1) ? 2 : 1;
         /**
@@ -421,7 +338,7 @@ public class MinMax {
                 if(evaluation > max) {
                     max = evaluation;
                 }
-                cancelMove(i);
+                plateau.cancelMove(i);
             }
         }
         return max;
@@ -435,7 +352,7 @@ public class MinMax {
      * @return min
      */
     private int min(int depth, int player, Player currentPlayer) {
-        this.numberNode++;
+        this.nodes++;
 
         player = (player == 1) ? 2 : 1;
         /**
@@ -461,7 +378,7 @@ public class MinMax {
                 if(evaluation < min) {
                     min = evaluation;
                 }
-                cancelMove(i);
+                plateau.cancelMove(i);
             }
         }
         return min;
@@ -470,5 +387,88 @@ public class MinMax {
     public int getLastColumn() {
         System.out.println(plateau.totalPoints());
         return lastColumn;
+    }
+
+    public void display(){
+        //System.out.println(plateau.toString());
+        for (int colonne = 0; colonne < column; colonne++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        for(int ligne = (line -1); ligne > -1; ligne--) {
+            for (int colonne = 0; colonne < column; colonne++) {
+                if(plateau.getXY(colonne, ligne).getContent() == 0) {
+                    System.out.print(" ");
+                }else{
+                    System.out.print(plateau.getXY(colonne, ligne).getContent());
+                }
+            }
+            System.out.println();
+        }
+        for (int colonne = 0; colonne < column; colonne++){
+            System.out.print("-");
+        }
+        //plateau.toString();
+        System.out.println();
+    }
+
+    /**
+     * TotalPoints : compte le nombre de pions dans le plateau
+     * @return Integer count
+     */
+    public int totalPoints() {
+        int count = 0;
+        for (int i = 0; i < line; i++) {
+            for (int j = 0; j < column; j++) {
+                if (plateau.getXY(j, i).getContent() != EMPTY) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * FullColumn :
+     * @param column
+     * @return
+     */
+    public boolean fullColumn(int column) {
+        return !plateau.fullColumn(column);
+        /*boolean available = false;
+        for (int i = 0; i < line; i++) {
+            if (plateau.getXY(column, i).getContent() == EMPTY) {
+                available = true;
+            }
+        }
+        return available;*/
+    }
+
+    /**
+     * Full : vérifie si le plateau est plein
+     * Si plein true, sinon false
+     * @return boolean
+     */
+    public boolean full() {
+        /*for (int i = 0; i < line; i++) {
+            for (int j = 0; j < column; j++) {
+                if (plateau.getXY(j, i).getContent() == EMPTY) {
+                    return false;
+                }
+            }
+        }*/
+        return plateau.full();
+    }
+
+    /**
+     * CancelMove : annule un coup jouer en remplaçant le numéro du joueur par 0
+     * @param column
+     */
+    private void cancelMove(int column) {
+        int row = line -1;
+        while (plateau.getXY(column, row).getContent() == EMPTY) {
+            row--;
+        }
+        plateau.getXY(column, row).setContent(EMPTY);
     }
 }

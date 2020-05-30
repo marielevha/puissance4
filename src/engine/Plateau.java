@@ -4,7 +4,7 @@ import _interface.IPlateau;
 
 public class Plateau implements IPlateau {
     private static final int ALIGN = 4, EMPTY = 0;
-    private Line[] lines;
+    private final Line[] lines;
     private static int row, column;
     private static int lineAdd;
 
@@ -101,31 +101,19 @@ public class Plateau implements IPlateau {
 
     /**
      * AddPoint : ajoute un pion du joueur(numéro) dans la colonne indiquée
-     * @param numColumn
-     * @param numPlayer
+     * @param column
+     * @param player
      * @return bool
      */
-    public boolean addPoint(int numColumn, int numPlayer) {
+    public boolean addPoint(int column, int player) {
         for (int i = (row - 1); i >= 0; i--) {
-            if (lines[i].getX(numColumn).getContent() == EMPTY) {
-                lines[i].getX(numColumn).setContent(numPlayer);
+            if (lines[i].getX(column).getContent() == EMPTY) {
+                lines[i].getX(column).setContent(player);
                 lineAdd = i;
-                return verify(i, numColumn);
+                return verify(i, column);
             }
         }
         return false;
-    }
-
-
-    public void addPoint2(int column, int player) {
-        for (int i = 0; i < row; i++) {
-            if (lines[i].getX(column).getContent() == EMPTY) {
-                lines[i].getX(column).setContent(player);
-                //System.out.println(i + "-" + column);
-                //return i;
-            }
-        }
-        //return -1;
     }
 
     private boolean verify(int line, int column) {
