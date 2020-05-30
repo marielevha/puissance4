@@ -313,6 +313,7 @@ public class Plateau implements IPlateau {
      */
     ArrayList<Integer> choices = new ArrayList<Integer>();
     public ArrayList<Integer> availableColumn() {
+        choices.clear();
         for (int i = 0; i < column; i++) {
             if (!fullColumn(i)) {
                 choices.add(i);

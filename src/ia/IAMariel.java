@@ -73,26 +73,35 @@ public class IAMariel extends Player{
      * @return column
      */
     public  int levelOneMove() {
-        for (;;) {
+        //for (;;) {
             if (plateau.getXY(3, 5).getContent() == 0) {
                 return 3;
             }
             else {
+                /**
+                 * Récupération de la liste des colonnes disponibles
+                 * Permute (mélange) la liste des colonnes
+                 * Retourne le choix d'index 0;
+                 */
                 ArrayList<Integer> choices = plateau.availableColumn();
                 Collections.shuffle(choices);
-                System.out.println(choices);
-                return choices.get(0);
-                /*for (int i = 0; i < plateau.getColumn(); i++) {
-                    if (!plateau.fullColumn(i)) {
-
+                //System.out.println(choices);
+                int c = choices.get(0);
+                for (int i = 0; i < choices.size(); i++) {
+                    plateau.addPoint(c, this.getNumber());
+                    int lastLine = plateau.getLineAdd();
+                    if (blockMove(plateau) != -1) {
+                        plateau.getXY(c, lastLine).setContent(0);
+                        Collections.shuffle(choices);
                     }
-                }*/
-                /*int column = random.nextInt(plateau.getColumn());
-                if (!plateau.fullColumn(column)) {
-                    return column;
-                }*/
+                    else {
+                        plateau.getXY(c, lastLine).setContent(0);
+                        return c;
+                    }
+                }
+                return choices.get(0);
             }
-        }
+        //}
     }
 
     /**
