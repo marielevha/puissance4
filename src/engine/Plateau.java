@@ -3,7 +3,7 @@ package engine;
 import _interface.IPlateau;
 
 public class Plateau implements IPlateau {
-    private static final int ALIGN = 4;
+    private static final int ALIGN = 4, EMPTY = 0;
     private Line[] lines;
     private static int row, column;
     private static int lineAdd;
@@ -89,12 +89,7 @@ public class Plateau implements IPlateau {
      * @return boolean true si colonne pleine, sinon false
      */
     public boolean fullColumn(int col) {
-        if (lines[0].getX(col).getContent() != 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return lines[0].getX(col).getContent() != 0;
     }
 
     /**
@@ -104,54 +99,31 @@ public class Plateau implements IPlateau {
      * @return bool
      */
     public boolean addPoint(int numColumn, int numPlayer) {
-        boolean verify = false;
-        for (int i =  this.lines.length - 1; i >= 0; i--) {
-            if (!verify) {
-                //System.out.print( this.tabLigne[i].toString() + " i : " + i + " ");
-                /*for (int j = 0; j < this.tabLigne[i].getTaille(); j++){
-                    if (this.tabLigne[i].getX(numColumn).getContent() == 0){
-                        this.tabLigne[i].setX(numColumn, numPlayer);
-                        verify = true;
-                    }
-                }*/
-                /*for (int j = 0; j <= this.tabLigne[i].getTaille(); j++){
-                    System.err.print( this.tabLigne[i].getX(j).getContent() + " j : " + j + " ");
-                    if (this.tabLigne[i].getX(numColumn).getContent() == 0){
-                        this.tabLigne[i].setX(numColumn, numPlayer);
-                        verify = true;
-                    }
-                }*/
-                for (int j = 0; j < this.lines[i].getSize(); j++) {
-                    //System.err.print(j);
-                    //System.err.print("\n");
-                    //System.err.print(tabLigne[i].getX(j).getContent() + " : " + j);
-                    if (this.lines[i].getX(numColumn).getContent() == 0) {
-                        this.lines[i].setX(numColumn, numPlayer);
-                        lineAdd = i;
-                        //System.out.print(this.tabLigne[i].toString());//setX(numColumn, numPlayer);
-                        verify = true;
-                        if (verify) {
-                            //System.out.print(checkHorizontal(i));
-                            //System.err.print(checkVertical(numColumn));
-                            if (checkHorizontal(i, ALIGN) || checkVertical(numColumn, ALIGN)
-                                    || checkDiagonal(i, numColumn, ALIGN) || checkReverseDiagonal(i, numColumn, ALIGN)) {
-                                return true;
-                            }
-                            /*else {
-                                return full();
-                            }*/
-                            /*checkHorizontal(i);
-                            checkVertical(numColumn);
-                            checkDiagonal(numColumn);*/
-                            //checkReverseDiagonal(numColumn);
-                        }
-                        //checkVertical(numColumn);
-                    }
-                }
+        for (int i = (row - 1); i >= 0; i--) {
+            if (lines[i].getX(numColumn).getContent() == EMPTY) {
+                lines[i].getX(numColumn).setContent(numPlayer);
+                lineAdd = i;
+                return verify(i, numColumn);
             }
-            //System.err.print(this.tabLigne[i].toString());
         }
         return false;
+    }
+
+
+    public void addPoint2(int column, int player) {
+        for (int i = 0; i < row; i++) {
+            if (lines[i].getX(column).getContent() == EMPTY) {
+                lines[i].getX(column).setContent(player);
+                //System.out.println(i + "-" + column);
+                //return i;
+            }
+        }
+        //return -1;
+    }
+
+    private boolean verify(int line, int column) {
+        return checkHorizontal(line, ALIGN) || checkVertical(column, ALIGN)
+                || checkDiagonal(line, column, ALIGN) || checkReverseDiagonal(line, column, ALIGN);
     }
 
     /**
@@ -358,5 +330,37 @@ public class Plateau implements IPlateau {
      */
     public int getLineAdd() {
         return lineAdd;
+    }
+
+    public Line test(int l) {
+        return lines[l];
+    }
+
+    /**
+     * TotalPoints : compte le nombre de pions dans le plateau
+     * @return Integer count
+     */
+    public int totalPoints() {
+        int count = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                if (lines[i].getX(j).getContent() != EMPTY) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * CancelMove : annule un coup jouer en remplaçant le numéro du joueur par 0
+     * @param column
+     */
+    public void cancelMove(int column) {
+        int row = Plateau.row - 1;
+        while (lines[row].getX(column).getContent() == EMPTY) {
+            row--;
+        }
+        lines[row].getX(column).setContent(EMPTY);
     }
 }

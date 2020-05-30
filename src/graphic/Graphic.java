@@ -112,8 +112,8 @@ public class Graphic {
             }
             else {
                 moveIA();
+                fenetre.rafraichir();
             }
-            fenetre.rafraichir();
         }
         launchWindow(true);
     }
@@ -163,7 +163,7 @@ public class Graphic {
     public static void initPlateau(Fenetre fenetre, Plateau plateau) {
         int space = 45, add = 100;
         int spaceY = -space;
-        for (int i = plateau.getLine() - 1; i >= 0; i--) {
+        for (int i = (plateau.getLine() - 1); i >= 0; i--) {
             int spaceX = -space;
             for (int j = 0; j < plateau.getColumn(); j++) {
                 if (plateau.getXY(j, i).getContent() == 0) {
@@ -192,6 +192,7 @@ public class Graphic {
      * @return win : si true partie terminée
      */
     public static boolean addPoint(Plateau plateau, int player, int place) {
+        added = false;
         int column = 0;
         if (place > -701 && place <= 100 && (!plateau.fullColumn(0))) {
             win = plateau.addPoint(0, player);
@@ -208,10 +209,20 @@ public class Graphic {
             column = 2;
             added = true;
         }
-        else if (place > 300 && place <= 400 && (!plateau.fullColumn(3))) {
+        else if (place > 300 && place <= 400 && !plateau.fullColumn(3)) {
             win = plateau.addPoint(3, player);
             column = 3;
             added = true;
+            /*if (!plateau.fullColumn(3)) {
+                System.out.println("Non pleine");
+                win = plateau.addPoint(3, player);
+                column = 3;
+                added = true;
+            }
+            else  {
+                added = false;
+                System.out.println("Pleine");
+            }*/
         }
         else if (place > 400 && place <= 500 && (!plateau.fullColumn(4))) {
             win = plateau.addPoint(4, player);
@@ -508,6 +519,7 @@ public class Graphic {
                 }
                 //initPlateau(fenetre, plateau);
                 initPlateau(fenetre, plateau);
+                System.err.println(plateau.totalPoints());
                 //System.err.println(plateau.toString());
             }
         } catch (InterruptedException e) {
@@ -540,7 +552,9 @@ public class Graphic {
             }
         }
         initPlateau(fenetre, plateau);
-        //System.out.println(plateau.toString());
+        System.out.println(plateau.toString());
+        System.err.println(plateau.test(0).toString());
+        System.err.println(plateau.fullColumn(3));
     }
 
     private static void test() {

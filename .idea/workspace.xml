@@ -17,7 +17,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/puissance4_jar/puissance4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/puissance4_jar/puissance4.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +59,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -160,6 +162,7 @@
       <workItem from="1590730757111" duration="7034000" />
       <workItem from="1590778810999" duration="430000" />
       <workItem from="1590779257358" duration="3593000" />
+      <workItem from="1590841233522" duration="9598000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589417099375</created>
@@ -216,22 +219,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590779228454" />
-    <state width="1322" height="186" key="GridCell.Tab.0.bottom" timestamp="1590781341763">
+    <state width="1322" height="555" key="GridCell.Tab.0.bottom" timestamp="1590851206866">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="186" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590781341763" />
-    <state width="1322" height="186" key="GridCell.Tab.0.center" timestamp="1590781341763">
+    <state width="1322" height="555" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590851206866" />
+    <state width="1322" height="555" key="GridCell.Tab.0.center" timestamp="1590851206866">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="186" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590781341763" />
-    <state width="1322" height="186" key="GridCell.Tab.0.left" timestamp="1590781341763">
+    <state width="1322" height="555" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590851206866" />
+    <state width="1322" height="555" key="GridCell.Tab.0.left" timestamp="1590851206866">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="186" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590781341762" />
-    <state width="1322" height="186" key="GridCell.Tab.0.right" timestamp="1590781341763">
+    <state width="1322" height="555" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590851206866" />
+    <state width="1322" height="555" key="GridCell.Tab.0.right" timestamp="1590851206866">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="186" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590781341763" />
+    <state width="1322" height="555" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590851206866" />
     <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1590372872003">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -252,10 +255,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="454" y="83" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588733457076" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1590779243248">
+    <state x="184" y="0" key="SettingsEditor" timestamp="1590841489438">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1590779243248" />
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1590841489438" />
     <state x="272" y="110" key="caller.chooser.dialog" timestamp="1590605882821">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

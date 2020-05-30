@@ -334,7 +334,7 @@ public class MinMax {
      */
     public synchronized void MinMaxMove(Player player) {
         // Si le plateau compte au moins 2 pions
-        if(totalPoints() > 1) {
+        if(plateau.totalPoints() > 1) {
             this.numberNode = 0;
             int max = -10000000;
             ArrayList<Integer> choices = new ArrayList<Integer>();
@@ -363,7 +363,7 @@ public class MinMax {
                     //System.err.println("Evaluation < max :" + max);
 
                     //System.err.println(choices.get(0));
-                    this.cancelMove(i);
+                    plateau.cancelMove(i);
                 }
             }
             Collections.shuffle(choices);
@@ -416,12 +416,11 @@ public class MinMax {
             if(fullColumn(i)){
                 this.addPoint(i, player);
                 int evaluation = this.min((depth - 1), player, currentPlayer);
-                //System.out.println("Player " + player + " played " + i + " eval = " + evaluation);
 
                 if(evaluation > max) {
                     max = evaluation;
                 }
-                this.cancelMove(i);
+                plateau.cancelMove(i);
             }
         }
         return max;
@@ -457,18 +456,18 @@ public class MinMax {
             if(fullColumn(i)){
                 this.addPoint(i, player);
                 int evaluation = this.max((depth - 1), player, currentPlayer);
-                //System.out.println("Player " + player + " played " + i + " eval = "+evaluation);
 
                 if(evaluation < min) {
                     min = evaluation;
                 }
-                this.cancelMove(i);
+                plateau.cancelMove(i);
             }
         }
         return min;
     }
 
     public int getLastColumn() {
+        System.out.println(plateau.totalPoints());
         return lastColumn;
     }
 }
