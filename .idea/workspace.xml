@@ -17,11 +17,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/puissance4_jar/puissance4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/puissance4_jar/puissance4.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Graphic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +173,7 @@
       <workItem from="1590730757111" duration="7034000" />
       <workItem from="1590778810999" duration="430000" />
       <workItem from="1590779257358" duration="3593000" />
-      <workItem from="1590841233522" duration="23597000" />
+      <workItem from="1590841233522" duration="23934000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589417099375</created>

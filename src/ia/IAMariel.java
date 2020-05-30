@@ -101,7 +101,7 @@ public class IAMariel extends Player{
     /**
      * Niveau 3, l'IA joue la position gagnante
      * Sinon l'IA joue la position blockannte si possible
-     * Sinon l'IA joue pour aligner 3 pions si possible
+     * Sinon l'IA joue pour aligner 3 pions avec possibilité de victoir au prochain coup
      * Sinon l'IA joue aléatoirement si la colonne est disponible
      * @return column
      */
