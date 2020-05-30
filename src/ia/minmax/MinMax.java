@@ -65,7 +65,8 @@ public class MinMax {
     }
 
     /**
-     * Evaluation : retourne une évaluation du plateau en fonction du nombre de pions alignés par les joueurs
+     * Evaluation : retourne une évaluation du plateau d'un joueur donné en fonction
+     * des alignements des pions par les joueurs
      * @param player
      * @param depth
      * @return Integer evaluation
@@ -73,7 +74,7 @@ public class MinMax {
     public int evaluation(Player player, int depth) {
         int winner = search4();
         if (winner == player.getNumber()) {
-            System.err.println("WINNER -> " + (100000 - (player.getDepth() - depth)));
+            //System.err.println("WINNER -> " + (100000 - (player.getDepth() - depth)));
             return (100000 - (player.getDepth() - depth));
         }
         else if (winner == -1) {
@@ -138,14 +139,14 @@ public class MinMax {
      * @return boolean
      */
     public boolean full() {
-        for (int i = 0; i < line; i++) {
+        /*for (int i = 0; i < line; i++) {
             for (int j = 0; j < column; j++) {
                 if (plateau.getXY(j, i).getContent() == EMPTY) {
                     return false;
                 }
             }
-        }
-        return true;
+        }*/
+        return plateau.full();
     }
 
     /**
@@ -401,7 +402,7 @@ public class MinMax {
          * Si le plateau est plein ou
          * S'il y a un gagnant, l'on retourne une évaluation du joueur courant
          */
-        if(depth == 0 || full() || this.search4() != -1) {
+        if(depth == 0 || plateau.full() || this.search4() != -1) {
             return this.evaluation(currentPlayer, depth);
         }
         /**
@@ -442,7 +443,7 @@ public class MinMax {
          * Si le plateau est plein ou
          * S'il y a un gagnant, l'on retourne une évaluation du joueur courant
          */
-        if(depth ==0 || full() || this.search4() != -1) {
+        if(depth ==0 || plateau.full() || this.search4() != -1) {
             return this.evaluation(currentPlayer, depth);
         }
         /**

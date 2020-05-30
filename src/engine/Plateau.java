@@ -274,7 +274,7 @@ public class Plateau implements IPlateau {
     public boolean full() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
-                //System.out.print(this.tabLigne[i].getX(j).getContent());
+                //System.out.print(this.lines[i].getX(j).getContent());
                 if (lines[i].getX(j).getContent() == 0) {
                     return false;
                 }

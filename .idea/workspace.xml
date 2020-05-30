@@ -17,15 +17,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e146e347-05e4-4341-ba24-43e1a2e9dd4e" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/alphaBeta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/heuristique1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/heuristique2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/infos.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/jeu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/minMax.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/puissance4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ia/IAMariel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/IAMariel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ia/minmax/MinMax.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +61,9 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\puissance4\res" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\EvhaMariel\Desktop\ssdlv\puissance4\src" />
     </key>
@@ -163,7 +159,7 @@
       <workItem from="1590508909093" duration="37522000" />
       <workItem from="1590730757111" duration="7034000" />
       <workItem from="1590778810999" duration="430000" />
-      <workItem from="1590779257358" duration="1589000" />
+      <workItem from="1590779257358" duration="3593000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589417099375</created>
@@ -220,22 +216,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590779228454" />
-    <state width="1322" height="186" key="GridCell.Tab.0.bottom" timestamp="1590612997051">
+    <state width="1322" height="186" key="GridCell.Tab.0.bottom" timestamp="1590781341763">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="186" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590612997051" />
-    <state width="1322" height="186" key="GridCell.Tab.0.center" timestamp="1590612997050">
+    <state width="1322" height="186" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590781341763" />
+    <state width="1322" height="186" key="GridCell.Tab.0.center" timestamp="1590781341763">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="186" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590612997050" />
-    <state width="1322" height="186" key="GridCell.Tab.0.left" timestamp="1590612997050">
+    <state width="1322" height="186" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1590781341763" />
+    <state width="1322" height="186" key="GridCell.Tab.0.left" timestamp="1590781341763">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="186" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590612997050" />
-    <state width="1322" height="186" key="GridCell.Tab.0.right" timestamp="1590612997050">
+    <state width="1322" height="186" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1590781341762" />
+    <state width="1322" height="186" key="GridCell.Tab.0.right" timestamp="1590781341763">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="186" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590612997050" />
+    <state width="1322" height="186" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1590781341763" />
     <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1590372872003">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
