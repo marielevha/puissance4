@@ -357,9 +357,9 @@ public class Plateau implements IPlateau {
      * @param column
      */
     public void cancelMove(int column) {
-        int row = Plateau.row - 1;
+        int row = 0;
         while (lines[row].getX(column).getContent() == EMPTY) {
-            row--;
+            row++;
         }
         lines[row].getX(column).setContent(EMPTY);
     }

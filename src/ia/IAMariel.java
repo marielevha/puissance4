@@ -291,7 +291,7 @@ public class IAMariel extends Player{
                 //System.err.println(plateau.toString());
                 return plat.getLastColumn();
             }*/
-            plateauMinMax.MinMaxMove(this);
+            plateauMinMax.move(this);
             //System.err.println(plateau.toString());
             return plateauMinMax.getLastColumn();
         }

@@ -108,13 +108,14 @@ public class MinMax {
      * @return
      */
     public int addPoint(int column, int player) {
-        for (int i = 0; i < line; i++) {
+        /*for (int i = 0; i < line; i++) {
             if (plateau.getXY(column, i).getContent() == EMPTY) {
                 plateau.getXY(column, i).setContent(player);
                 //System.out.println(i + "-" + column);
                 return i;
             }
-        }
+        }*/
+        plateau.addPoint(column, player);
         return -1;
     }
 
@@ -124,13 +125,14 @@ public class MinMax {
      * @return
      */
     public boolean fullColumn(int column) {
-        boolean available = false;
+        return !plateau.fullColumn(column);
+        /*boolean available = false;
         for (int i = 0; i < line; i++) {
             if (plateau.getXY(column, i).getContent() == EMPTY) {
                 available = true;
             }
         }
-        return available;
+        return available;*/
     }
 
     /**
@@ -332,7 +334,7 @@ public class MinMax {
      * @param player
      * @return column
      */
-    public synchronized void MinMaxMove(Player player) {
+    public synchronized void move(Player player) {
         // Si le plateau compte au moins 2 pions
         if(plateau.totalPoints() > 1) {
             this.numberNode = 0;
@@ -341,7 +343,7 @@ public class MinMax {
             int col = -1;
             int depth = player.getDepth();
 
-            for(int i = 0; i< column; i++) {
+            for(int i = 0; i < column; i++) {
                 if(fullColumn(i)) {
                     this.addPoint(i, player.getNumber());
                     int evaluation = this.min((depth - 1), player.getNumber(), player);
