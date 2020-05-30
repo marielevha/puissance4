@@ -108,14 +108,13 @@ public class MinMax {
      * @return
      */
     public int addPoint(int column, int player) {
-        /*for (int i = 0; i < line; i++) {
+        for (int i = 0; i < line; i++) {
             if (plateau.getXY(column, i).getContent() == EMPTY) {
                 plateau.getXY(column, i).setContent(player);
                 //System.out.println(i + "-" + column);
                 return i;
             }
-        }*/
-        plateau.addPoint(column, player);
+        }
         return -1;
     }
 
@@ -344,7 +343,7 @@ public class MinMax {
             int depth = player.getDepth();
 
             for(int i = 0; i < column; i++) {
-                if(fullColumn(i)) {
+                if(!plateau.fullColumn(i)) {
                     this.addPoint(i, player.getNumber());
                     int evaluation = this.min((depth - 1), player.getNumber(), player);
 
@@ -365,7 +364,7 @@ public class MinMax {
                     //System.err.println("Evaluation < max :" + max);
 
                     //System.err.println(choices.get(0));
-                    plateau.cancelMove(i);
+                    cancelMove(i);
                 }
             }
             Collections.shuffle(choices);
@@ -415,14 +414,14 @@ public class MinMax {
          */
         int max = -10000000;
         for(int i = 0; i < column; i++) {
-            if(fullColumn(i)){
+            if(!plateau.fullColumn(i)){
                 this.addPoint(i, player);
                 int evaluation = this.min((depth - 1), player, currentPlayer);
 
                 if(evaluation > max) {
                     max = evaluation;
                 }
-                plateau.cancelMove(i);
+                cancelMove(i);
             }
         }
         return max;
@@ -455,14 +454,14 @@ public class MinMax {
          */
         int min = 10000000;
         for(int i = 0; i < column; i++){
-            if(fullColumn(i)){
+            if(!plateau.fullColumn(i)){
                 this.addPoint(i, player);
                 int evaluation = this.max((depth - 1), player, currentPlayer);
 
                 if(evaluation < min) {
                     min = evaluation;
                 }
-                plateau.cancelMove(i);
+                cancelMove(i);
             }
         }
         return min;

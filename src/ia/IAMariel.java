@@ -278,6 +278,7 @@ public class IAMariel extends Player{
         }
         else if (blockMove(plateau) != -1){
             int col = blockMove(plateau);
+            //plateauMinMax.getPlateau().addPoint(col, this.getNumber());
             plateauMinMax.addPoint(col, this.getNumber());
             return col;
         }

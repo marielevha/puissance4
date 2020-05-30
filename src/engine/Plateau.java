@@ -89,7 +89,14 @@ public class Plateau implements IPlateau {
      * @return boolean true si colonne pleine, sinon false
      */
     public boolean fullColumn(int col) {
-        return lines[0].getX(col).getContent() != 0;
+        boolean available = true;
+        for (int i = 0; i < row; i++) {
+            if (lines[i].getX(col).getContent() == EMPTY) {
+                available = false;
+            }
+        }
+        return available;
+        //return lines[0].getX(col).getContent() != 0;
     }
 
     /**
@@ -357,9 +364,9 @@ public class Plateau implements IPlateau {
      * @param column
      */
     public void cancelMove(int column) {
-        int row = 0;
+        int row = (Plateau.row - 1);
         while (lines[row].getX(column).getContent() == EMPTY) {
-            row++;
+            row--;
         }
         lines[row].getX(column).setContent(EMPTY);
     }

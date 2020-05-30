@@ -519,8 +519,8 @@ public class Graphic {
                 }
                 //initPlateau(fenetre, plateau);
                 initPlateau(fenetre, plateau);
-                System.err.println(plateau.totalPoints());
-                //System.err.println(plateau.toString());
+                //System.err.println(plateau.totalPoints());
+                System.err.println(plateau.toString());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -552,9 +552,9 @@ public class Graphic {
             }
         }
         initPlateau(fenetre, plateau);
-        System.out.println(plateau.toString());
-        System.err.println(plateau.test(0).toString());
-        System.err.println(plateau.fullColumn(3));
+        //System.out.println(plateau.toString());
+        //System.err.println(plateau.test(0).toString());
+        //System.err.println(plateau.fullColumn(3));
     }
 
     private static void test() {
