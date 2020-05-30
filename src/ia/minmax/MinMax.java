@@ -243,7 +243,7 @@ public class MinMax {
     }
 
     /**
-     * Algorithm MinMax : retourne la colonne à jouer
+     * Algorithm MinMax
      * @param player
      * @return column
      */
@@ -378,88 +378,5 @@ public class MinMax {
     public int getLastColumn() {
         //System.out.println(plateau.totalPoints());
         return lastColumn;
-    }
-
-    public void display(){
-        //System.out.println(plateau.toString());
-        for (int colonne = 0; colonne < column; colonne++) {
-            System.out.print("-");
-        }
-        System.out.println();
-        for(int ligne = (line -1); ligne > -1; ligne--) {
-            for (int colonne = 0; colonne < column; colonne++) {
-                if(plateau.getXY(colonne, ligne).getContent() == 0) {
-                    System.out.print(" ");
-                }else{
-                    System.out.print(plateau.getXY(colonne, ligne).getContent());
-                }
-            }
-            System.out.println();
-        }
-        for (int colonne = 0; colonne < column; colonne++){
-            System.out.print("-");
-        }
-        //plateau.toString();
-        System.out.println();
-    }
-
-    /**
-     * TotalPoints : compte le nombre de pions dans le plateau
-     * @return Integer count
-     */
-    public int totalPoints() {
-        int count = 0;
-        for (int i = 0; i < line; i++) {
-            for (int j = 0; j < column; j++) {
-                if (plateau.getXY(j, i).getContent() != EMPTY) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
-    /**
-     * FullColumn :
-     * @param column
-     * @return
-     */
-    public boolean fullColumn(int column) {
-        return !plateau.fullColumn(column);
-        /*boolean available = false;
-        for (int i = 0; i < line; i++) {
-            if (plateau.getXY(column, i).getContent() == EMPTY) {
-                available = true;
-            }
-        }
-        return available;*/
-    }
-
-    /**
-     * Full : vérifie si le plateau est plein
-     * Si plein true, sinon false
-     * @return boolean
-     */
-    public boolean full() {
-        /*for (int i = 0; i < line; i++) {
-            for (int j = 0; j < column; j++) {
-                if (plateau.getXY(j, i).getContent() == EMPTY) {
-                    return false;
-                }
-            }
-        }*/
-        return plateau.full();
-    }
-
-    /**
-     * CancelMove : annule un coup jouer en remplaçant le numéro du joueur par 0
-     * @param column
-     */
-    private void cancelMove(int column) {
-        int row = line -1;
-        while (plateau.getXY(column, row).getContent() == EMPTY) {
-            row--;
-        }
-        plateau.getXY(column, row).setContent(EMPTY);
     }
 }
