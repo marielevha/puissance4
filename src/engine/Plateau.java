@@ -2,6 +2,8 @@ package engine;
 
 import _interface.IPlateau;
 
+import java.util.ArrayList;
+
 public class Plateau implements IPlateau {
     private static final int ALIGN = 4, EMPTY = 0;
     private final Line[] lines;
@@ -306,17 +308,17 @@ public class Plateau implements IPlateau {
     }
 
     /**
-     * AvailableColumn : retourne le nombre de colonne disponible
-     * @return Integer count
+     * AvailableColumn : retourne la liste des colonnes disponible
+     * @return ArrayList choices
      */
-    public int availableColumn() {
-        int count = 0;
+    ArrayList<Integer> choices = new ArrayList<Integer>();
+    public ArrayList<Integer> availableColumn() {
         for (int i = 0; i < column; i++) {
             if (!fullColumn(i)) {
-                count++;
+                choices.add(i);
             }
         }
-        return count;
+        return choices;
     }
 
     /**
@@ -325,10 +327,6 @@ public class Plateau implements IPlateau {
      */
     public int getLineAdd() {
         return lineAdd;
-    }
-
-    public Line test(int l) {
-        return lines[l];
     }
 
     /**
@@ -357,5 +355,9 @@ public class Plateau implements IPlateau {
             row--;
         }
         lines[row].getX(column).setContent(EMPTY);
+    }
+
+    public Line test(int l) {
+        return lines[l];
     }
 }

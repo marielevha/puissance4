@@ -4,6 +4,8 @@ import engine.Plateau;
 import ia.minmax.MinMax;
 import engine.player.Player;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class IAMariel extends Player{
@@ -76,10 +78,19 @@ public class IAMariel extends Player{
                 return 3;
             }
             else {
-                int column = random.nextInt(plateau.getColumn());
+                ArrayList<Integer> choices = plateau.availableColumn();
+                Collections.shuffle(choices);
+                System.out.println(choices);
+                return choices.get(0);
+                /*for (int i = 0; i < plateau.getColumn(); i++) {
+                    if (!plateau.fullColumn(i)) {
+
+                    }
+                }*/
+                /*int column = random.nextInt(plateau.getColumn());
                 if (!plateau.fullColumn(column)) {
                     return column;
-                }
+                }*/
             }
         }
     }

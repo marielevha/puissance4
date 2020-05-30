@@ -247,7 +247,7 @@ public class MinMax {
      * @param player
      * @return column
      */
-    public synchronized void move(Player player) {
+    public  void move(Player player) {
         // Si le plateau compte au moins 2 pions
         if(plateau.totalPoints() > 1) {
             int max = -10000000;
@@ -267,7 +267,7 @@ public class MinMax {
                         choices.add(i);
                         //System.err.println("Evaluation > max :" + max);
                     }
-                    // Si l'évaluation est égal au max, n ajoute la colonne actuelle dans la liste de choix
+                    // Si l'évaluation est égal au max, on ajoute la colonne actuelle dans la liste de choix possible
                     else if(evaluation == max) {
                         choices.add(i);
                         //System.err.println("Evaluation == max :" + max);
