@@ -11,7 +11,6 @@ public class MinMax {
     private int lastColumn;
     private final int line;
     private final int column;
-    private int nodes;
     private static Plateau plateau;
 
     /**
@@ -55,16 +54,14 @@ public class MinMax {
      * AddPoint : ajoute un pion du joueur au plateau dans la colonne indiquée
      * @param column
      * @param player
-     * @return
      */
-    public int addPoint(int column, int player) {
+    public void addPoint(int column, int player) {
         for (int i = 0; i < line; i++) {
             if (plateau.getXY(column, i).getContent() == EMPTY) {
                 plateau.getXY(column, i).setContent(player);
-                return i;
+                return;
             }
         }
-        return -1;
     }
 
     /**
@@ -253,7 +250,6 @@ public class MinMax {
     public synchronized void move(Player player) {
         // Si le plateau compte au moins 2 pions
         if(plateau.totalPoints() > 1) {
-            this.nodes = 0;
             int max = -10000000;
             ArrayList<Integer> choices = new ArrayList<Integer>();
             int col = -1;
@@ -263,8 +259,6 @@ public class MinMax {
                 if(!plateau.fullColumn(i)) {
                     this.addPoint(i, player.getNumber());
                     int evaluation = this.min((depth - 1), player.getNumber(), player);
-
-                    System.out.println("Player " + player + " played " + i + " eval = " + evaluation);
 
                     // Si l'évaluation est supérieur au max, on vide la liste des choix puis on ajoute la colonne actuelle comme choix
                     if(evaluation > max) {
@@ -285,7 +279,7 @@ public class MinMax {
                 }
             }
             Collections.shuffle(choices);
-            System.out.println(choices);
+            //System.out.println(choices);
             col = choices.get(0);
             this.addPoint(col, player.getNumber());
             this.lastColumn = col;
@@ -298,7 +292,6 @@ public class MinMax {
         else {
             this.addPoint((column / 2), player.getNumber());
             this.lastColumn = (column / 2);
-            this.nodes = 0;
             //display();
             //return this.lastColumn;
         }
@@ -312,7 +305,6 @@ public class MinMax {
      * @return max
      */
     private int max(int depth, int player, Player currentPlayer) {
-        this.nodes++;
 
         player = (player == 1) ? 2 : 1;
         /**
@@ -352,7 +344,6 @@ public class MinMax {
      * @return min
      */
     private int min(int depth, int player, Player currentPlayer) {
-        this.nodes++;
 
         player = (player == 1) ? 2 : 1;
         /**
@@ -385,7 +376,7 @@ public class MinMax {
     }
 
     public int getLastColumn() {
-        System.out.println(plateau.totalPoints());
+        //System.out.println(plateau.totalPoints());
         return lastColumn;
     }
 

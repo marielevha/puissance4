@@ -8,8 +8,8 @@ import java.util.Random;
 
 public class IAMariel extends Player{
     private static Random random = new Random();
-    private static int line = 6;
-    private static int column = 7;
+    private static final int line = 6;
+    private static final int column = 7;
     private static int POSITION_DEFAULT = -1;
     private static int [][] matrix;
     private static boolean test = true;

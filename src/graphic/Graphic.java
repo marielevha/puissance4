@@ -40,27 +40,8 @@ public class Graphic {
             @Override
             public void run() {
                 super.run();
-                String string = "6x7-" +
-                        "1211121" +
-                        "2122122" +
-                        "1211221" +
-                        "2122112" +
-                        "0211221" +
-                        "0112212";
-                string = "6x7-" +
-                        "0211200" +
-                        "0102200" +
-                        "0001100" +
-                        "0000200" +
-                        "0000200" +
-                        "0000000";
-                //
-                // plateau = new Plateau(string, 0);
                 plateau = new Plateau(6, 7);
-                //System.out.println(plateau.toString());
                 windowGameMode();
-                //System.out.println("Left : " + countEmptyCase(4, 5, "left"));
-                //System.out.println("Right : " + countEmptyCase(4, 5, "right"));
             }
         };
         game.start();
@@ -372,7 +353,7 @@ public class Graphic {
         fenetre3 = new Fenetre("CHOOSE LEVEL IA", 300, 200);
         Souris souris = fenetre3.getSouris();
         Rectangle rectangle = new Rectangle(Couleur.BLEU, new Point(0,0), new Point(fenetre3.getWidth(), fenetre3.getHeight()), true);
-        Texte text1 = new Texte("Level 5 : MinMax", new Font("Calibri", Font.ITALIC, 18), new Point(125,20));
+        Texte text1 = new Texte("Level 5", new Font("Calibri", Font.ITALIC, 18), new Point(125,20));
         Texte text2 = new Texte("Level 4", new Font("Calibri", Font.ITALIC, 18), new Point(125,55));
         Texte text3 = new Texte("Level 3", new Font("Calibri", Font.ITALIC, 18), new Point(125,95));
         Texte text4 = new Texte("Level 2", new Font("Calibri", Font.ITALIC, 18), new Point(125,135));
