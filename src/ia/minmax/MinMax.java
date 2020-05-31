@@ -249,7 +249,7 @@ public class MinMax {
      */
     public  void move(Player player) {
         // Si le plateau compte au moins 2 pions
-        if(plateau.totalPoints() > 1) {
+        //if(plateau.totalPoints() > 1) {
             int max = -10000000;
             ArrayList<Integer> choices = new ArrayList<Integer>();
             int col = -1;
@@ -260,7 +260,7 @@ public class MinMax {
                     this.addPoint(i, player.getNumber());
                     int evaluation = this.min((depth - 1), player.getNumber(), player);
 
-                    // Si l'évaluation est supérieur au max, on vide la liste des choix puis on ajoute la colonne actuelle comme choix
+                    // Si l'évaluation est supérieur au max actuel, on vide la liste des choix puis on ajoute la colonne actuelle comme choix
                     if(evaluation > max) {
                         max = evaluation;
                         choices.clear();
@@ -287,14 +287,14 @@ public class MinMax {
             System.out.println();
             //display();
             //return this.lastColumn;
-        }
+        //}
         // Si le plateau a au max 1 pion l'ia joue la colonne du milieu (3)
-        else {
+        /*else {
             this.addPoint((column / 2), player.getNumber());
             this.lastColumn = (column / 2);
             //display();
             //return this.lastColumn;
-        }
+        }*/
     }
 
     /**

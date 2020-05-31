@@ -312,6 +312,16 @@ public class IAMariel extends Player{
             return col;
         }
         else {
+            if (plateau.totalPoints() < 2) {
+                int col = (plateau.getColumn() / 2);
+                plateauMinMax.addPoint(col, this.getNumber());
+                return col;
+            }
+            else {
+                plateauMinMax.move(this);
+                //System.err.println(plateau.toString());
+                return plateauMinMax.getLastColumn();
+            }
             /*if (plateau.getXY(3, 5).getContent() == 0){
                 plat.addPoint(3, this.getNumber());
                 return 3;
@@ -321,9 +331,9 @@ public class IAMariel extends Player{
                 //System.err.println(plateau.toString());
                 return plat.getLastColumn();
             }*/
-            plateauMinMax.move(this);
+            //plateauMinMax.move(this);
             //System.err.println(plateau.toString());
-            return plateauMinMax.getLastColumn();
+            //return plateauMinMax.getLastColumn();
         }
     }
 

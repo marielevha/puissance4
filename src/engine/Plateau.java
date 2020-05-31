@@ -9,6 +9,7 @@ public class Plateau implements IPlateau {
     private final Line[] lines;
     private static int row, column;
     private static int lineAdd;
+    ArrayList<Integer> choices = new ArrayList<Integer>();
 
     /**
      * Constructor : construit un plateau d'une case vide
@@ -311,7 +312,6 @@ public class Plateau implements IPlateau {
      * AvailableColumn : retourne la liste des colonnes disponible
      * @return ArrayList choices
      */
-    ArrayList<Integer> choices = new ArrayList<Integer>();
     public ArrayList<Integer> availableColumn() {
         choices.clear();
         for (int i = 0; i < column; i++) {
