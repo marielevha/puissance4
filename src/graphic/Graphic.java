@@ -303,6 +303,7 @@ public class Graphic {
         fenetre2.ajouter(text1);
         fenetre2.ajouter(text2);
 
+        //closeWindow(fenetre);
         fenetre2.rafraichir();
         while (true) {
             if (souris.getClicGauche()) {

@@ -35,7 +35,7 @@ public class IAMariel extends Player{
     }
 
     /***
-     * Meilleur Coupe : Joue un coup en fonction du niveau de l'IA
+     * BestMove(Meilleur Coupe) : Joue un coup en fonction du niveau de l'IA
      * @param string
      * @return Integer column
      */
@@ -57,7 +57,7 @@ public class IAMariel extends Player{
                 return levelFourMove();
             }
             case 5 : {
-                this.setDepth(6);
+                this.setDepth(8);
                 return levelFiveMove(plateau);
             }
             default : {
