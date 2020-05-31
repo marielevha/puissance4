@@ -82,23 +82,14 @@ public class MinMax {
         }
         // Diagonales (cherche depuis la ligne du bas)
         for (int col = 0; col < column; col++) {
-
-            // Premi�re diagonale ( / )
             count += searchAlignment(col, 0, 1, 1,player,number);
-            // Deuxi�me diagonale ( \ )
             count += searchAlignment(col, 0, -1, 1,player,number);
 
         }
-
         // Diagonales (cherche depuis les colonnes gauches et droites)
         for (int ligne = 0; ligne < line; ligne++) {
-            // Premi�re diagonale ( / )
             count += searchAlignment(0, ligne, 1, 1,player,number);
-
-
-            // Deuxi�me diagonale ( \ )
             count += searchAlignment(column - 1, ligne, -1, 1,player,number);
-
         }
         return count;
     }
@@ -249,52 +240,43 @@ public class MinMax {
      */
     public  void move(Player player) {
         // Si le plateau compte au moins 2 pions
-        //if(plateau.totalPoints() > 1) {
-            int max = -10000000;
-            ArrayList<Integer> choices = new ArrayList<Integer>();
-            int col = -1;
-            int depth = player.getDepth();
+        int max = -10000000;
+        ArrayList<Integer> choices = new ArrayList<Integer>();
+        int col = -1;
+        int depth = player.getDepth();
 
-            for(int i = 0; i < column; i++) {
-                if(!plateau.fullColumn(i)) {
-                    this.addPoint(i, player.getNumber());
-                    int evaluation = this.min((depth - 1), player.getNumber(), player);
+        for(int i = 0; i < column; i++) {
+            if(!plateau.fullColumn(i)) {
+                this.addPoint(i, player.getNumber());
+                int evaluation = this.min((depth - 1), player.getNumber(), player);
 
-                    // Si l'évaluation est supérieur au max actuel, on vide la liste des choix puis on ajoute la colonne actuelle comme choix
-                    if(evaluation > max) {
-                        max = evaluation;
-                        choices.clear();
-                        choices.add(i);
-                        //System.err.println("Evaluation > max :" + max);
-                    }
-                    // Si l'évaluation est égal au max, on ajoute la colonne actuelle dans la liste de choix possible
-                    else if(evaluation == max) {
-                        choices.add(i);
-                        //System.err.println("Evaluation == max :" + max);
-                    }
-                    //System.err.println("Evaluation < max :" + max);
-
-                    //System.err.println(choices.get(0));
-                    plateau.cancelMove(i);
+                // Si l'évaluation est supérieur au max actuel, on vide la liste des choix puis on ajoute la colonne actuelle comme choix
+                if(evaluation > max) {
+                    max = evaluation;
+                    choices.clear();
+                    choices.add(i);
+                    //System.err.println("Evaluation > max :" + max);
                 }
+                // Si l'évaluation est égal au max, on ajoute la colonne actuelle dans la liste de choix possible
+                else if(evaluation == max) {
+                    choices.add(i);
+                    //System.err.println("Evaluation == max :" + max);
+                }
+                //System.err.println("Evaluation < max :" + max);
+
+                //System.err.println(choices.get(0));
+                plateau.cancelMove(i);
             }
-            Collections.shuffle(choices);
-            //System.out.println(choices);
-            col = choices.get(0);
-            this.addPoint(col, player.getNumber());
-            this.lastColumn = col;
-            //System.err.println("Nombre de noeud parcourus : "+nbrNoeuds);
-            System.out.println();
-            //display();
-            //return this.lastColumn;
-        //}
-        // Si le plateau a au max 1 pion l'ia joue la colonne du milieu (3)
-        /*else {
-            this.addPoint((column / 2), player.getNumber());
-            this.lastColumn = (column / 2);
-            //display();
-            //return this.lastColumn;
-        }*/
+        }
+        Collections.shuffle(choices);
+        //System.out.println(choices);
+        col = choices.get(0);
+        this.addPoint(col, player.getNumber());
+        this.lastColumn = col;
+        //System.err.println("Nombre de noeud parcourus : "+nbrNoeuds);
+        System.out.println();
+        //display();
+        //return this.lastColumn;
     }
 
     /**

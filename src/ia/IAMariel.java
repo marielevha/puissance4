@@ -57,7 +57,7 @@ public class IAMariel extends Player{
                 return levelFourMove();
             }
             case 5 : {
-                this.setDepth(8);
+                this.setDepth(6);
                 return levelFiveMove(plateau);
             }
             default : {
@@ -322,15 +322,6 @@ public class IAMariel extends Player{
                 //System.err.println(plateau.toString());
                 return plateauMinMax.getLastColumn();
             }
-            /*if (plateau.getXY(3, 5).getContent() == 0){
-                plat.addPoint(3, this.getNumber());
-                return 3;
-            }
-            else {
-                plat.MinMaxMove(this);
-                //System.err.println(plateau.toString());
-                return plat.getLastColumn();
-            }*/
             //plateauMinMax.move(this);
             //System.err.println(plateau.toString());
             //return plateauMinMax.getLastColumn();
